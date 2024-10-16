@@ -3,6 +3,120 @@
 
 #include "Automaton.h"
 
+fa::Automaton initalAutomaton () {
+  fa::Automaton fa;
+  // exemple d'automate du sujet
+  // non déterministe et non complet
+  fa.addSymbol('a');
+  fa.addSymbol('b');
+  fa.addState(0);
+  fa.addState(1);
+  fa.addState(2);
+  fa.addState(3);
+  fa.addState(4);
+  fa.setStateInitial(0);
+  fa.setStateInitial(1);
+  fa.setStateFinal(1);
+  fa.setStateFinal(4);
+  fa.addTransition(0, 'a', 1);
+  fa.addTransition(0, 'a', 2);
+  fa.addTransition(0, 'a', 3);
+  fa.addTransition(1, 'b', 3);
+  fa.addTransition(2, 'a', 3);
+  fa.addTransition(2, 'b', 4);
+  fa.addTransition(3, 'a', 3);
+  fa.addTransition(3, 'b', 4);
+  fa.addTransition(4, 'a', 4);
+  return fa;
+}
+
+fa::Automaton deterministicCompleteAutomaton1 () {
+  fa::Automaton fa;
+  // exemple du cours slide 104
+  // déterministe et complet
+  fa.addSymbol('a');
+  fa.addSymbol('b');
+  fa.addState(0);
+  fa.addState(1);
+  fa.setStateInitial(0);
+  fa.setStateFinal(1);
+  fa.addTransition(0, 'a', 0);
+  fa.addTransition(0, 'b', 1);
+  fa.addTransition(1, 'a', 1);
+  fa.addTransition(1, 'b', 0);
+  return fa;
+} 
+
+fa::Automaton deterministicCompleteAutomaton2 () {
+  fa::Automaton fa;
+  // exemple du cours slide 108
+  // déterministe et complet
+  fa.addState(0);
+  fa.addState(1);
+  fa.addState(2);
+  fa.addState(3);
+  fa.addState(4);
+  fa.addSymbol('a');
+  fa.addSymbol('b');
+  fa.setStateInitial(0);
+  fa.setStateFinal(3);
+  fa.addTransition(0, 'a', 4);
+  fa.addTransition(0, 'b', 1);
+  fa.addTransition(1, 'a', 2);
+  fa.addTransition(1, 'b', 4);
+  fa.addTransition(2, 'a', 2);
+  fa.addTransition(2, 'b', 3);
+  fa.addTransition(3, 'a', 4);
+  fa.addTransition(3, 'b', 4);
+  fa.addTransition(4, 'a', 4);
+  fa.addTransition(4, 'b', 4);
+  return fa;
+}
+
+fa::Automaton deterministicAutomaton1 () {
+  fa::Automaton fa;
+  // exemple du cours slide 105
+  // déterministe et non complet
+  fa.addSymbol('a');
+  fa.addSymbol('b');
+  fa.addState(0);
+  fa.addState(1);
+  fa.addState(2);
+  fa.addState(3);
+  fa.setStateInitial(0);
+  fa.setStateFinal(3);
+  fa.addTransition(0, 'b', 1);
+  fa.addTransition(1, 'a', 2);
+  fa.addTransition(2, 'a', 2);
+  fa.addTransition(2, 'b', 1);
+  return fa;
+}
+
+fa::Automaton completeAutomaton1 () {
+  fa::Automaton fa;
+  // adaptation de l'exemple du cours slide 113 pour le rendre complet
+  // non déterministe et complet
+  fa.addSymbol('a');
+  fa.addSymbol('b');
+  fa.addState(0);
+  fa.addState(1);
+  fa.addState(2);
+  fa.addState(3);
+  fa.setStateInitial(0);
+  fa.setStateFinal(3);
+  fa.addTransition(0, 'a', 0);
+  fa.addTransition(0, 'a', 2);
+  fa.addTransition(0, 'b', 0);
+  fa.addTransition(0, 'b', 1);
+  fa.addTransition(1, 'b', 3);
+  fa.addTransition(2, 'a', 3);
+  fa.addTransition(3, 'a', 3);
+  fa.addTransition(3, 'b', 3);
+  fa.addTransition(1, 'a', 2); // transition ajoutée pour rendre l'automate complet
+  fa.addTransition(2, 'b', 3); // idem
+  return fa;
+}
+
 /**
  * Automaton
  */
@@ -48,7 +162,7 @@ TEST(AddSymbolTest, Valid){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c)){
+    if (std::isgraph(c) || c == fa::Epsilon){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
@@ -64,7 +178,7 @@ TEST(AddSymbolTest, Invalid){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (!std::isgraph(c)){
+    if (!(std::isgraph(c) || c == fa::Epsilon)){
       EXPECT_FALSE(fa.addSymbol(c));
     }
   }
@@ -117,13 +231,13 @@ TEST(HasSymbolTest, Present){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c)){
+    if (std::isgraph(c) || c == fa::Epsilon){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c)){
+    if (std::isgraph(c) || c == fa::Epsilon){
       EXPECT_TRUE(fa.hasSymbol(c));
     }
     else{
@@ -136,13 +250,13 @@ TEST(HasSymbolTest, Absent){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c)){
+    if (std::isgraph(c) || c == fa::Epsilon){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c)){
+    if (std::isgraph(c) || c == fa::Epsilon){
       EXPECT_TRUE(fa.removeSymbol(c));
       EXPECT_FALSE(fa.hasSymbol(c));
       EXPECT_TRUE(fa.addSymbol(c));
@@ -159,7 +273,7 @@ TEST(HasSymbolTest, Invalid){
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (!std::isgraph(c)){
+    if (!(std::isgraph(c) || c == fa::Epsilon)){
       EXPECT_FALSE(fa.hasSymbol(c));
     }
   }
@@ -450,42 +564,106 @@ TEST(PrettyPrintTest, Empty){
 }
 
 TEST(PrettyPrintTest, Stuffed){
-  fa::Automaton fa;
-  // exemple d'automate du sujet
-  fa.addSymbol('a');
-  fa.addSymbol('b');
-  fa.addState(0);
-  fa.addState(1);
-  fa.addState(2);
-  fa.addState(3);
-  fa.addState(4);
-  fa.setStateInitial(0);
-  fa.setStateInitial(1);
-  fa.setStateFinal(1);
-  fa.setStateFinal(4);
-  fa.addTransition(0, 'a', 1);
-  fa.addTransition(0, 'a', 2);
-  fa.addTransition(0, 'a', 3);
-  fa.addTransition(1, 'b', 3);
-  fa.addTransition(2, 'a', 3);
-  fa.addTransition(2, 'b', 4);
-  fa.addTransition(3, 'a', 3);
-  fa.addTransition(3, 'b', 4);
-  fa.addTransition(4, 'a', 4);
+  fa::Automaton fa = initalAutomaton();
   fa.prettyPrint(std::cout);
 }
 
+/**
+ * bool hasEpsilonTransition() const
+ */
 
+TEST(HasEpsilonTransitionTest, Has){
+  fa::Automaton fa;
+  EXPECT_TRUE(fa.addState(1));
+  EXPECT_TRUE(fa.addState(2));
+  EXPECT_TRUE(fa.addSymbol(fa::Epsilon));
+  EXPECT_TRUE(fa.addTransition(1, fa::Epsilon, 2));
+  EXPECT_TRUE(fa.hasTransition(1, fa::Epsilon, 2));
+  EXPECT_TRUE(fa.hasEpsilonTransition());
+}
 
+TEST(HasEpsilonTransitionTest, HasNot){
+  fa::Automaton fa = initalAutomaton();
+  EXPECT_FALSE(fa.hasEpsilonTransition());
+}
 
+/**
+ * bool isDeterministic() const
+ */
 
+TEST(IsDeterministicTest, Deterministic){
+  fa::Automaton fa = deterministicAutomaton1();
+  EXPECT_TRUE(fa.isDeterministic());
+}
 
+TEST(IsDeterministicTest, Complete){
+  fa::Automaton fa = completeAutomaton1();
+  EXPECT_FALSE(fa.isDeterministic());
+}
 
+TEST(IsDeterministicTest, Both1){
+  fa::Automaton fa = deterministicCompleteAutomaton1();
+  EXPECT_TRUE(fa.isDeterministic());
+}
 
+TEST(IsDeterministicTest, Both2){
+  fa::Automaton fa = deterministicCompleteAutomaton2();
+  EXPECT_TRUE(fa.isDeterministic());
+}
 
+TEST(IsDeterministicTest, Neither){
+  fa::Automaton fa = initalAutomaton();
+  EXPECT_FALSE(fa.isDeterministic());
+}
 
+/**
+ * bool isComplete() const
+ */
 
+TEST(IsCompleteTest, Deterministic){
+  fa::Automaton fa = deterministicAutomaton1();
+  EXPECT_FALSE(fa.isComplete());
+}
 
+TEST(IsCompleteTest, Complete){
+  fa::Automaton fa = completeAutomaton1();
+  EXPECT_TRUE(fa.isComplete());
+}
+
+TEST(IsCompleteTest, Both1){
+  fa::Automaton fa = deterministicCompleteAutomaton1();
+  EXPECT_TRUE(fa.isComplete());
+}
+
+TEST(IsCompleteTest, Both2){
+  fa::Automaton fa = deterministicCompleteAutomaton2();
+  EXPECT_TRUE(fa.isComplete());
+}
+
+TEST(IsCompleteTest, Neither){
+  fa::Automaton fa = initalAutomaton();
+  EXPECT_FALSE(fa.isComplete());
+}
+
+/**
+ * static Automaton createComplete(const Automaton& automaton)
+ */
+
+TEST(CreateCompleteTest, AlreadyComplete){
+  fa::Automaton fa1 = completeAutomaton1();
+  fa::Automaton fa2 = fa::Automaton::createComplete(fa1);
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_TRUE(fa2.isComplete());
+}
+
+TEST(CreateCompleteTest, NotComplete){
+  fa::Automaton fa1 = deterministicAutomaton1();
+  fa::Automaton fa2 = fa::Automaton::createComplete(fa1);
+  EXPECT_FALSE(fa1.isComplete());
+  EXPECT_TRUE(fa2.isComplete());
+  fa1.prettyPrint(std::cout);
+  fa2.prettyPrint(std::cout);
+}
 
 /**
  * main

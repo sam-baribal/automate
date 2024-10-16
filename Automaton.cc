@@ -33,6 +33,15 @@ namespace fa {
     return (transitions.count(Transition(alpha, to)) == 1);
   }
 
+  bool State::hasEpsilonTransition() const {
+    for (std::set<Transition>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
+      if (it->getAlpha() == Epsilon){
+        return true;
+      }
+    }
+    return false;
+  }
+
   bool State::isInitial() const {return this->initial;}
 
   bool State::isFinal() const {return this->terminal;}
@@ -42,6 +51,16 @@ namespace fa {
   void State::setFinal(bool terminal) {this->terminal = terminal;}
 
   std::size_t State::countTransitions() const {return transitions.size();}
+
+  std::size_t State::countTransitions(char alpha) const {
+    size_t res = 0;
+    for (std::set<Transition>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
+      if (it->getAlpha() == alpha){
+        res++;
+      }
+    }
+    return res;
+  }
 
   void State::printTransitions(std::ostream& os, int state) const {
     os << "\tFor state " << state << ":";
@@ -58,14 +77,26 @@ namespace fa {
     os << "\n";
   }
 
+  std::set<fa::Transition> State::getTransitions() const {
+    return transitions;
+  }
+
   Automaton::Automaton() {}
+
+  std::map<int, fa::State> Automaton::getStates() const {
+    return states;
+  }
+
+  std::set<char> Automaton::getAlphabet() const {
+    return alphabet;
+  }
 
   bool Automaton::isValid() const {
     return !(alphabet.empty() || states.empty()) ;
   }
 
   bool Automaton::addSymbol(char symbol) {
-    if (std::isgraph(symbol)){
+    if (std::isgraph(symbol) || symbol == Epsilon){
       return alphabet.insert(symbol).second;
     }
     return false;
@@ -168,6 +199,98 @@ namespace fa {
     for(std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
       it->second.printTransitions(os, it->first);
     }
-  } 
-}
+  }
 
+  bool Automaton::hasEpsilonTransition() const {
+    assert(isValid());
+    for(std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
+      if (it->second.hasEpsilonTransition()){
+        return true;
+      }
+    }
+    return false;
+  } 
+
+  bool Automaton::isDeterministic() const {
+    assert(isValid());
+    for(std::map<int, State>::const_iterator it1 = states.begin(); it1 != states.end(); it1++){
+      for(std::set<char>::const_iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++){
+        if (it1->second.countTransitions(*it2) > 1){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  bool Automaton::isComplete() const {
+    assert(isValid());
+    for(std::map<int, State>::const_iterator it1 = states.begin(); it1 != states.end(); it1++){
+      for(std::set<char>::const_iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++){
+        if (it1->second.countTransitions(*it2) < 1){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  Automaton Automaton::createComplete(const Automaton& automaton) {
+    assert(automaton.isValid());
+    if (automaton.isComplete()){
+      return automaton;
+    }
+    Automaton newAuto;
+    int currMax = 0;
+    newAuto.alphabet = automaton.alphabet;
+    std::map<int, State> states = automaton.getStates();
+    for(std::map<int, State>::iterator it = states.begin(); it != states.end(); it++){
+      if (it->first > currMax){
+        currMax = it->first;
+      }
+      newAuto.addState(it->first);
+    }
+    int trashState = currMax+1;
+    newAuto.addState(trashState);
+    std::set<char> alphabet = newAuto.getAlphabet();
+    for(std::map<int, State>::iterator it1 = states.begin(); it1 != states.end(); it1++){
+      if (states.find(it1->first)->second.isFinal()){
+        newAuto.setStateFinal(it1->first);
+      }
+      if (states.find(it1->first)->second.isInitial()){
+        newAuto.setStateInitial(it1->first);
+      }
+      std::set<Transition> transitions = it1->second.getTransitions();
+      for(std::set<Transition>::iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
+        newAuto.addTransition(it1->first, it2->getAlpha(), it2->getTo());
+      }
+    }
+    // jusqu'à là ça a l'air de marcher
+
+    std::map<int, State> newStates = newAuto.getStates();
+    for(std::map<int, State>::iterator it1 = newStates.begin(); it1 != newStates.end(); it1++){
+      for(std::set<char>::iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++){
+        State currState = newStates.find(it1->first)->second;
+        if (currState.countTransitions(*it2) < 1){
+          newAuto.addTransition(it1->first, *it2, trashState);
+        }
+      }
+    }
+    return newAuto;
+  }
+
+  Automaton Automaton::createComplement(const Automaton& automaton) {
+    assert(automaton.isValid());
+  }
+
+  Automaton Automaton::createMirror(const Automaton& automaton) {
+    assert(automaton.isValid());
+  }
+
+
+
+
+
+
+
+}

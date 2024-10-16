@@ -7,6 +7,7 @@
 #include <set>
 #include <string>
 #include <map>
+#include <cassert>
 
 
 namespace fa {
@@ -25,17 +26,17 @@ namespace fa {
       Transition(char alpha, int to);
       
       /**
-       *
+       * Return the symbol of the transition
        */
       char getAlpha() const;
 
       /**
-       *
+       * Return the number of the state the transition is aiming at
        */
       int getTo() const;
 
       /**
-       *
+       * < operator for the Transition class
        */
       bool operator <(const Transition &other) const;
   };
@@ -50,7 +51,7 @@ namespace fa {
       /**
       * Build a new state without any transitions
       */
-      State();
+      State(); 
 
       /**
       * Add a transition to another state
@@ -68,34 +69,49 @@ namespace fa {
       bool hasTransition(char alpha, int to) const;
 
       /**
-       *
+       * Tell if there is an epsilon transition coming from this state
+       */
+      bool hasEpsilonTransition() const;
+
+      /**
+       * Tell if the state is initial
        */
       bool isInitial() const;
 
       /**
-       *
+       * Tell if the state is final
        */
       bool isFinal() const;
 
       /**
-       *
+       * Set the state to initial
        */
       void setInitial(bool initial);
 
       /**
-       *
+       * Set the state to final
        */
       void setFinal(bool terminal);
 
       /**
-       *
+       * Count the number of transitions coming from this state
        */
       std::size_t countTransitions() const;
 
       /**
-       *
+       * Count the number of transitions coming from this state with the symbol alpha
+       */
+      std::size_t countTransitions(char alpha) const;
+
+      /**
+       * Shows the transition of this state in a convivial way
        */
       void printTransitions(std::ostream& os, int state) const;
+
+      /**
+       * Returns the set of transitions coming from this state
+       */
+      std::set<Transition> getTransitions() const;
   };
 
   class Automaton {
@@ -107,6 +123,16 @@ namespace fa {
       * Build an empty automaton (no state, no transition).
       */
       Automaton();
+
+      /**
+       * Return a map containing the states of the automaton
+       */
+      std::map<int, fa::State> getStates() const;
+
+      /**
+       * Return a set containing all the symbols of the automaton
+       */
+      std::set<char> getAlphabet() const;
 
       /**
       * Tell if an automaton is valid.
