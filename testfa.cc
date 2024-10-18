@@ -88,7 +88,7 @@ fa::Automaton deterministicAutomaton1 () {
   fa.addTransition(0, 'b', 1);
   fa.addTransition(1, 'a', 2);
   fa.addTransition(2, 'a', 2);
-  fa.addTransition(2, 'b', 1);
+  fa.addTransition(2, 'b', 3);
   return fa;
 }
 
@@ -661,8 +661,398 @@ TEST(CreateCompleteTest, NotComplete){
   fa::Automaton fa2 = fa::Automaton::createComplete(fa1);
   EXPECT_FALSE(fa1.isComplete());
   EXPECT_TRUE(fa2.isComplete());
-  fa1.prettyPrint(std::cout);
-  fa2.prettyPrint(std::cout);
+}
+
+/**
+ * static Automaton createComplement(const Automaton& automaton)
+ */
+
+TEST(CreateComplementTest, Deterministic){
+  fa::Automaton fa1 = deterministicAutomaton1();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_FALSE(fa1.isComplete());
+  EXPECT_FALSE(fa1.isStateFinal(0));
+  EXPECT_FALSE(fa1.isStateFinal(1));
+  EXPECT_FALSE(fa1.isStateFinal(2));
+  EXPECT_TRUE(fa1.isStateFinal(3));
+  fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
+  EXPECT_TRUE(fa2.isDeterministic());
+  EXPECT_TRUE(fa2.isComplete());
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateFinal(1));
+  EXPECT_TRUE(fa2.isStateFinal(2));
+  EXPECT_FALSE(fa2.isStateFinal(3));
+}
+
+TEST(CreateComplementTest, Complete){
+  // TO DO
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\n";
+}
+
+TEST(CreateComplementTest, Both1){
+  fa::Automaton fa1 = deterministicCompleteAutomaton1();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_FALSE(fa1.isStateFinal(0));
+  EXPECT_TRUE(fa1.isStateFinal(1));
+  fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
+  EXPECT_TRUE(fa2.isDeterministic());
+  EXPECT_TRUE(fa2.isComplete());
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_FALSE(fa2.isStateFinal(1));
+}
+
+TEST(CreateComplementTest, Both2){
+  fa::Automaton fa1 = deterministicCompleteAutomaton2();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_FALSE(fa1.isStateFinal(0));
+  EXPECT_FALSE(fa1.isStateFinal(1));
+  EXPECT_FALSE(fa1.isStateFinal(2));
+  EXPECT_TRUE(fa1.isStateFinal(3));
+  EXPECT_FALSE(fa1.isStateFinal(4));
+  fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
+  EXPECT_TRUE(fa2.isDeterministic());
+  EXPECT_TRUE(fa2.isComplete());
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateFinal(1));
+  EXPECT_TRUE(fa2.isStateFinal(2));
+  EXPECT_FALSE(fa2.isStateFinal(3));
+  EXPECT_TRUE(fa2.isStateFinal(4));
+}
+
+TEST(CreateComplementTest, Neither){
+  // TO DO
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\n";
+}
+
+/**
+ * static Automaton createMirror(const Automaton& automaton)
+ */
+
+TEST(CreateMirrorTest, Deterministic){
+  fa::Automaton fa1 = deterministicAutomaton1();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_FALSE(fa1.isComplete());
+  EXPECT_TRUE(fa1.isStateInitial(0));
+  EXPECT_TRUE(fa1.isStateFinal(3));
+  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
+  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(2, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
+  fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateInitial(3));
+  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 2));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
+}
+
+TEST(CreateMirrorTest, Complete){
+  fa::Automaton fa1 = completeAutomaton1();
+  EXPECT_FALSE(fa1.isDeterministic());
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_TRUE(fa1.isStateInitial(0));
+  EXPECT_TRUE(fa1.isStateFinal(3));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 0));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(0, 'b', 0));
+  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
+  EXPECT_TRUE(fa1.hasTransition(1, 'b', 3));
+  EXPECT_TRUE(fa1.hasTransition(2, 'a', 3));
+  EXPECT_TRUE(fa1.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa1.hasTransition(3, 'b', 3));
+  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
+  fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateInitial(3));
+  EXPECT_TRUE(fa2.hasTransition(0, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(0, 'b', 0));
+  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 1));
+  EXPECT_TRUE(fa2.hasTransition(3, 'a', 2));
+  EXPECT_TRUE(fa2.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 3));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
+}
+
+TEST(CreateMirrorTest, Both1){
+  fa::Automaton fa1 = deterministicCompleteAutomaton1();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_TRUE(fa1.isStateInitial(0));
+  EXPECT_TRUE(fa1.isStateFinal(1));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 0));
+  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
+  EXPECT_TRUE(fa1.hasTransition(1, 'a', 1));
+  EXPECT_TRUE(fa1.hasTransition(1, 'b', 0));
+  fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateInitial(1));
+  EXPECT_TRUE(fa2.hasTransition(0, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
+  EXPECT_TRUE(fa2.hasTransition(1, 'a', 1));
+  EXPECT_TRUE(fa2.hasTransition(0, 'b', 1));
+}
+
+TEST(CreateMirrorTest, Both2){
+  fa::Automaton fa1 = deterministicCompleteAutomaton2();
+  EXPECT_TRUE(fa1.isDeterministic());
+  EXPECT_TRUE(fa1.isComplete());
+  EXPECT_TRUE(fa1.isStateInitial(0));
+  EXPECT_TRUE(fa1.isStateFinal(3));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 4));
+  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
+  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(1, 'b', 4));
+  EXPECT_TRUE(fa1.hasTransition(2, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
+  EXPECT_TRUE(fa1.hasTransition(3, 'a', 4));
+  EXPECT_TRUE(fa1.hasTransition(3, 'b', 4));
+  EXPECT_TRUE(fa1.hasTransition(4, 'a', 4));
+  EXPECT_TRUE(fa1.hasTransition(4, 'b', 4));
+  fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateInitial(3));
+  EXPECT_TRUE(fa2.hasTransition(4, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
+  EXPECT_TRUE(fa2.hasTransition(4, 'b', 1));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 2));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
+  EXPECT_TRUE(fa2.hasTransition(4, 'a', 3));
+  EXPECT_TRUE(fa2.hasTransition(4, 'b', 3));
+  EXPECT_TRUE(fa2.hasTransition(4, 'a', 4));
+  EXPECT_TRUE(fa2.hasTransition(4, 'b', 4));
+
+}
+
+TEST(CreateMirrorTest, Neither){
+  fa::Automaton fa1 = initalAutomaton();
+  EXPECT_FALSE(fa1.isDeterministic());
+  EXPECT_FALSE(fa1.isComplete());
+  EXPECT_TRUE(fa1.isStateInitial(0));
+  EXPECT_TRUE(fa1.isStateInitial(1));
+  EXPECT_TRUE(fa1.isStateFinal(1));
+  EXPECT_TRUE(fa1.isStateFinal(4));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 1));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 2));
+  EXPECT_TRUE(fa1.hasTransition(0, 'a', 3));
+  EXPECT_TRUE(fa1.hasTransition(1, 'b', 3));
+  EXPECT_TRUE(fa1.hasTransition(2, 'a', 3));
+  EXPECT_TRUE(fa1.hasTransition(2, 'b', 4));
+  EXPECT_TRUE(fa1.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa1.hasTransition(3, 'b', 4));
+  EXPECT_TRUE(fa1.hasTransition(4, 'a', 4));
+  fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
+  EXPECT_TRUE(fa2.isStateFinal(0));
+  EXPECT_TRUE(fa2.isStateFinal(1));
+  EXPECT_TRUE(fa2.isStateInitial(1));
+  EXPECT_TRUE(fa2.isStateInitial(4));
+  EXPECT_TRUE(fa2.hasTransition(1, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(2, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(3, 'a', 0));
+  EXPECT_TRUE(fa2.hasTransition(3, 'b', 1));
+  EXPECT_TRUE(fa2.hasTransition(3, 'a', 2));
+  EXPECT_TRUE(fa2.hasTransition(4, 'b', 2));
+  EXPECT_TRUE(fa2.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa2.hasTransition(4, 'b', 3));
+  EXPECT_TRUE(fa2.hasTransition(4, 'a', 4));
+}
+
+/**
+ * std::set<int> makeTransition(const std::set<int>&origin, char alpha) const
+ */
+
+TEST(MakeTransitionTest, Deterministic){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> origin, setA, setB;
+  origin.insert(0);
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(0, setA.size());
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(1));
+  origin = setB;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(0, setB.size());
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(3));
+}
+
+TEST(MakeTransitionTest, Complete){
+  fa::Automaton fa = completeAutomaton1();
+  std::set<int> origin, setA, setB;
+  origin.insert(0);
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(2, setA.size());
+  EXPECT_EQ(1, setA.count(0));
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(2, setB.size());
+  EXPECT_EQ(1, setB.count(0));
+  EXPECT_EQ(1, setB.count(1));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(3, setA.size());
+  EXPECT_EQ(1, setA.count(0));
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(3, setB.size());
+  EXPECT_EQ(1, setB.count(0));
+  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(1, setB.count(3));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.count(0));
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(3, setB.size());
+  EXPECT_EQ(1, setB.count(0));
+  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(1, setB.count(3));
+  origin = setB;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(3, setA.size());
+  EXPECT_EQ(1, setA.count(0));
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(3, setB.size());
+  EXPECT_EQ(1, setB.count(0));
+  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(1, setB.count(3));
+}
+
+TEST(MakeTransitionTest, Both1){
+  fa::Automaton fa = deterministicCompleteAutomaton1();
+  std::set<int> origin, setA, setB;
+  origin.insert(0);
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(0));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(1));
+  origin = setB;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(1));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(0));
+}
+
+TEST(MakeTransitionTest, Both2){
+  fa::Automaton fa = deterministicCompleteAutomaton2();
+  std::set<int> origin, setA, setB;
+  origin.insert(0);
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(4));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(1));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(4));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
+  origin.clear();
+  origin.insert(0);
+  origin = fa.fa::Automaton::makeTransition(origin, 'b');
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(3));
+  origin = setB;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(4));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
+}
+
+TEST(MakeTransitionTest, Neither){
+  fa::Automaton fa = initalAutomaton();
+  std::set<int> origin, setA, setB;
+  origin.insert(0);
+  origin.insert(1);
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(3, setA.size());
+  EXPECT_EQ(1, setA.count(1));
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(3));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(2, setA.size());
+  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(2, setB.size());
+  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(1, setB.count(4));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
+  origin = setA;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
+  origin = setB;
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(1, setA.size());
+  EXPECT_EQ(1, setA.count(4));
+  EXPECT_EQ(0, setB.size());
+  origin.clear();
+  origin.insert(0);
+  origin.insert(1);
+  origin = fa.fa::Automaton::makeTransition(origin, 'a');
+  origin = fa.fa::Automaton::makeTransition(origin, 'b');
+  setA = fa.fa::Automaton::makeTransition(origin, 'a');
+  setB = fa.fa::Automaton::makeTransition(origin, 'b');
+  EXPECT_EQ(2, setA.size());
+  EXPECT_EQ(1, setA.count(3));
+  EXPECT_EQ(1, setA.count(4));
+  EXPECT_EQ(1, setB.size());
+  EXPECT_EQ(1, setB.count(4));
 }
 
 /**

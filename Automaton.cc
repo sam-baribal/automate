@@ -249,24 +249,22 @@ namespace fa {
         currMax = it->first;
       }
       newAuto.addState(it->first);
+      if (automaton.isStateFinal(it->first)){
+        newAuto.setStateFinal(it->first);
+      }
+      if (automaton.isStateInitial(it->first)){
+        newAuto.setStateInitial(it->first);
+      }
     }
     int trashState = currMax+1;
     newAuto.addState(trashState);
-    std::set<char> alphabet = newAuto.getAlphabet();
     for(std::map<int, State>::iterator it1 = states.begin(); it1 != states.end(); it1++){
-      if (states.find(it1->first)->second.isFinal()){
-        newAuto.setStateFinal(it1->first);
-      }
-      if (states.find(it1->first)->second.isInitial()){
-        newAuto.setStateInitial(it1->first);
-      }
       std::set<Transition> transitions = it1->second.getTransitions();
       for(std::set<Transition>::iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
         newAuto.addTransition(it1->first, it2->getAlpha(), it2->getTo());
       }
     }
-    // jusqu'à là ça a l'air de marcher
-
+    std::set<char> alphabet = newAuto.getAlphabet();
     std::map<int, State> newStates = newAuto.getStates();
     for(std::map<int, State>::iterator it1 = newStates.begin(); it1 != newStates.end(); it1++){
       for(std::set<char>::iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++){
@@ -281,13 +279,72 @@ namespace fa {
 
   Automaton Automaton::createComplement(const Automaton& automaton) {
     assert(automaton.isValid());
+    Automaton currAuto = automaton;
+    if (!automaton.isComplete()){
+      currAuto = createComplete(automaton);
+    }
+    if (!currAuto.isDeterministic()){
+      //currAuto = createDeterministic(currAuto);
+      std::cout << "!!!  !!!  TO DO  !!!  !!!\n\tin createComplement --> createDeterministic\n";
+    }
+    Automaton newAuto;
+    newAuto.alphabet = currAuto.alphabet;
+    std::map<int,State> states = currAuto.getStates();
+    for(std::map<int, State>::iterator it = states.begin(); it != states.end(); it++){
+      newAuto.addState(it->first);
+      if (!currAuto.isStateFinal(it->first)){
+        newAuto.setStateFinal(it->first);
+      }
+      if (currAuto.isStateInitial(it->first)){
+        newAuto.setStateInitial(it->first);
+      }
+    }
+    for(std::map<int, State>::iterator it1 = states.begin(); it1 != states.end(); it1++){
+      std::set<Transition> transitions = it1->second.getTransitions();
+      for(std::set<Transition>::iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
+        newAuto.addTransition(it1->first, it2->getAlpha(), it2->getTo());
+      }
+    }
+    return newAuto;
   }
 
   Automaton Automaton::createMirror(const Automaton& automaton) {
     assert(automaton.isValid());
+    Automaton newAuto;
+    newAuto.alphabet = automaton.alphabet;
+    std::map<int,State> states = automaton.getStates();
+    for(std::map<int, State>::iterator it = states.begin(); it != states.end(); it++){
+      newAuto.addState(it->first);
+      if (automaton.isStateFinal(it->first)){
+        newAuto.setStateInitial(it->first);
+      }
+      if (automaton.isStateInitial(it->first)){
+        newAuto.setStateFinal(it->first);
+      }
+    }
+    for(std::map<int, State>::iterator it1 = states.begin(); it1 != states.end(); it1++){
+      std::set<Transition> transitions = it1->second.getTransitions();
+      for(std::set<Transition>::iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
+        newAuto.addTransition(it2->getTo(), it2->getAlpha(), it1->first);
+      }
+    }
+    return newAuto;
   }
 
-
+  std::set<int> Automaton::makeTransition(const std::set<int>& origin, char alpha) const {
+    std::set<int> res;
+    for(std::map<int, State>::const_iterator it1 = states.begin(); it1 != states.end(); it1++){
+      if (origin.count(it1->first) == 1){
+        std::set<fa::Transition> transitions = getStates().find(it1->first)->second.getTransitions();
+        for(std::set<fa::Transition>::const_iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
+          if(it2->getAlpha() == alpha){
+            res.insert(it2->getTo());
+          }
+        }
+      }
+    }
+    return res;
+  }
 
 
 
