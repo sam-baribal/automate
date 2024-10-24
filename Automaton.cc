@@ -346,8 +346,33 @@ namespace fa {
     return res;
   }
 
+  std::set<int> Automaton::getInitialStates() const {
+    std::set<int> res;
+    for (std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
+      if (isStateInitial(it->first)){
+        res.insert(it->first);
+      }
+    }
+    return res;
+  }
 
+  std::set<int> Automaton::getFinalStates() const {
+    std::set<int> res;
+    for (std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
+      if (isStateFinal(it->first)){
+        res.insert(it->first);
+      }
+    }
+    return res;
+  }
 
-
-
+  std::set<int> Automaton::readString(const std::string& word) const {
+    std::set<int> from, to;
+    from = getInitialStates();
+    for (std::string::const_iterator it = word.begin(); it != word.end(); it++){
+      to = makeTransition(from, *it);
+      from = to;
+    }
+    return to;
+  }
 }

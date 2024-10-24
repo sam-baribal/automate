@@ -3,10 +3,15 @@
 
 #include "Automaton.h"
 
+#define WORD1 "aabbabb"
+#define WORD2 "baaaaab"
+#define WORD3 "aaabaaa"
+#define WORD4 "aaaaaaa"
+
+// exemple d'automate du sujet
+// non déterministe et non complet
 fa::Automaton initalAutomaton () {
   fa::Automaton fa;
-  // exemple d'automate du sujet
-  // non déterministe et non complet
   fa.addSymbol('a');
   fa.addSymbol('b');
   fa.addState(0);
@@ -30,10 +35,10 @@ fa::Automaton initalAutomaton () {
   return fa;
 }
 
+// exemple du cours slide 104
+// déterministe et complet
 fa::Automaton deterministicCompleteAutomaton1 () {
   fa::Automaton fa;
-  // exemple du cours slide 104
-  // déterministe et complet
   fa.addSymbol('a');
   fa.addSymbol('b');
   fa.addState(0);
@@ -47,10 +52,10 @@ fa::Automaton deterministicCompleteAutomaton1 () {
   return fa;
 } 
 
+// exemple du cours slide 108
+// déterministe et complet
 fa::Automaton deterministicCompleteAutomaton2 () {
   fa::Automaton fa;
-  // exemple du cours slide 108
-  // déterministe et complet
   fa.addState(0);
   fa.addState(1);
   fa.addState(2);
@@ -73,10 +78,10 @@ fa::Automaton deterministicCompleteAutomaton2 () {
   return fa;
 }
 
+// exemple du cours slide 105
+// déterministe et non complet
 fa::Automaton deterministicAutomaton1 () {
   fa::Automaton fa;
-  // exemple du cours slide 105
-  // déterministe et non complet
   fa.addSymbol('a');
   fa.addSymbol('b');
   fa.addState(0);
@@ -92,10 +97,10 @@ fa::Automaton deterministicAutomaton1 () {
   return fa;
 }
 
+// adaptation de l'exemple du cours slide 113 pour le rendre complet
+// non déterministe et complet
 fa::Automaton completeAutomaton1 () {
   fa::Automaton fa;
-  // adaptation de l'exemple du cours slide 113 pour le rendre complet
-  // non déterministe et complet
   fa.addSymbol('a');
   fa.addSymbol('b');
   fa.addState(0);
@@ -408,10 +413,6 @@ TEST(CountStatesTest, Many){
 }
 
 /**
- * void Automaton::setStateInitial(int state)
- */
-
-/**
  * bool Automaton::isStateInitial(int state) const
  */
 
@@ -427,10 +428,6 @@ TEST(IsStateInitialTest, NonInitial){
   EXPECT_TRUE(fa.addState(1));
   EXPECT_FALSE(fa.isStateInitial(1));
 }
-
-/**
- * void Automaton::setStateFinal(int state)
- */
 
 /**
  * bool Automaton::isStateFinal(int state) const
@@ -532,6 +529,14 @@ TEST(HasTransitionTest, Existing){
 TEST(HasTransitionTest, NonExisting){
   fa::Automaton fa;
   EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
+}
+
+TEST(HasTransitionTest, PointingToSelf){
+  fa::Automaton fa;
+  EXPECT_TRUE(fa.addState(0));
+  EXPECT_TRUE(fa.addSymbol('a'));
+  EXPECT_TRUE(fa.addTransition(0, 'a', 0));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 0));
 }
 
 
@@ -1015,18 +1020,10 @@ TEST(MakeTransitionTest, Neither){
   origin = setA;
   setA = fa.fa::Automaton::makeTransition(origin, 'a');
   setB = fa.fa::Automaton::makeTransition(origin, 'b');
-  EXPECT_EQ(2, setA.size());
-  EXPECT_EQ(1, setA.count(2));
+  EXPECT_EQ(1, setA.size());
   EXPECT_EQ(1, setA.count(3));
   EXPECT_EQ(2, setB.size());
   EXPECT_EQ(1, setB.count(3));
-  EXPECT_EQ(1, setB.count(4));
-  origin = setA;
-  setA = fa.fa::Automaton::makeTransition(origin, 'a');
-  setB = fa.fa::Automaton::makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(1, setB.size());
   EXPECT_EQ(1, setB.count(4));
   origin = setA;
   setA = fa.fa::Automaton::makeTransition(origin, 'a');
@@ -1054,6 +1051,172 @@ TEST(MakeTransitionTest, Neither){
   EXPECT_EQ(1, setB.size());
   EXPECT_EQ(1, setB.count(4));
 }
+
+/**
+ * std::set<int> readString(const std::string& word)
+ */
+
+TEST(ReadStringTest, DeterministicWORD1){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD1);
+  EXPECT_EQ(0, res.size());
+}
+
+TEST(ReadStringTest, DeterministicWORD2){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD2);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, DeterministicWORD3){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(0, res.size());
+}
+
+TEST(ReadStringTest, DeterministicWORD4){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD4);
+  EXPECT_EQ(0, res.size());
+}
+
+TEST(ReadStringTest, CompleteWORD1){
+  fa::Automaton fa = completeAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD1);
+  EXPECT_EQ(3, res.size());
+  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1, res.count(1));
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, CompleteWORD2){
+  fa::Automaton fa = completeAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD2);
+  EXPECT_EQ(3, res.size());
+  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1, res.count(1));
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, CompleteWORD3){
+  fa::Automaton fa = completeAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(3, res.size());
+  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1, res.count(2));
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, CompleteWORD4){
+  fa::Automaton fa = completeAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD4);
+  EXPECT_EQ(3, res.size());
+  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1, res.count(2));
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, Both1WORD1){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD1);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(0));
+}
+
+TEST(ReadStringTest, Both1WORD2){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD2);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(0));
+}
+
+TEST(ReadStringTest, Both1WORD3){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(1));
+}
+
+TEST(ReadStringTest, Both1WORD4){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD4);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(0));
+}
+
+TEST(ReadStringTest, Both2WORD1){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD1);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(4));
+}
+
+TEST(ReadStringTest, Both2WORD2){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD2);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(3));
+}
+
+TEST(ReadStringTest, Both2WORD3){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(4));
+}
+
+TEST(ReadStringTest, Both2WORD4){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD4);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(4));
+}
+
+TEST(ReadStringTest, NeitherWORD1){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD1);
+  EXPECT_EQ(0, res.size());
+}
+
+TEST(ReadStringTest, NeitherWORD2){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD2);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(4));
+}
+
+TEST(ReadStringTest, NeitherWORD3){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(4));
+}
+
+TEST(ReadStringTest, NeitherWORD4){
+  fa::Automaton fa = deterministicAutomaton1();
+  std::set<int> res = fa.fa::Automaton::readString(WORD3);
+  EXPECT_EQ(1, res.size());
+  EXPECT_EQ(1, res.count(3));
+}
+
+/**
+ * std::set<int> getInitialStates() const
+ */
+
+TEST(GetInitialStatesTest, Zero){
+  fa::Automaton fa;
+  EXPECT_FALSE(fa.isValid());
+  EXPECT_EQ(0, fa.getInitialStates().size());
+}
+
+// TODO
+
+/**
+ * std::set<int> getFinalStates() const
+ */
+
+// TODO
 
 /**
  * main

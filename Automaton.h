@@ -268,6 +268,16 @@ namespace fa {
       std::set<int> makeTransition(const std::set<int>& origin, char alpha) const;
 
       /**
+      * Return a set containing the states which are initial
+      */
+      std::set<int> getInitialStates() const;
+
+      /**
+      * Return a set containing the states which are final
+      */
+      std::set<int> getFinalStates() const;
+
+      /**
       * Read the string and compute the state set after traversing the automaton
       */
       std::set<int> readString(const std::string& word) const;
