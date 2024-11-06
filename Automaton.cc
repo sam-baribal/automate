@@ -337,7 +337,7 @@ namespace fa {
       if (origin.count(it1->first) == 1){
         std::set<fa::Transition> transitions = getStates().find(it1->first)->second.getTransitions();
         for(std::set<fa::Transition>::const_iterator it2 = transitions.begin(); it2 != transitions.end(); it2++){
-          if(it2->getAlpha() == alpha){
+          if(it2->getAlpha() == alpha && res.count(it2->getTo()) == 0){
             res.insert(it2->getTo());
           }
         }
@@ -374,5 +374,15 @@ namespace fa {
       from = to;
     }
     return to;
+  }
+
+  bool Automaton::match(const std::string& word) const {
+    std::set<int> read = readString(word);
+    for (std::set<int>::const_iterator it = read.begin(); it != read.end(); it++){
+      if (isStateFinal(*it)){
+        return true;
+      }
+    }
+    return false;
   }
 }
