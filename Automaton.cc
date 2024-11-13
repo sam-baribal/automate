@@ -66,7 +66,7 @@ namespace fa {
     os << "\tFor state " << state << ":";
     char currSymbol = '\0';
     char newSymbol;
-    for(std::set<Transition>::const_iterator it = transitions.begin();it != transitions.end(); it++){
+    for(std::set<Transition>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
       newSymbol = it->getAlpha();
       if (newSymbol != currSymbol){
         currSymbol = newSymbol;
@@ -79,6 +79,14 @@ namespace fa {
 
   std::set<fa::Transition> State::getTransitions() const {
     return transitions;
+  }
+
+  std::set<int> State::getNextStates() const {
+    std::set<int> res;
+    for (std::set<Transition>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
+      res.insert(it->getTo());
+    }
+    return res;
   }
 
   Automaton::Automaton() {}
@@ -384,5 +392,103 @@ namespace fa {
       }
     }
     return false;
+  }
+
+  void Automaton::removeNonAccessibleStates () {
+    fprintf(stderr, "2\n");
+    std::set<int> accessibleStates;
+    std::set<int> init = getInitialStates();
+    fprintf(stderr, "3\n");
+    for (std::set<int>::iterator it = init.begin(); it != init.end(); it++){
+      removeNonAccessibleStatesRec(*it, accessibleStates);
+    }
+    fprintf(stderr, "4\n");
+    for (std::map<int, State>::iterator it = states.begin(); it != states.end(); it++){
+      fprintf(stderr, "FOFOR\n");
+      if (init.count(it->first) < 1){
+        fprintf(stderr, "AAAA\n");
+        states.erase(it->first);
+        fprintf(stderr, "BBBB\n");
+      }
+    }
+  }
+
+  void Automaton::removeNonAccessibleStatesRec(int state, std::set<int>& accessibleStates) {
+    std::cout << state;
+    if (isStateFinal(state)){
+      return;
+    }
+    accessibleStates.insert(state);
+    std::set<int> next = getNextStates(state);
+    for (std::set<int>::iterator it = next.begin(); it != next.end(); it++){
+      if (accessibleStates.count(*it) < 1){
+        removeNonAccessibleStatesRec(*it, accessibleStates);
+      }
+    }
+  }
+
+  void Automaton::removeNonCoAccessibleStates() {
+
+  }
+
+  void Automaton::removeNonCoAccessibleStatesRec() {
+
+  }
+
+  bool Automaton::isLanguageEmpty() const {
+    std::set<int> visitedStates;
+    std::set<int> init = getInitialStates();
+    for (std::set<int>::const_iterator it = init.begin(); it != init.end(); it++){
+      if (!isLanguageEmptyRec(*it, visitedStates)){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  bool Automaton::isLanguageEmptyRec (int state, std::set<int>& visitedStates) const {
+    if (isStateFinal(state)){
+      return false;
+    }
+    visitedStates.insert(state);
+    std::set<int> next = getNextStates(state);
+    for (std::set<int>::const_iterator it = next.begin(); it != next.end(); it++){
+      if (visitedStates.count(*it) < 1 && !isLanguageEmptyRec(*it, visitedStates)){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  std::set<int> Automaton::getNextStates(int state) const {
+    return states.find(state)->second.getNextStates();
+  }
+
+  bool Automaton::hasEmptyIntersectionWith(const Automaton& other) const {
+    return false;
+  }
+
+  bool Automaton::isIncludedIn(const Automaton& other) const {
+    return false;
+  }
+
+  Automaton Automaton::createIntersection(const Automaton& lhs, const Automaton& rhs){
+    Automaton fa;
+    return fa;
+  }
+
+  Automaton Automaton::createDeterministic(const Automaton& other){
+    Automaton fa;
+    return fa;
+  }
+
+  Automaton Automaton::createMinimalMoore(const Automaton& other){
+    Automaton fa;
+    return fa;
+  }
+
+  Automaton Automaton::createMinimalBrzozowski(const Automaton& other){
+    Automaton fa;
+    return fa;
   }
 }

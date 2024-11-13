@@ -112,6 +112,11 @@ namespace fa {
        * Returns the set of transitions coming from this state
        */
       std::set<Transition> getTransitions() const;
+
+      /**
+       * Returns a set containing the states attainable from this state, regardless of the symbol read
+       */
+       std::set<int> getNextStates() const;
   };
 
   class Automaton {
@@ -293,9 +298,19 @@ namespace fa {
       void removeNonAccessibleStates();
 
       /**
+      * Recursive function used in the removal of non accessible states  
+      */
+      void removeNonAccessibleStatesRec(int state, std::set<int>& accessibleStates);
+
+      /**
       * Remove non-co-accessible states
       */
       void removeNonCoAccessibleStates();
+
+      /**
+      * Recursive function used in the removal of non co accessible states
+      */
+      void removeNonCoAccessibleStatesRec();
 
       /**
       * Check if the language of the automaton is empty
@@ -303,10 +318,20 @@ namespace fa {
       bool isLanguageEmpty() const;
 
       /**
+      * Recursive function used in checking if the language is empty
+      */
+      bool isLanguageEmptyRec(int state, std::set<int>& visitedStates) const;
+
+      /**
+      * Returns a set containing the states attainable from a select state
+      */
+      std::set<int> getNextStates(int state) const;
+
+      /**
       * Tell if the intersection with another automaton is empty
       */
       bool hasEmptyIntersectionWith(const Automaton& other) const;
-
+     
       /**
       * Tell if the langage accepted by the automaton is included in the
       * language accepted by the other automaton
