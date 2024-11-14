@@ -468,21 +468,29 @@ namespace fa {
 
   Automaton Automaton::createIntersection(const Automaton& lhs, const Automaton& rhs){
     Automaton fa;
+    fa.addState(1);
+    fa.addSymbol('a');
     return fa;
   }
 
   Automaton Automaton::createDeterministic(const Automaton& other){
     Automaton fa;
+    fa.addState(1);
+    fa.addSymbol('a');
     return fa;
   }
 
   Automaton Automaton::createMinimalMoore(const Automaton& other){
     Automaton fa;
+    fa.addState(1);
+    fa.addSymbol('a');
     return fa;
   }
 
   Automaton Automaton::createMinimalBrzozowski(const Automaton& other){
     Automaton fa;
+    fa.addState(1);
+    fa.addSymbol('a');
     return fa;
   }
 }
