@@ -395,30 +395,24 @@ namespace fa {
   }
 
   void Automaton::removeNonAccessibleStates () {
-    fprintf(stderr, "2\n");
     std::set<int> accessibleStates;
     std::set<int> init = getInitialStates();
-    fprintf(stderr, "3\n");
+    std::map<int, State> statesTemp = states;
     for (std::set<int>::iterator it = init.begin(); it != init.end(); it++){
       removeNonAccessibleStatesRec(*it, accessibleStates);
     }
-    fprintf(stderr, "4\n");
-    for (std::map<int, State>::iterator it = states.begin(); it != states.end(); it++){
-      fprintf(stderr, "FOFOR\n");
-      if (init.count(it->first) < 1){
-        fprintf(stderr, "AAAA\n");
+    for (std::map<int, State>::iterator it = statesTemp.begin(); it != statesTemp.end(); it++){
+      if (accessibleStates.count(it->first) < 1 && hasState(it->first)){
         states.erase(it->first);
-        fprintf(stderr, "BBBB\n");
       }
     }
   }
 
   void Automaton::removeNonAccessibleStatesRec(int state, std::set<int>& accessibleStates) {
-    std::cout << state;
+    accessibleStates.insert(state);
     if (isStateFinal(state)){
       return;
     }
-    accessibleStates.insert(state);
     std::set<int> next = getNextStates(state);
     for (std::set<int>::iterator it = next.begin(); it != next.end(); it++){
       if (accessibleStates.count(*it) < 1){

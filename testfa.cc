@@ -878,22 +878,22 @@ TEST(MakeTransitionTest, Deterministic){
   origin.insert(0);
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(0, setA.size());
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(0u, setA.size());
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(1));
   origin = setB;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(0, setB.size());
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(0u, setB.size());
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(3));
 }
 
 TEST(MakeTransitionTest, Complete){
@@ -902,44 +902,44 @@ TEST(MakeTransitionTest, Complete){
   origin.insert(0);
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(2, setA.size());
-  EXPECT_EQ(1, setA.count(0));
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(2, setB.size());
-  EXPECT_EQ(1, setB.count(0));
-  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(2u, setA.size());
+  EXPECT_EQ(1u, setA.count(0));
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(2u, setB.size());
+  EXPECT_EQ(1u, setB.count(0));
+  EXPECT_EQ(1u, setB.count(1));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(3, setA.size());
-  EXPECT_EQ(1, setA.count(0));
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(3, setB.size());
-  EXPECT_EQ(1, setB.count(0));
-  EXPECT_EQ(1, setB.count(1));
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(3u, setA.size());
+  EXPECT_EQ(1u, setA.count(0));
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(3u, setB.size());
+  EXPECT_EQ(1u, setB.count(0));
+  EXPECT_EQ(1u, setB.count(1));
+  EXPECT_EQ(1u, setB.count(3));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.count(0));
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(3, setB.size());
-  EXPECT_EQ(1, setB.count(0));
-  EXPECT_EQ(1, setB.count(1));
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(1u, setA.count(0));
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(3u, setB.size());
+  EXPECT_EQ(1u, setB.count(0));
+  EXPECT_EQ(1u, setB.count(1));
+  EXPECT_EQ(1u, setB.count(3));
   origin = setB;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(3, setA.size());
-  EXPECT_EQ(1, setA.count(0));
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(3, setB.size());
-  EXPECT_EQ(1, setB.count(0));
-  EXPECT_EQ(1, setB.count(1));
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(3u, setA.size());
+  EXPECT_EQ(1u, setA.count(0));
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(3u, setB.size());
+  EXPECT_EQ(1u, setB.count(0));
+  EXPECT_EQ(1u, setB.count(1));
+  EXPECT_EQ(1u, setB.count(3));
 }
 
 TEST(MakeTransitionTest, Both1){
@@ -948,17 +948,17 @@ TEST(MakeTransitionTest, Both1){
   origin.insert(0);
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(0));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(0));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(1));
   origin = setB;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(1));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(0));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(1));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(0));
 }
 
 TEST(MakeTransitionTest, Both2){
@@ -967,40 +967,40 @@ TEST(MakeTransitionTest, Both2){
   origin.insert(0);
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(4));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(1));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(4));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(1));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(4));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(4));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(4));
   origin.clear();
   origin.insert(0);
   origin = fa.makeTransition(origin, 'b');
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(4));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(3));
   origin = setB;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(4));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(4));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(4));
 }
 
 TEST(MakeTransitionTest, Neither){
@@ -1010,33 +1010,33 @@ TEST(MakeTransitionTest, Neither){
   origin.insert(1);
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(3, setA.size());
-  EXPECT_EQ(1, setA.count(1));
-  EXPECT_EQ(1, setA.count(2));
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(3));
+  EXPECT_EQ(3u, setA.size());
+  EXPECT_EQ(1u, setA.count(1));
+  EXPECT_EQ(1u, setA.count(2));
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(3));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(2, setB.size());
-  EXPECT_EQ(1, setB.count(3));
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(2u, setB.size());
+  EXPECT_EQ(1u, setB.count(3));
+  EXPECT_EQ(1u, setB.count(4));
   origin = setA;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(4));
   origin = setB;
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(1, setA.size());
-  EXPECT_EQ(1, setA.count(4));
-  EXPECT_EQ(0, setB.size());
+  EXPECT_EQ(1u, setA.size());
+  EXPECT_EQ(1u, setA.count(4));
+  EXPECT_EQ(0u, setB.size());
   origin.clear();
   origin.insert(0);
   origin.insert(1);
@@ -1044,11 +1044,11 @@ TEST(MakeTransitionTest, Neither){
   origin = fa.makeTransition(origin, 'b');
   setA = fa.makeTransition(origin, 'a');
   setB = fa.makeTransition(origin, 'b');
-  EXPECT_EQ(2, setA.size());
-  EXPECT_EQ(1, setA.count(3));
-  EXPECT_EQ(1, setA.count(4));
-  EXPECT_EQ(1, setB.size());
-  EXPECT_EQ(1, setB.count(4));
+  EXPECT_EQ(2u, setA.size());
+  EXPECT_EQ(1u, setA.count(3));
+  EXPECT_EQ(1u, setA.count(4));
+  EXPECT_EQ(1u, setB.size());
+  EXPECT_EQ(1u, setB.count(4));
 }
 
 /**
@@ -1058,169 +1058,169 @@ TEST(MakeTransitionTest, Neither){
 TEST(ReadStringTest, ZeroWORD1){
   fa::Automaton fa;
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, ZeroWORD2){
   fa::Automaton fa;
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, ZeroWORD3){
   fa::Automaton fa;
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, ZeroWORD4){
   fa::Automaton fa;
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, DeterministicWORD1){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, DeterministicWORD2){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, DeterministicWORD3){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, DeterministicWORD4){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, CompleteWORD1){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(3, res.size());
-  EXPECT_EQ(1, res.count(0));
-  EXPECT_EQ(1, res.count(1));
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(3u, res.size());
+  EXPECT_EQ(1u, res.count(0));
+  EXPECT_EQ(1u, res.count(1));
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, CompleteWORD2){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(3, res.size());
-  EXPECT_EQ(1, res.count(0));
-  EXPECT_EQ(1, res.count(1));
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(3u, res.size());
+  EXPECT_EQ(1u, res.count(0));
+  EXPECT_EQ(1u, res.count(1));
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, CompleteWORD3){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(3, res.size());
-  EXPECT_EQ(1, res.count(0));
-  EXPECT_EQ(1, res.count(2));
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(3u, res.size());
+  EXPECT_EQ(1u, res.count(0));
+  EXPECT_EQ(1u, res.count(2));
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, CompleteWORD4){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(3, res.size());
-  EXPECT_EQ(1, res.count(0));
-  EXPECT_EQ(1, res.count(2));
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(3u, res.size());
+  EXPECT_EQ(1u, res.count(0));
+  EXPECT_EQ(1u, res.count(2));
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, Both1WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(0));
 }
 
 TEST(ReadStringTest, Both1WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(0));
 }
 
 TEST(ReadStringTest, Both1WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(1));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(1));
 }
 
 TEST(ReadStringTest, Both1WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(0));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(0));
 }
 
 TEST(ReadStringTest, Both2WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(4));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(4));
 }
 
 TEST(ReadStringTest, Both2WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(3));
 }
 
 TEST(ReadStringTest, Both2WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(4));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(4));
 }
 
 TEST(ReadStringTest, Both2WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(4));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(4));
 }
 
 TEST(ReadStringTest, NeitherWORD1){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(0, res.size());
+  EXPECT_EQ(0u, res.size());
 }
 
 TEST(ReadStringTest, NeitherWORD2){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(4));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(4));
 }
 
 TEST(ReadStringTest, NeitherWORD3){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(4));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(4));
 }
 
 TEST(ReadStringTest, NeitherWORD4){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(1, res.size());
-  EXPECT_EQ(1, res.count(3));
+  EXPECT_EQ(1u, res.size());
+  EXPECT_EQ(1u, res.count(3));
 }
 
 /**
@@ -1401,7 +1401,6 @@ TEST(IsLanguageEmptyTest, Neither){
  */
 
 TEST(RemoveNonAccessibleStatesTest, DeterministicAndComplete){
-  fprintf(stderr, "1\n");
   fa::Automaton fa = deterministicCompleteAutomaton1();
   fa.removeNonAccessibleStates();
   EXPECT_TRUE(fa.hasState(0));
@@ -1483,6 +1482,11 @@ TEST(RemoveNonCoAccessibleStatesTest, OneRemoval){
   fa.addState(5);
   fa.addTransition(1, 'b', 5);
   fa.removeNonAccessibleStates();
+  EXPECT_TRUE(fa.hasState(0));
+  EXPECT_TRUE(fa.hasState(1));
+  EXPECT_TRUE(fa.hasState(2));
+  EXPECT_TRUE(fa.hasState(3));
+  EXPECT_TRUE(fa.hasState(4));
   EXPECT_FALSE(fa.hasState(5));
   EXPECT_FALSE(fa.hasTransition(1, 'b', 5));
 }
@@ -1502,6 +1506,11 @@ TEST(RemoveNonCoAccessibleStatesTest, SeveralRemovals){
   fa.addTransition(5, 'a', 9);
   fa.addTransition(2, 'b', 10);
   fa.removeNonCoAccessibleStates();
+  EXPECT_TRUE(fa.hasState(0));
+  EXPECT_TRUE(fa.hasState(1));
+  EXPECT_TRUE(fa.hasState(2));
+  EXPECT_TRUE(fa.hasState(3));
+  EXPECT_TRUE(fa.hasState(4));
   EXPECT_FALSE(fa.hasState(5));
   EXPECT_FALSE(fa.hasState(6));
   EXPECT_FALSE(fa.hasState(7));
