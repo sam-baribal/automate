@@ -29,6 +29,32 @@ namespace fa {
     return transitions.erase(Transition(alpha, to));
   }
 
+  bool State::removeTransitions(char alpha) {
+    std::set<Transition> temp = transitions;
+    bool res = true;
+    for (std::set<Transition>::iterator it = temp.begin(); it != temp.end(); it++){
+      if (it->getAlpha() == alpha){
+        std::set<Transition>::iterator it2 = transitions.erase(it);
+      }
+    }
+    return res;
+  }
+
+  bool State::removeTransitions(int to) {
+    std::set<Transition> temp = transitions;
+    bool res = true;
+    for (std::set<Transition>::iterator it = temp.begin(); it != temp.end(); it++){
+      if (it->getTo() == to){
+        std::set<Transition>::iterator it2 = transitions.erase(it);
+      }
+    }
+    return res;
+  }
+
+  void State::removeAllTransitions() {
+    transitions.clear();
+  }
+
   bool State::hasTransition(char alpha, int to) const {
     return (transitions.count(Transition(alpha, to)) == 1);
   }
@@ -104,14 +130,23 @@ namespace fa {
   }
 
   bool Automaton::addSymbol(char symbol) {
-    if (std::isgraph(symbol) || symbol == Epsilon){
+    if (std::isgraph(symbol)){
       return alphabet.insert(symbol).second;
     }
     return false;
   }
 
   bool Automaton::removeSymbol(char symbol) {
-    return (alphabet.erase(symbol));
+    fprintf(stderr, "1\n");
+    bool res = alphabet.erase(symbol);
+    fprintf(stderr, "2\n");
+    for (std::map<int, State>::iterator it = getStates().begin(); it != getStates().end(); it++){
+      fprintf(stderr, "3%d", it->first);
+      res = res && it->second.removeTransitions(symbol);
+      fprintf(stderr, "over\n");
+    }
+    fprintf(stderr, "4\n");
+    return res;
   }
 
   bool Automaton::hasSymbol(char symbol) const {
@@ -130,7 +165,14 @@ namespace fa {
   }
 
   bool Automaton::removeState(int state) {
-    return states.erase(state);
+    // TO DO
+    // supprimer les transitions dans lesquelles l'état intervient (from et to)
+    int res = true;
+    for (std::map<int, State>::iterator it = getStates().begin(); it != getStates().end(); it++){
+      res = res && it->second.removeTransitions(state);
+    }
+    (getStates().find(state))->second.removeAllTransitions();
+    return res && states.erase(state);
   }
 
   bool Automaton::hasState(int state) const {
@@ -162,24 +204,30 @@ namespace fa {
   }
 
   bool Automaton::addTransition(int from, char alpha, int to) {
-    if (hasState(from) && hasState(to) && hasSymbol(alpha) && !(hasTransition(from, alpha, to))){
+    if (hasState(from) && hasState(to) && (hasSymbol(alpha) || alpha == Epsilon) && !(hasTransition(from, alpha, to))){
       return (states.find(from)->second.addTransition(alpha, to));
     }
     return false;
   }
 
   bool Automaton::removeTransition(int from, char alpha, int to) {
-    if (hasState(from) && hasState(to) && hasSymbol(alpha) && (hasTransition(from, alpha, to))){
-      return (states.find(from)->second.removeTransition(alpha, to));
-    }
-    return false;
+    return (states.find(from)->second.removeTransition(alpha, to));
+  }
+/*
+  bool Automaton::removeTransitions(int from, char alpha) {
+
   }
 
+  bool Automaton::removeTransitions(int from, int to) {
+
+  }
+
+  bool Automaton::removeAllTransitions(int from) {
+
+  }
+*/
   bool Automaton::hasTransition(int from, char alpha, int to) const {
-    if (hasState(from) && hasState(to) && hasSymbol(alpha)){
-      return (states.find(from)->second.hasTransition(alpha, to));
-    }
-    return false;
+    return (states.find(from)->second.hasTransition(alpha, to));
   }
 
   std::size_t Automaton::countTransitions() const {
@@ -355,6 +403,7 @@ namespace fa {
   }
 
   std::set<int> Automaton::getInitialStates() const {
+    assert(isValid());
     std::set<int> res;
     for (std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
       if (isStateInitial(it->first)){
@@ -365,6 +414,7 @@ namespace fa {
   }
 
   std::set<int> Automaton::getFinalStates() const {
+    assert(isValid());
     std::set<int> res;
     for (std::map<int, State>::const_iterator it = states.begin(); it != states.end(); it++){
       if (isStateFinal(it->first)){
@@ -375,6 +425,7 @@ namespace fa {
   }
 
   std::set<int> Automaton::readString(const std::string& word) const {
+    assert(isValid());
     std::set<int> from, to;
     from = getInitialStates();
     for (std::string::const_iterator it = word.begin(); it != word.end(); it++){
@@ -385,6 +436,7 @@ namespace fa {
   }
 
   bool Automaton::match(const std::string& word) const {
+    assert(isValid());
     std::set<int> read = readString(word);
     for (std::set<int>::const_iterator it = read.begin(); it != read.end(); it++){
       if (isStateFinal(*it)){
@@ -395,6 +447,7 @@ namespace fa {
   }
 
   void Automaton::removeNonAccessibleStates () {
+    assert(isValid());
     std::set<int> accessibleStates;
     std::set<int> init = getInitialStates();
     std::map<int, State> statesTemp = states;
@@ -422,6 +475,7 @@ namespace fa {
   }
 
   void Automaton::removeNonCoAccessibleStates() {
+    assert(isValid());
 
   }
 
@@ -430,6 +484,7 @@ namespace fa {
   }
 
   bool Automaton::isLanguageEmpty() const {
+    assert(isValid());
     std::set<int> visitedStates;
     std::set<int> init = getInitialStates();
     for (std::set<int>::const_iterator it = init.begin(); it != init.end(); it++){
@@ -441,6 +496,7 @@ namespace fa {
   }
 
   bool Automaton::isLanguageEmptyRec (int state, std::set<int>& visitedStates) const {
+    assert(isValid());
     if (isStateFinal(state)){
       return false;
     }
@@ -455,18 +511,25 @@ namespace fa {
   }
 
   std::set<int> Automaton::getNextStates(int state) const {
+    assert(isValid());
     return states.find(state)->second.getNextStates();
   }
 
   bool Automaton::hasEmptyIntersectionWith(const Automaton& other) const {
+    assert(isValid());
+    assert(other.isValid());
     return false;
   }
 
   bool Automaton::isIncludedIn(const Automaton& other) const {
+    assert(isValid());
+    assert(other.isValid());
     return false;
   }
 
   Automaton Automaton::createIntersection(const Automaton& lhs, const Automaton& rhs){
+    assert(lhs.isValid());
+    assert(rhs.isValid());
     Automaton fa;
     fa.addState(1);
     fa.addSymbol('a');
@@ -474,6 +537,7 @@ namespace fa {
   }
 
   Automaton Automaton::createDeterministic(const Automaton& other){
+    assert(other.isValid());
     Automaton fa;
     fa.addState(1);
     fa.addSymbol('a');
@@ -481,6 +545,7 @@ namespace fa {
   }
 
   Automaton Automaton::createMinimalMoore(const Automaton& other){
+    assert(other.isValid());
     Automaton fa;
     fa.addState(1);
     fa.addSymbol('a');
@@ -488,6 +553,7 @@ namespace fa {
   }
 
   Automaton Automaton::createMinimalBrzozowski(const Automaton& other){
+    assert(other.isValid());
     Automaton fa;
     fa.addState(1);
     fa.addSymbol('a');

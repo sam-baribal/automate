@@ -163,66 +163,90 @@ TEST(AutomatonIsValidTest, VaildAutomaton) {
  * bool Automaton::AddSymbol(char symbol)
  */
 
-TEST(AddSymbolTest, Valid){
+TEST(AutomatonAddSymbolTest, Valid){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c) || c == fa::Epsilon){
+    if (std::isgraph(c)){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
 }
 
-TEST(AddSymbolTest, Existing){
+TEST(AutomatonAddSymbolTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addSymbol('c'));
   EXPECT_FALSE(fa.addSymbol('c'));
 }
 
-TEST(AddSymbolTest, Invalid){
+TEST(AutomatonAddSymbolTest, Invalid){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (!(std::isgraph(c) || c == fa::Epsilon)){
+    if (!(std::isgraph(c))){
       EXPECT_FALSE(fa.addSymbol(c));
     }
   }
+}
+
+TEST(AutomatonAddSymbolTest, Epsilon){
+  fa::Automaton fa;
+  EXPECT_FALSE(fa.addSymbol(fa::Epsilon));
 }
 
 /**
  * bool Automaton::RemoveSymbol(char symbol)
  */
 
-TEST(RemoveSymbolTest, Present){
+TEST(AutomatonRemoveSymbolTest, Present){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addSymbol('c'));
   EXPECT_TRUE(fa.removeSymbol('c'));
 }
 
-TEST(RemoveSymbolTest, Absent){
+TEST(AutomatonRemoveSymbolTest, Absent){
   fa::Automaton fa;
   EXPECT_FALSE(fa.removeSymbol('c'));
 }
 
-TEST(RemoveSymbolTest, Invalid){
+TEST(AutomatonRemoveSymbolTest, Invalid){
   fa::Automaton fa;
   EXPECT_FALSE(fa.removeSymbol('\t'));
   EXPECT_TRUE(fa.addSymbol('c'));
   EXPECT_FALSE(fa.removeSymbol('\t'));
 }
 
-TEST(RemoveSymbolTest, AlreadyRemoved){
+TEST(AutomatonRemoveSymbolTest, AlreadyRemoved){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addSymbol('c'));
   EXPECT_TRUE(fa.removeSymbol('c'));
   EXPECT_FALSE(fa.removeSymbol('c'));
+}
+
+TEST(AutomatonRemoveSymbolTest, SymbolInTransition){
+  fa::Automaton fa = initalAutomaton();
+  fprintf(stderr, "aaaa\n");
+  EXPECT_TRUE(fa.hasTransition(1, 'b', 3));
+  EXPECT_TRUE(fa.hasTransition(3, 'b', 4));
+  EXPECT_TRUE(fa.hasTransition(2, 'b', 4));
+  fprintf(stderr, "bbbb\n");
+  EXPECT_EQ(9u, fa.countTransitions());
+  fprintf(stderr, "cccc\n");
+  EXPECT_TRUE(fa.removeSymbol('b'));
+  fprintf(stderr, "dddd\n");
+  EXPECT_FALSE(fa.hasTransition(1, 'b', 3));
+  EXPECT_FALSE(fa.hasTransition(3, 'b', 4));
+  EXPECT_FALSE(fa.hasTransition(2, 'b', 4));
+  fprintf(stderr, "eeee\n");
+  EXPECT_EQ(6u, fa.countTransitions());
+  fprintf(stderr, "ffff\n");
 }
 
 /**
  * bool Automaton::hasSymbol(char symbol) const
  */
 
-TEST(HasSymbolTest, EmptyAlphabet){
+TEST(AutomatonHasSymbolTest, EmptyAlphabet){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
@@ -232,17 +256,17 @@ TEST(HasSymbolTest, EmptyAlphabet){
   }
 }
 
-TEST(HasSymbolTest, Present){
+TEST(AutomatonHasSymbolTest, Present){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c) || c == fa::Epsilon){
+    if (std::isgraph(c)){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c) || c == fa::Epsilon){
+    if (std::isgraph(c)){
       EXPECT_TRUE(fa.hasSymbol(c));
     }
     else{
@@ -251,17 +275,17 @@ TEST(HasSymbolTest, Present){
   }
 }
 
-TEST(HasSymbolTest, Absent){
+TEST(AutomatonHasSymbolTest, Absent){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c) || c == fa::Epsilon){
+    if (std::isgraph(c)){
       EXPECT_TRUE(fa.addSymbol(c));
     }
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (std::isgraph(c) || c == fa::Epsilon){
+    if (std::isgraph(c)){
       EXPECT_TRUE(fa.removeSymbol(c));
       EXPECT_FALSE(fa.hasSymbol(c));
       EXPECT_TRUE(fa.addSymbol(c));
@@ -270,7 +294,7 @@ TEST(HasSymbolTest, Absent){
   }
 }
 
-TEST(HasSymbolTest, Invalid){
+TEST(AutomatonHasSymbolTest, Invalid){
   fa::Automaton fa;
   for (int i = 0; i<128; i++){
     char c = i;
@@ -278,7 +302,7 @@ TEST(HasSymbolTest, Invalid){
   }
   for (int i = 0; i<128; i++){
     char c = i;
-    if (!(std::isgraph(c) || c == fa::Epsilon)){
+    if (!(std::isgraph(c))){
       EXPECT_FALSE(fa.hasSymbol(c));
     }
   }
@@ -288,18 +312,18 @@ TEST(HasSymbolTest, Invalid){
  * std::size_t Automaton::countSymbols() const
  */
 
-TEST(CountSymbolsTest, Empty){
+TEST(AutomatonCountSymbolsTest, Empty){
   fa::Automaton fa;
   EXPECT_EQ(0u, fa.countSymbols());
 }
 
-TEST(CountSymbolsTest, OneSymbol){
+TEST(AutomatonCountSymbolsTest, OneSymbol){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addSymbol('c'));
   EXPECT_EQ(1u, fa.countSymbols());
 }
 
-TEST(CountSymbolsTest, ManySymbols){
+TEST(AutomatonCountSymbolsTest, ManySymbols){
   fa::Automaton fa;
   size_t count = 0;
   for (int i = 0; i<128; i++){
@@ -315,28 +339,28 @@ TEST(CountSymbolsTest, ManySymbols){
  * bool Automaton::addState(int state)
  */
 
-TEST(AddStateTest, New){
+TEST(AutomatonAddStateTest, New){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
 }
 
-TEST(AddStateTest, Zero){
+TEST(AutomatonAddStateTest, Zero){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(0));
 }
 
-TEST(AddStateTest, Negative){
+TEST(AutomatonAddStateTest, Negative){
   fa::Automaton fa;
   EXPECT_FALSE(fa.addState(-1));
 }
 
-TEST(AddStateTest, Existing){
+TEST(AutomatonAddStateTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_FALSE(fa.addState(1));
 }
 
-TEST(AddStateTest, Many){
+TEST(AutomatonAddStateTest, Many){
   fa::Automaton fa;
   for (size_t i = 0; i<1000; i++){
     EXPECT_TRUE(fa.addState(i));
@@ -347,24 +371,24 @@ TEST(AddStateTest, Many){
  * bool Automaton::removeState(int state)
  */
 
-TEST(RemoveStateTest, Existing){
+TEST(AutomatonRemoveStateTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.removeState(1));
 }
 
-TEST(RemoveStateTest, NonExisting){
+TEST(AutomatonRemoveStateTest, NonExisting){
   fa::Automaton fa;
   EXPECT_FALSE(fa.removeState(1));
 
 }
 
-TEST(RemoveStateTest, Invalid){
+TEST(AutomatonRemoveStateTest, Invalid){
   fa::Automaton fa;
   EXPECT_FALSE(fa.removeState(-1));
 }
 
-TEST(RemoveStateTest, Many){
+TEST(AutomatonRemoveStateTest, Many){
   fa::Automaton fa;
   for (size_t i = 0; i<1000; i++){
     EXPECT_TRUE(fa.addState(i));
@@ -374,17 +398,45 @@ TEST(RemoveStateTest, Many){
   }
 }
 
+TEST(AutomatonRemoveStateTest, StateInTransitionFrom){
+  fa::Automaton fa = initalAutomaton();
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 1));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 2));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 3));
+  EXPECT_EQ(9u, fa.countTransitions());
+  EXPECT_TRUE(fa.removeState(0));
+  EXPECT_FALSE(fa.hasTransition(0, 'a', 1));
+  EXPECT_FALSE(fa.hasTransition(0, 'a', 2));
+  EXPECT_FALSE(fa.hasTransition(0, 'a', 3));
+  EXPECT_EQ(6u, fa.countTransitions());
+}
+
+TEST(AutomatonRemoveStateTest, StateInTransitionTo){
+  fa::Automaton fa = initalAutomaton();
+  EXPECT_TRUE(fa.hasTransition(1, 'b', 3));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(2, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(3, 'a', 3));
+  EXPECT_EQ(9u, fa.countTransitions());
+  EXPECT_TRUE(fa.removeState(3));
+  EXPECT_FALSE(fa.hasTransition(1, 'b', 3));
+  EXPECT_FALSE(fa.hasTransition(0, 'a', 3));
+  EXPECT_FALSE(fa.hasTransition(2, 'a', 3));
+  EXPECT_FALSE(fa.hasTransition(3, 'a', 3));
+  EXPECT_EQ(5u, fa.countTransitions());
+}
+
 /**
  * bool Automaton::hasState(int state) const
  */
 
-TEST(HasStateTest, Existing){
+TEST(AutomatonHasStateTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.hasState(1));
 }
 
-TEST(HasStateTest, NonExisting){
+TEST(AutomatonHasStateTest, NonExisting){
   fa::Automaton fa;
   EXPECT_FALSE(fa.hasState(1));
 }
@@ -393,18 +445,18 @@ TEST(HasStateTest, NonExisting){
  * std::size_t Automaton::countStates() const
  */
 
-TEST(CountStatesTest, Zero){
+TEST(AutomatonCountStatesTest, Zero){
   fa::Automaton fa;
   EXPECT_EQ(0u, fa.countStates());
 }
 
-TEST(CountStatesTest, One){
+TEST(AutomatonCountStatesTest, One){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_EQ(1u, fa.countStates());
 }
 
-TEST(CountStatesTest, Many){
+TEST(AutomatonCountStatesTest, Many){
   fa::Automaton fa;
   for (size_t i = 0; i<1000; i++){
     EXPECT_TRUE(fa.addState(i));
@@ -416,14 +468,14 @@ TEST(CountStatesTest, Many){
  * bool Automaton::isStateInitial(int state) const
  */
 
-TEST(IsStateInitialTest, Initial){
+TEST(AutomatonIsStateInitialTest, Initial){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   fa.setStateInitial(1);
   EXPECT_TRUE(fa.isStateInitial(1));
 }
 
-TEST(IsStateInitialTest, NonInitial){
+TEST(AutomatonIsStateInitialTest, NonInitial){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_FALSE(fa.isStateInitial(1));
@@ -433,14 +485,14 @@ TEST(IsStateInitialTest, NonInitial){
  * bool Automaton::isStateFinal(int state) const
  */
 
-TEST(IsStateFinalTest, Final){
+TEST(AutomatonIsStateFinalTest, Final){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   fa.setStateFinal(1);
   EXPECT_TRUE(fa.isStateFinal(1));
 }
 
-TEST(IsStateFinalTest, NonFinal){
+TEST(AutomatonIsStateFinalTest, NonFinal){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_FALSE(fa.isStateFinal(1));
@@ -450,7 +502,7 @@ TEST(IsStateFinalTest, NonFinal){
  * bool Automaton::addTransition(int from, char alpha, int to)
  */
 
-TEST(AddTransitionTest, New){
+TEST(AutomatonAddTransitionTest, New){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -459,7 +511,7 @@ TEST(AddTransitionTest, New){
   EXPECT_TRUE(fa.hasTransition(1, 'a', 2));
 }
 
-TEST(AddTransitionTest, Existing){
+TEST(AutomatonAddTransitionTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -469,25 +521,25 @@ TEST(AddTransitionTest, Existing){
   EXPECT_TRUE(fa.hasTransition(1, 'a', 2));
 }
 
-TEST(AddTransitionTest, InvalidFrom){
+TEST(AutomatonAddTransitionTest, InvalidFrom){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(2));
   EXPECT_TRUE(fa.addSymbol('a'));
   EXPECT_FALSE(fa.addTransition(1, 'a', 2));
-    EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
+  EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
 
 }
 
-TEST(AddTransitionTest, InvalidTo){
+TEST(AutomatonAddTransitionTest, InvalidTo){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addSymbol('a'));
   EXPECT_FALSE(fa.addTransition(1, 'a', 2));
-    EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
+  EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
 
 }
 
-TEST(AddTransitionTest, InvalidAlpha){
+TEST(AutomatonAddTransitionTest, InvalidAlpha){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -495,11 +547,19 @@ TEST(AddTransitionTest, InvalidAlpha){
   EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
 }
 
+TEST(AutomatonAddTransitionTest, Epsilon){
+  fa::Automaton fa;
+  EXPECT_TRUE(fa.addState(1));
+  EXPECT_TRUE(fa.addState(2));
+  EXPECT_TRUE(fa.addTransition(1, fa::Epsilon, 2));
+  EXPECT_TRUE(fa.hasTransition(1, fa::Epsilon, 2));
+}
+
 /**
  * bool Automaton::removeTransition(in from, char alpha, int to)
  */
 
-TEST(RemoveTransitionTest, Existing){
+TEST(AutomatonRemoveTransitionTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -508,7 +568,7 @@ TEST(RemoveTransitionTest, Existing){
   EXPECT_TRUE(fa.removeTransition(1, 'a', 2));
 }
 
-TEST(RemoveTransitionTest, NonExisting){
+TEST(AutomatonRemoveTransitionTest, NonExisting){
   fa::Automaton fa;
   EXPECT_FALSE(fa.removeTransition(1, 'a', 2));
 }
@@ -517,7 +577,7 @@ TEST(RemoveTransitionTest, NonExisting){
  * bool Automaton::hasTransition(int from, char alpha, int to)
  */
 
-TEST(HasTransitionTest, Existing){
+TEST(AutomatonHasTransitionTest, Existing){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -526,12 +586,12 @@ TEST(HasTransitionTest, Existing){
   EXPECT_TRUE(fa.hasTransition(1, 'a', 2));
 }
 
-TEST(HasTransitionTest, NonExisting){
+TEST(AutomatonHasTransitionTest, NonExisting){
   fa::Automaton fa;
   EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
 }
 
-TEST(HasTransitionTest, PointingToSelf){
+TEST(AutomatonHasTransitionTest, PointingToSelf){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(0));
   EXPECT_TRUE(fa.addSymbol('a'));
@@ -544,12 +604,12 @@ TEST(HasTransitionTest, PointingToSelf){
  * std::size_t Automaton::countTransitions() const
  */
 
-TEST(CountTransitionsTest, Zero){
+TEST(AutomatonCountTransitionsTest, Zero){
   fa::Automaton fa;
   EXPECT_EQ(0u, fa.countTransitions());
 }
 
-TEST(CountTransitionsTest, One){
+TEST(AutomatonCountTransitionsTest, One){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
@@ -562,12 +622,12 @@ TEST(CountTransitionsTest, One){
  * void prettyPrint(std::ostream& os) const
  */
 
-TEST(PrettyPrintTest, Empty){
+TEST(AutomatonPrettyPrintTest, Empty){
   fa::Automaton fa;
   fa.prettyPrint(std::cout);
 }
 
-TEST(PrettyPrintTest, Stuffed){
+TEST(AutomatonPrettyPrintTest, Stuffed){
   fa::Automaton fa = initalAutomaton();
   fa.prettyPrint(std::cout);
 }
@@ -576,17 +636,17 @@ TEST(PrettyPrintTest, Stuffed){
  * bool hasEpsilonTransition() const
  */
 
-TEST(HasEpsilonTransitionTest, Has){
+TEST(AutomatonHasEpsilonTransitionTest, Has){
   fa::Automaton fa;
   EXPECT_TRUE(fa.addState(1));
   EXPECT_TRUE(fa.addState(2));
-  EXPECT_TRUE(fa.addSymbol(fa::Epsilon));
+  EXPECT_TRUE(fa.addSymbol('a'));
   EXPECT_TRUE(fa.addTransition(1, fa::Epsilon, 2));
   EXPECT_TRUE(fa.hasTransition(1, fa::Epsilon, 2));
   EXPECT_TRUE(fa.hasEpsilonTransition());
 }
 
-TEST(HasEpsilonTransitionTest, HasNot){
+TEST(AutomatonHasEpsilonTransitionTest, HasNot){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.hasEpsilonTransition());
 }
@@ -595,27 +655,27 @@ TEST(HasEpsilonTransitionTest, HasNot){
  * bool isDeterministic() const
  */
 
-TEST(IsDeterministicTest, Deterministic){
+TEST(AutomatonIsDeterministicTest, Deterministic){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_TRUE(fa.isDeterministic());
 }
 
-TEST(IsDeterministicTest, Complete){
+TEST(AutomatonIsDeterministicTest, Complete){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_FALSE(fa.isDeterministic());
 }
 
-TEST(IsDeterministicTest, Both1){
+TEST(AutomatonIsDeterministicTest, Both1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa.isDeterministic());
 }
 
-TEST(IsDeterministicTest, Both2){
+TEST(AutomatonIsDeterministicTest, Both2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa.isDeterministic());
 }
 
-TEST(IsDeterministicTest, Neither){
+TEST(AutomatonIsDeterministicTest, Neither){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.isDeterministic());
 }
@@ -624,27 +684,27 @@ TEST(IsDeterministicTest, Neither){
  * bool isComplete() const
  */
 
-TEST(IsCompleteTest, Deterministic){
+TEST(AutomatonIsCompleteTest, Deterministic){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_FALSE(fa.isComplete());
 }
 
-TEST(IsCompleteTest, Complete){
+TEST(AutomatonIsCompleteTest, Complete){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_TRUE(fa.isComplete());
 }
 
-TEST(IsCompleteTest, Both1){
+TEST(AutomatonIsCompleteTest, Both1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa.isComplete());
 }
 
-TEST(IsCompleteTest, Both2){
+TEST(AutomatonIsCompleteTest, Both2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa.isComplete());
 }
 
-TEST(IsCompleteTest, Neither){
+TEST(AutomatonIsCompleteTest, Neither){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.isComplete());
 }
@@ -653,14 +713,14 @@ TEST(IsCompleteTest, Neither){
  * static Automaton createComplete(const Automaton& automaton)
  */
 
-TEST(CreateCompleteTest, AlreadyComplete){
+TEST(AutomatonCreateCompleteTest, AlreadyComplete){
   fa::Automaton fa1 = completeAutomaton1();
   fa::Automaton fa2 = fa::Automaton::createComplete(fa1);
   EXPECT_TRUE(fa1.isComplete());
   EXPECT_TRUE(fa2.isComplete());
 }
 
-TEST(CreateCompleteTest, NotComplete){
+TEST(AutomatonCreateCompleteTest, NotComplete){
   fa::Automaton fa1 = deterministicAutomaton1();
   fa::Automaton fa2 = fa::Automaton::createComplete(fa1);
   EXPECT_FALSE(fa1.isComplete());
@@ -671,7 +731,7 @@ TEST(CreateCompleteTest, NotComplete){
  * static Automaton createComplement(const Automaton& automaton)
  */
 
-TEST(CreateComplementTest, Deterministic){
+TEST(AutomatonCreateComplementTest, Deterministic){
   fa::Automaton fa1 = deterministicAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_FALSE(fa1.isComplete());
@@ -688,12 +748,12 @@ TEST(CreateComplementTest, Deterministic){
   EXPECT_FALSE(fa2.isStateFinal(3));
 }
 
-TEST(CreateComplementTest, Complete){
+TEST(AutomatonCreateComplementTest, Complete){
   // TO DO
   std::cout << "!!!  !!!  TO DO  !!!  !!!\n";
 }
 
-TEST(CreateComplementTest, Both1){
+TEST(AutomatonCreateComplementTest, Both1){
   fa::Automaton fa1 = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
@@ -706,7 +766,7 @@ TEST(CreateComplementTest, Both1){
   EXPECT_FALSE(fa2.isStateFinal(1));
 }
 
-TEST(CreateComplementTest, Both2){
+TEST(AutomatonCreateComplementTest, Both2){
   fa::Automaton fa1 = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
@@ -725,7 +785,7 @@ TEST(CreateComplementTest, Both2){
   EXPECT_TRUE(fa2.isStateFinal(4));
 }
 
-TEST(CreateComplementTest, Neither){
+TEST(AutomatonCreateComplementTest, Neither){
   // TO DO
   std::cout << "!!!  !!!  TO DO  !!!  !!!\n";
 }
@@ -734,7 +794,7 @@ TEST(CreateComplementTest, Neither){
  * static Automaton createMirror(const Automaton& automaton)
  */
 
-TEST(CreateMirrorTest, Deterministic){
+TEST(AutomatonCreateMirrorTest, Deterministic){
   fa::Automaton fa1 = deterministicAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_FALSE(fa1.isComplete());
@@ -753,7 +813,7 @@ TEST(CreateMirrorTest, Deterministic){
   EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
 }
 
-TEST(CreateMirrorTest, Complete){
+TEST(AutomatonCreateMirrorTest, Complete){
   fa::Automaton fa1 = completeAutomaton1();
   EXPECT_FALSE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
@@ -784,7 +844,7 @@ TEST(CreateMirrorTest, Complete){
   EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
 }
 
-TEST(CreateMirrorTest, Both1){
+TEST(AutomatonCreateMirrorTest, Both1){
   fa::Automaton fa1 = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
@@ -803,7 +863,7 @@ TEST(CreateMirrorTest, Both1){
   EXPECT_TRUE(fa2.hasTransition(0, 'b', 1));
 }
 
-TEST(CreateMirrorTest, Both2){
+TEST(AutomatonCreateMirrorTest, Both2){
   fa::Automaton fa1 = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
@@ -835,7 +895,7 @@ TEST(CreateMirrorTest, Both2){
 
 }
 
-TEST(CreateMirrorTest, Neither){
+TEST(AutomatonCreateMirrorTest, Neither){
   fa::Automaton fa1 = initalAutomaton();
   EXPECT_FALSE(fa1.isDeterministic());
   EXPECT_FALSE(fa1.isComplete());
@@ -872,7 +932,7 @@ TEST(CreateMirrorTest, Neither){
  * std::set<int> makeTransition(const std::set<int>&origin, char alpha) const
  */
 
-TEST(MakeTransitionTest, Deterministic){
+TEST(AutomatonMakeTransitionTest, Deterministic){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> origin, setA, setB;
   origin.insert(0);
@@ -896,7 +956,7 @@ TEST(MakeTransitionTest, Deterministic){
   EXPECT_EQ(1u, setB.count(3));
 }
 
-TEST(MakeTransitionTest, Complete){
+TEST(AutomatonMakeTransitionTest, Complete){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> origin, setA, setB;
   origin.insert(0);
@@ -942,7 +1002,7 @@ TEST(MakeTransitionTest, Complete){
   EXPECT_EQ(1u, setB.count(3));
 }
 
-TEST(MakeTransitionTest, Both1){
+TEST(AutomatonMakeTransitionTest, Both1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> origin, setA, setB;
   origin.insert(0);
@@ -961,7 +1021,7 @@ TEST(MakeTransitionTest, Both1){
   EXPECT_EQ(1u, setB.count(0));
 }
 
-TEST(MakeTransitionTest, Both2){
+TEST(AutomatonMakeTransitionTest, Both2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> origin, setA, setB;
   origin.insert(0);
@@ -1003,7 +1063,7 @@ TEST(MakeTransitionTest, Both2){
   EXPECT_EQ(1u, setB.count(4));
 }
 
-TEST(MakeTransitionTest, Neither){
+TEST(AutomatonMakeTransitionTest, Neither){
   fa::Automaton fa = initalAutomaton();
   std::set<int> origin, setA, setB;
   origin.insert(0);
@@ -1055,56 +1115,32 @@ TEST(MakeTransitionTest, Neither){
  * std::set<int> readString(const std::string& word)
  */
 
-TEST(ReadStringTest, ZeroWORD1){
-  fa::Automaton fa;
-  std::set<int> res = fa.readString(WORD1);
-  EXPECT_EQ(0u, res.size());
-}
-
-TEST(ReadStringTest, ZeroWORD2){
-  fa::Automaton fa;
-  std::set<int> res = fa.readString(WORD2);
-  EXPECT_EQ(0u, res.size());
-}
-
-TEST(ReadStringTest, ZeroWORD3){
-  fa::Automaton fa;
-  std::set<int> res = fa.readString(WORD3);
-  EXPECT_EQ(0u, res.size());
-}
-
-TEST(ReadStringTest, ZeroWORD4){
-  fa::Automaton fa;
-  std::set<int> res = fa.readString(WORD4);
-  EXPECT_EQ(0u, res.size());
-}
-
-TEST(ReadStringTest, DeterministicWORD1){
+TEST(AutomatonReadStringTest, DeterministicWORD1){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD1);
   EXPECT_EQ(0u, res.size());
 }
 
-TEST(ReadStringTest, DeterministicWORD2){
+TEST(AutomatonReadStringTest, DeterministicWORD2){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD2);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, DeterministicWORD3){
+TEST(AutomatonReadStringTest, DeterministicWORD3){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD3);
   EXPECT_EQ(0u, res.size());
 }
 
-TEST(ReadStringTest, DeterministicWORD4){
+TEST(AutomatonReadStringTest, DeterministicWORD4){
   fa::Automaton fa = deterministicAutomaton1();
   std::set<int> res = fa.readString(WORD4);
   EXPECT_EQ(0u, res.size());
 }
 
-TEST(ReadStringTest, CompleteWORD1){
+TEST(AutomatonReadStringTest, CompleteWORD1){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD1);
   EXPECT_EQ(3u, res.size());
@@ -1113,7 +1149,7 @@ TEST(ReadStringTest, CompleteWORD1){
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, CompleteWORD2){
+TEST(AutomatonReadStringTest, CompleteWORD2){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD2);
   EXPECT_EQ(3u, res.size());
@@ -1122,7 +1158,7 @@ TEST(ReadStringTest, CompleteWORD2){
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, CompleteWORD3){
+TEST(AutomatonReadStringTest, CompleteWORD3){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD3);
   EXPECT_EQ(3u, res.size());
@@ -1131,7 +1167,7 @@ TEST(ReadStringTest, CompleteWORD3){
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, CompleteWORD4){
+TEST(AutomatonReadStringTest, CompleteWORD4){
   fa::Automaton fa = completeAutomaton1();
   std::set<int> res = fa.readString(WORD4);
   EXPECT_EQ(3u, res.size());
@@ -1140,83 +1176,83 @@ TEST(ReadStringTest, CompleteWORD4){
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, Both1WORD1){
+TEST(AutomatonReadStringTest, Both1WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD1);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(0));
 }
 
-TEST(ReadStringTest, Both1WORD2){
+TEST(AutomatonReadStringTest, Both1WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD2);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(0));
 }
 
-TEST(ReadStringTest, Both1WORD3){
+TEST(AutomatonReadStringTest, Both1WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD3);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(1));
 }
 
-TEST(ReadStringTest, Both1WORD4){
+TEST(AutomatonReadStringTest, Both1WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   std::set<int> res = fa.readString(WORD4);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(0));
 }
 
-TEST(ReadStringTest, Both2WORD1){
+TEST(AutomatonReadStringTest, Both2WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD1);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(4));
 }
 
-TEST(ReadStringTest, Both2WORD2){
+TEST(AutomatonReadStringTest, Both2WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD2);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(3));
 }
 
-TEST(ReadStringTest, Both2WORD3){
+TEST(AutomatonReadStringTest, Both2WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD3);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(4));
 }
 
-TEST(ReadStringTest, Both2WORD4){
+TEST(AutomatonReadStringTest, Both2WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   std::set<int> res = fa.readString(WORD4);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(4));
 }
 
-TEST(ReadStringTest, NeitherWORD1){
+TEST(AutomatonReadStringTest, NeitherWORD1){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD1);
   EXPECT_EQ(0u, res.size());
 }
 
-TEST(ReadStringTest, NeitherWORD2){
+TEST(AutomatonReadStringTest, NeitherWORD2){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD2);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(4));
 }
 
-TEST(ReadStringTest, NeitherWORD3){
+TEST(AutomatonReadStringTest, NeitherWORD3){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD3);
   EXPECT_EQ(1u, res.size());
   EXPECT_EQ(1u, res.count(4));
 }
 
-TEST(ReadStringTest, NeitherWORD4){
+TEST(AutomatonReadStringTest, NeitherWORD4){
   fa::Automaton fa = initalAutomaton();
   std::set<int> res = fa.readString(WORD4);
   EXPECT_EQ(1u, res.size());
@@ -1227,122 +1263,102 @@ TEST(ReadStringTest, NeitherWORD4){
  * bool match(const std::string& word) const
  */
 
-TEST(MatchTest, ZeroWORD1){
-  fa::Automaton fa;
-  EXPECT_FALSE(fa.match(WORD1));
-}
-
-TEST(MatchTest, ZeroWORD2){
-  fa::Automaton fa;
-  EXPECT_FALSE(fa.match(WORD2));
-}
-
-TEST(MatchTest, ZeroWORD3){
-  fa::Automaton fa;
-  EXPECT_FALSE(fa.match(WORD3));
-}
-
-TEST(MatchTest, ZeroWORD4){
-  fa::Automaton fa;
-  EXPECT_FALSE(fa.match(WORD4));
-}
-
-TEST(MatchTest, DeterministicWORD1){
+TEST(AutomatonMatchTest, DeterministicWORD1){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_FALSE(fa.match(WORD1));
 }
 
-TEST(MatchTest, DeterministicWORD2){
+TEST(AutomatonMatchTest, DeterministicWORD2){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_TRUE(fa.match(WORD2));
 }
 
-TEST(MatchTest, DeterministicWORD3){
+TEST(AutomatonMatchTest, DeterministicWORD3){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_FALSE(fa.match(WORD3));
 }
 
-TEST(MatchTest, DeterministicWORD4){
+TEST(AutomatonMatchTest, DeterministicWORD4){
   fa::Automaton fa = deterministicAutomaton1();
   EXPECT_FALSE(fa.match(WORD4));
 }
 
-TEST(MatchTest, CompleteWORD1){
+TEST(AutomatonMatchTest, CompleteWORD1){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_TRUE(fa.match(WORD1));
 }
 
-TEST(MatchTest, CompleteWORD2){
+TEST(AutomatonMatchTest, CompleteWORD2){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_TRUE(fa.match(WORD2));
 }
 
-TEST(MatchTest, CompleteWORD3){
+TEST(AutomatonMatchTest, CompleteWORD3){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_TRUE(fa.match(WORD3));
 }
 
-TEST(MatchTest, CompleteWORD4){
+TEST(AutomatonMatchTest, CompleteWORD4){
   fa::Automaton fa = completeAutomaton1();
   EXPECT_TRUE(fa.match(WORD4));
 }
 
-TEST(MatchTest, Both1WORD1){
+TEST(AutomatonMatchTest, Both1WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_FALSE(fa.match(WORD1));
 }
 
-TEST(MatchTest, Both1WORD2){
+TEST(AutomatonMatchTest, Both1WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_FALSE(fa.match(WORD2));
 }
 
-TEST(MatchTest, Both1WORD3){
+TEST(AutomatonMatchTest, Both1WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa.match(WORD3));
 }
 
-TEST(MatchTest, Both1WORD4){
+TEST(AutomatonMatchTest, Both1WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_FALSE(fa.match(WORD4));
 }
 
-TEST(MatchTest, Both2WORD1){
+TEST(AutomatonMatchTest, Both2WORD1){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_FALSE(fa.match(WORD1));
 }
 
-TEST(MatchTest, Both2WORD2){
+TEST(AutomatonMatchTest, Both2WORD2){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa.match(WORD2));
 }
 
-TEST(MatchTest, Both2WORD3){
+TEST(AutomatonMatchTest, Both2WORD3){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_FALSE(fa.match(WORD3));
 }
 
-TEST(MatchTest, Both2WORD4){
+TEST(AutomatonMatchTest, Both2WORD4){
   fa::Automaton fa = deterministicCompleteAutomaton2();
   EXPECT_FALSE(fa.match(WORD4));
 }
 
-TEST(MatchTest, NeitherWORD1){
+TEST(AutomatonMatchTest, NeitherWORD1){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.match(WORD1));
 }
 
-TEST(MatchTest, NeitherWORD2){
+TEST(AutomatonMatchTest, NeitherWORD2){
   fa::Automaton fa = initalAutomaton();
   EXPECT_TRUE(fa.match(WORD2));
 }
 
-TEST(MatchTest, NeitherWORD3){
+TEST(AutomatonMatchTest, NeitherWORD3){
   fa::Automaton fa = initalAutomaton();
   EXPECT_TRUE(fa.match(WORD3));
 }
 
-TEST(MatchTest, NeitherWORD4){
+TEST(AutomatonMatchTest, NeitherWORD4){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.match(WORD4));
 }
@@ -1351,12 +1367,7 @@ TEST(MatchTest, NeitherWORD4){
  * bool isLanguageEmpty() const
  */
 
-TEST(IsLanguageEmptyTest, NoStates){
-  fa::Automaton fa;
-  EXPECT_TRUE(fa.isLanguageEmpty());
-}
-
-TEST(IsLanguageEmptyTest, NoInitialStates){
+TEST(AutomatonIsLanguageEmptyTest, NoInitialStates){
   fa::Automaton fa;
   fa.addState(0);
   fa.addState(1);
@@ -1366,7 +1377,7 @@ TEST(IsLanguageEmptyTest, NoInitialStates){
   EXPECT_TRUE(fa.isLanguageEmpty());
 }
 
-TEST(IsLanguageEmptyTest, NoFinalStates){
+TEST(AutomatonIsLanguageEmptyTest, NoFinalStates){
   fa::Automaton fa;
   fa.addState(0);
   fa.addState(1);
@@ -1376,7 +1387,7 @@ TEST(IsLanguageEmptyTest, NoFinalStates){
   EXPECT_TRUE(fa.isLanguageEmpty());
 }
 
-TEST(IsLanguageEmptyTest, NoTransition){
+TEST(AutomatonIsLanguageEmptyTest, NoTransition){
   fa::Automaton fa;
   fa.addState(0);
   fa.addState(1);
@@ -1386,12 +1397,12 @@ TEST(IsLanguageEmptyTest, NoTransition){
   EXPECT_TRUE(fa.isLanguageEmpty());
 }
 
-TEST(IsLanguageEmptyTest, DeterministicAndComplete){
+TEST(AutomatonIsLanguageEmptyTest, DeterministicAndComplete){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   EXPECT_FALSE(fa.isLanguageEmpty());
 }
 
-TEST(IsLanguageEmptyTest, Neither){
+TEST(AutomatonIsLanguageEmptyTest, Neither){
   fa::Automaton fa = initalAutomaton();
   EXPECT_FALSE(fa.isLanguageEmpty());
 }
@@ -1400,14 +1411,14 @@ TEST(IsLanguageEmptyTest, Neither){
  * void removeNonAccessibleStates()
  */
 
-TEST(RemoveNonAccessibleStatesTest, DeterministicAndComplete){
+TEST(AutomatonRemoveNonAccessibleStatesTest, DeterministicAndComplete){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   fa.removeNonAccessibleStates();
   EXPECT_TRUE(fa.hasState(0));
   EXPECT_TRUE(fa.hasState(1));
 }
 
-TEST(RemoveNonAccessibleStatesTest, Neither){
+TEST(AutomatonRemoveNonAccessibleStatesTest, Neither){
   fa::Automaton fa = initalAutomaton();
   fa.removeNonAccessibleStates();
   EXPECT_TRUE(fa.hasState(0));
@@ -1417,7 +1428,7 @@ TEST(RemoveNonAccessibleStatesTest, Neither){
   EXPECT_TRUE(fa.hasState(4));
 }
 
-TEST(RemoveNonAccessibleStatesTest, OneRemoval){
+TEST(AutomatonRemoveNonAccessibleStatesTest, OneRemoval){
   fa::Automaton fa = initalAutomaton();
   fa.addState(5);
   fa.addTransition(5, 'b', 4);
@@ -1426,7 +1437,7 @@ TEST(RemoveNonAccessibleStatesTest, OneRemoval){
   EXPECT_FALSE(fa.hasTransition(5, 'b', 4));
 }
 
-TEST(RemoveNonAccessibleStatesTest, SeveralRemovals){
+TEST(AutomatonRemoveNonAccessibleStatesTest, SeveralRemovals){
   fa::Automaton fa = initalAutomaton();
   fa.addState(5);
   fa.addState(6);
@@ -1460,14 +1471,14 @@ TEST(RemoveNonAccessibleStatesTest, SeveralRemovals){
  * void removeNonCoAccessibleStates()
  */
 
-TEST(RemoveNonCoAccessibleStatesTest, DeterministicAndComplete){
+TEST(AutomatonRemoveNonCoAccessibleStatesTest, DeterministicAndComplete){
   fa::Automaton fa = deterministicCompleteAutomaton1();
   fa.removeNonCoAccessibleStates();
   EXPECT_TRUE(fa.hasState(0));
   EXPECT_TRUE(fa.hasState(1));
 }
 
-TEST(RemoveNonCoAccessibleStatesTest, Neither){
+TEST(AutomatonRemoveNonCoAccessibleStatesTest, Neither){
   fa::Automaton fa = initalAutomaton();
   fa.removeNonCoAccessibleStates();
   EXPECT_TRUE(fa.hasState(0));
@@ -1477,7 +1488,7 @@ TEST(RemoveNonCoAccessibleStatesTest, Neither){
   EXPECT_TRUE(fa.hasState(4));
 }
 
-TEST(RemoveNonCoAccessibleStatesTest, OneRemoval){
+TEST(AutomatonRemoveNonCoAccessibleStatesTest, OneRemoval){
   fa::Automaton fa = initalAutomaton();
   fa.addState(5);
   fa.addTransition(1, 'b', 5);
@@ -1491,7 +1502,7 @@ TEST(RemoveNonCoAccessibleStatesTest, OneRemoval){
   EXPECT_FALSE(fa.hasTransition(1, 'b', 5));
 }
 
-TEST(RemoveNonCoAccessibleStatesTest, SeveralRemovals){
+TEST(AutomatonRemoveNonCoAccessibleStatesTest, SeveralRemovals){
   fa::Automaton fa = initalAutomaton();
   fa.addState(5);
   fa.addState(6);
