@@ -30,13 +30,22 @@ namespace fa {
   }
 
   bool State::removeTransitions(char alpha) {
-    std::set<Transition> temp = transitions;
     bool res = true;
-    for (std::set<Transition>::iterator it = temp.begin(); it != temp.end(); it++){
+    std::set<int> toSet;
+    for (std::set<Transition>::iterator it = transitions.begin(); it != transitions.end(); it++){
+      fprintf(stderr, "hello\n");
       if (it->getAlpha() == alpha){
-        std::set<Transition>::iterator it2 = transitions.erase(it);
+        fprintf(stderr, "\t%c to %d\n", it->getAlpha(), it->getTo());
+        toSet.insert(it->getTo());
       }
+      fprintf(stderr, "ça boucle");
     }
+    fprintf(stderr, "hlgiu\n");
+    for (std::set<int>::iterator it = toSet.begin(); it != toSet.end(); it++){
+      fprintf(stderr, "hhhhhhhh\n");
+      res = res && (removeTransition(alpha, *it));
+    }
+    fprintf(stderr, "hlgiu2\n");
     return res;
   }
 
@@ -44,8 +53,9 @@ namespace fa {
     std::set<Transition> temp = transitions;
     bool res = true;
     for (std::set<Transition>::iterator it = temp.begin(); it != temp.end(); it++){
+      fprintf(stderr, "\t%c to %d\n", it->getAlpha(), it->getTo());
       if (it->getTo() == to){
-        std::set<Transition>::iterator it2 = transitions.erase(it);
+        it = transitions.erase(it);
       }
     }
     return res;
@@ -137,15 +147,24 @@ namespace fa {
   }
 
   bool Automaton::removeSymbol(char symbol) {
-    fprintf(stderr, "1\n");
     bool res = alphabet.erase(symbol);
-    fprintf(stderr, "2\n");
-    for (std::map<int, State>::iterator it = getStates().begin(); it != getStates().end(); it++){
-      fprintf(stderr, "3%d", it->first);
-      res = res && it->second.removeTransitions(symbol);
-      fprintf(stderr, "over\n");
+    if (!getStates().empty()){
+      std::map<int, State>::iterator it = getStates().begin();
+      while (it != getStates().end()){
+        res = res && (it->second.removeTransition(symbol));
+      }
+
+
+      /*
+      for (std::map<int, State>::iterator it = temp.begin(); it != temp.end(); it++) {
+        fprintf(stderr, "%d\n", it->first);
+      }
+      fprintf(stderr, "jenaimaaaaaaaarre\t");
+      for (std::map<int, State>::iterator it = temp.begin(); it != temp.end(); it++){
+        fprintf(stderr, "%d\n", it->first);
+        res = res && (it->second.removeTransitions(symbol));
+      }*/
     }
-    fprintf(stderr, "4\n");
     return res;
   }
 
@@ -213,19 +232,7 @@ namespace fa {
   bool Automaton::removeTransition(int from, char alpha, int to) {
     return (states.find(from)->second.removeTransition(alpha, to));
   }
-/*
-  bool Automaton::removeTransitions(int from, char alpha) {
 
-  }
-
-  bool Automaton::removeTransitions(int from, int to) {
-
-  }
-
-  bool Automaton::removeAllTransitions(int from) {
-
-  }
-*/
   bool Automaton::hasTransition(int from, char alpha, int to) const {
     return (states.find(from)->second.hasTransition(alpha, to));
   }
