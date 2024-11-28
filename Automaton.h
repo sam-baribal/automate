@@ -248,6 +248,18 @@ namespace fa {
       bool removeTransition(int from, char alpha, int to);
       
       /**
+      * Remove all transitions from a givent state with a given symbol
+      *
+      * Returns true if all transitions were successfully removed
+      */
+      bool removeTransitions(int from, char alpha);
+
+      /**
+      * Remove all transitions to a given state
+      */
+      bool removeTransitions(int to);
+
+      /**
       * Tell if a transition is present.
       */
       bool hasTransition(int from, char alpha, int to) const;

@@ -225,21 +225,15 @@ TEST(AutomatonRemoveSymbolTest, AlreadyRemoved){
 
 TEST(AutomatonRemoveSymbolTest, SymbolInTransition){
   fa::Automaton fa = initalAutomaton();
-  fprintf(stderr, "aaaa\n");
   EXPECT_TRUE(fa.hasTransition(1, 'b', 3));
   EXPECT_TRUE(fa.hasTransition(3, 'b', 4));
   EXPECT_TRUE(fa.hasTransition(2, 'b', 4));
-  fprintf(stderr, "bbbb\n");
   EXPECT_EQ(9u, fa.countTransitions());
-  fprintf(stderr, "cccc\n");
   EXPECT_TRUE(fa.removeSymbol('b'));
-  fprintf(stderr, "dddd\n");
   EXPECT_FALSE(fa.hasTransition(1, 'b', 3));
   EXPECT_FALSE(fa.hasTransition(3, 'b', 4));
   EXPECT_FALSE(fa.hasTransition(2, 'b', 4));
-  fprintf(stderr, "eeee\n");
   EXPECT_EQ(6u, fa.countTransitions());
-  fprintf(stderr, "ffff\n");
 }
 
 /**
