@@ -14,36 +14,9 @@ namespace fa {
 
   constexpr char Epsilon = '\0';  
 
-  class Transition {
-    private:
-      char alpha;
-      int to;
-    
-    public:
-      /**
-      * Build a transition between two states with a specific symbol
-      */
-      Transition(char alpha, int to);
-      
-      /**
-       * Return the symbol of the transition
-       */
-      char getAlpha() const;
-
-      /**
-       * Return the number of the state the transition is aiming at
-       */
-      int getTo() const;
-
-      /**
-       * < operator for the Transition class
-       */
-      bool operator <(const Transition &other) const;
-  };
-
   class State {
     private:
-      std::set<fa::Transition> transitions;
+      std::map<char, std::set<int>> transitions;
       bool initial = false;
       bool terminal = false;
 
@@ -126,7 +99,7 @@ namespace fa {
       /**
        * Returns the set of transitions coming from this state
        */
-      std::set<Transition> getTransitions() const;
+      std::map<char, std::set<int>> getTransitions() const;
 
       /**
        * Returns a set containing the states attainable from this state, regardless of the symbol read

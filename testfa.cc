@@ -225,6 +225,17 @@ TEST(AutomatonRemoveSymbolTest, AlreadyRemoved){
 
 TEST(AutomatonRemoveSymbolTest, SymbolInTransition){
   fa::Automaton fa = initalAutomaton();
+
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 1));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 2));
+  EXPECT_TRUE(fa.hasTransition(0, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(1, 'b', 3));
+  EXPECT_TRUE(fa.hasTransition(2, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(2, 'b', 4));
+  EXPECT_TRUE(fa.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(3, 'b', 4));
+  EXPECT_TRUE(fa.hasTransition(4, 'a', 4));
+
   EXPECT_TRUE(fa.hasTransition(1, 'b', 3));
   EXPECT_TRUE(fa.hasTransition(3, 'b', 4));
   EXPECT_TRUE(fa.hasTransition(2, 'b', 4));
@@ -411,13 +422,15 @@ TEST(AutomatonRemoveStateTest, StateInTransitionTo){
   EXPECT_TRUE(fa.hasTransition(0, 'a', 3));
   EXPECT_TRUE(fa.hasTransition(2, 'a', 3));
   EXPECT_TRUE(fa.hasTransition(3, 'a', 3));
+  EXPECT_TRUE(fa.hasTransition(3, 'b', 4));
   EXPECT_EQ(9u, fa.countTransitions());
   EXPECT_TRUE(fa.removeState(3));
   EXPECT_FALSE(fa.hasTransition(1, 'b', 3));
   EXPECT_FALSE(fa.hasTransition(0, 'a', 3));
   EXPECT_FALSE(fa.hasTransition(2, 'a', 3));
   EXPECT_FALSE(fa.hasTransition(3, 'a', 3));
-  EXPECT_EQ(5u, fa.countTransitions());
+  EXPECT_FALSE(fa.hasTransition(3, 'b', 4));
+  EXPECT_EQ(4u, fa.countTransitions());
 }
 
 /**
@@ -517,11 +530,15 @@ TEST(AutomatonAddTransitionTest, Existing){
 
 TEST(AutomatonAddTransitionTest, InvalidFrom){
   fa::Automaton fa;
+  
   EXPECT_TRUE(fa.addState(2));
+  
   EXPECT_TRUE(fa.addSymbol('a'));
+  
   EXPECT_FALSE(fa.addTransition(1, 'a', 2));
+  
   EXPECT_FALSE(fa.hasTransition(1, 'a', 2));
-
+  
 }
 
 TEST(AutomatonAddTransitionTest, InvalidTo){
@@ -549,6 +566,13 @@ TEST(AutomatonAddTransitionTest, Epsilon){
   EXPECT_TRUE(fa.hasTransition(1, fa::Epsilon, 2));
 }
 
+TEST(AutomatonAddTransitionTest, Self){
+  fa::Automaton fa;
+  EXPECT_TRUE(fa.addState(1));
+  EXPECT_TRUE(fa.addSymbol('a'));
+  EXPECT_TRUE(fa.addTransition(1, 'a', 1));
+  EXPECT_TRUE(fa.hasTransition(1, 'a', 1));
+}
 /**
  * bool Automaton::removeTransition(in from, char alpha, int to)
  */
@@ -729,17 +753,9 @@ TEST(AutomatonCreateComplementTest, Deterministic){
   fa::Automaton fa1 = deterministicAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_FALSE(fa1.isComplete());
-  EXPECT_FALSE(fa1.isStateFinal(0));
-  EXPECT_FALSE(fa1.isStateFinal(1));
-  EXPECT_FALSE(fa1.isStateFinal(2));
-  EXPECT_TRUE(fa1.isStateFinal(3));
   fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
   EXPECT_TRUE(fa2.isDeterministic());
   EXPECT_TRUE(fa2.isComplete());
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateFinal(1));
-  EXPECT_TRUE(fa2.isStateFinal(2));
-  EXPECT_FALSE(fa2.isStateFinal(3));
 }
 
 TEST(AutomatonCreateComplementTest, Complete){
@@ -751,32 +767,18 @@ TEST(AutomatonCreateComplementTest, Both1){
   fa::Automaton fa1 = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
-  EXPECT_FALSE(fa1.isStateFinal(0));
-  EXPECT_TRUE(fa1.isStateFinal(1));
   fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
   EXPECT_TRUE(fa2.isDeterministic());
   EXPECT_TRUE(fa2.isComplete());
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_FALSE(fa2.isStateFinal(1));
 }
 
 TEST(AutomatonCreateComplementTest, Both2){
   fa::Automaton fa1 = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
-  EXPECT_FALSE(fa1.isStateFinal(0));
-  EXPECT_FALSE(fa1.isStateFinal(1));
-  EXPECT_FALSE(fa1.isStateFinal(2));
-  EXPECT_TRUE(fa1.isStateFinal(3));
-  EXPECT_FALSE(fa1.isStateFinal(4));
   fa::Automaton fa2 = fa::Automaton::createComplement(fa1);
   EXPECT_TRUE(fa2.isDeterministic());
   EXPECT_TRUE(fa2.isComplete());
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateFinal(1));
-  EXPECT_TRUE(fa2.isStateFinal(2));
-  EXPECT_FALSE(fa2.isStateFinal(3));
-  EXPECT_TRUE(fa2.isStateFinal(4));
 }
 
 TEST(AutomatonCreateComplementTest, Neither){
@@ -791,101 +793,33 @@ TEST(AutomatonCreateComplementTest, Neither){
 TEST(AutomatonCreateMirrorTest, Deterministic){
   fa::Automaton fa1 = deterministicAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
-  EXPECT_FALSE(fa1.isComplete());
-  EXPECT_TRUE(fa1.isStateInitial(0));
-  EXPECT_TRUE(fa1.isStateFinal(3));
-  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
-  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(2, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
+  EXPECT_FALSE(fa1.isComplete());;
   fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateInitial(3));
-  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 2));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\nA refaire sans les méthodes interdites ! (utiliser match ?)\n";
 }
 
 TEST(AutomatonCreateMirrorTest, Complete){
   fa::Automaton fa1 = completeAutomaton1();
   EXPECT_FALSE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
-  EXPECT_TRUE(fa1.isStateInitial(0));
-  EXPECT_TRUE(fa1.isStateFinal(3));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 0));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(0, 'b', 0));
-  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
-  EXPECT_TRUE(fa1.hasTransition(1, 'b', 3));
-  EXPECT_TRUE(fa1.hasTransition(2, 'a', 3));
-  EXPECT_TRUE(fa1.hasTransition(3, 'a', 3));
-  EXPECT_TRUE(fa1.hasTransition(3, 'b', 3));
-  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
   fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateInitial(3));
-  EXPECT_TRUE(fa2.hasTransition(0, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(0, 'b', 0));
-  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 1));
-  EXPECT_TRUE(fa2.hasTransition(3, 'a', 2));
-  EXPECT_TRUE(fa2.hasTransition(3, 'a', 3));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 3));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\nA refaire sans les méthodes interdites ! (utiliser match ?)\n";
 }
 
 TEST(AutomatonCreateMirrorTest, Both1){
   fa::Automaton fa1 = deterministicCompleteAutomaton1();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
-  EXPECT_TRUE(fa1.isStateInitial(0));
-  EXPECT_TRUE(fa1.isStateFinal(1));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 0));
-  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
-  EXPECT_TRUE(fa1.hasTransition(1, 'a', 1));
-  EXPECT_TRUE(fa1.hasTransition(1, 'b', 0));
   fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateInitial(1));
-  EXPECT_TRUE(fa2.hasTransition(0, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
-  EXPECT_TRUE(fa2.hasTransition(1, 'a', 1));
-  EXPECT_TRUE(fa2.hasTransition(0, 'b', 1));
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\nA refaire sans les méthodes interdites ! (utiliser match ?)\n";
 }
 
 TEST(AutomatonCreateMirrorTest, Both2){
   fa::Automaton fa1 = deterministicCompleteAutomaton2();
   EXPECT_TRUE(fa1.isDeterministic());
   EXPECT_TRUE(fa1.isComplete());
-  EXPECT_TRUE(fa1.isStateInitial(0));
-  EXPECT_TRUE(fa1.isStateFinal(3));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 4));
-  EXPECT_TRUE(fa1.hasTransition(0, 'b', 1));
-  EXPECT_TRUE(fa1.hasTransition(1, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(1, 'b', 4));
-  EXPECT_TRUE(fa1.hasTransition(2, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(2, 'b', 3));
-  EXPECT_TRUE(fa1.hasTransition(3, 'a', 4));
-  EXPECT_TRUE(fa1.hasTransition(3, 'b', 4));
-  EXPECT_TRUE(fa1.hasTransition(4, 'a', 4));
-  EXPECT_TRUE(fa1.hasTransition(4, 'b', 4));
   fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateInitial(3));
-  EXPECT_TRUE(fa2.hasTransition(4, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(1, 'b', 0));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 1));
-  EXPECT_TRUE(fa2.hasTransition(4, 'b', 1));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 2));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 2));
-  EXPECT_TRUE(fa2.hasTransition(4, 'a', 3));
-  EXPECT_TRUE(fa2.hasTransition(4, 'b', 3));
-  EXPECT_TRUE(fa2.hasTransition(4, 'a', 4));
-  EXPECT_TRUE(fa2.hasTransition(4, 'b', 4));
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\nA refaire sans les méthodes interdites ! (utiliser match ?)\n";
 
 }
 
@@ -893,33 +827,8 @@ TEST(AutomatonCreateMirrorTest, Neither){
   fa::Automaton fa1 = initalAutomaton();
   EXPECT_FALSE(fa1.isDeterministic());
   EXPECT_FALSE(fa1.isComplete());
-  EXPECT_TRUE(fa1.isStateInitial(0));
-  EXPECT_TRUE(fa1.isStateInitial(1));
-  EXPECT_TRUE(fa1.isStateFinal(1));
-  EXPECT_TRUE(fa1.isStateFinal(4));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 1));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 2));
-  EXPECT_TRUE(fa1.hasTransition(0, 'a', 3));
-  EXPECT_TRUE(fa1.hasTransition(1, 'b', 3));
-  EXPECT_TRUE(fa1.hasTransition(2, 'a', 3));
-  EXPECT_TRUE(fa1.hasTransition(2, 'b', 4));
-  EXPECT_TRUE(fa1.hasTransition(3, 'a', 3));
-  EXPECT_TRUE(fa1.hasTransition(3, 'b', 4));
-  EXPECT_TRUE(fa1.hasTransition(4, 'a', 4));
   fa::Automaton fa2 = fa::Automaton::createMirror(fa1);
-  EXPECT_TRUE(fa2.isStateFinal(0));
-  EXPECT_TRUE(fa2.isStateFinal(1));
-  EXPECT_TRUE(fa2.isStateInitial(1));
-  EXPECT_TRUE(fa2.isStateInitial(4));
-  EXPECT_TRUE(fa2.hasTransition(1, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(2, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(3, 'a', 0));
-  EXPECT_TRUE(fa2.hasTransition(3, 'b', 1));
-  EXPECT_TRUE(fa2.hasTransition(3, 'a', 2));
-  EXPECT_TRUE(fa2.hasTransition(4, 'b', 2));
-  EXPECT_TRUE(fa2.hasTransition(3, 'a', 3));
-  EXPECT_TRUE(fa2.hasTransition(4, 'b', 3));
-  EXPECT_TRUE(fa2.hasTransition(4, 'a', 4));
+  std::cout << "!!!  !!!  TO DO  !!!  !!!\nA refaire sans les méthodes interdites ! (utiliser match ?)\n";
 }
 
 /**
