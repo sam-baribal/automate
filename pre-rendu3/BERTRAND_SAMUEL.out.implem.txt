@@ -1,0 +1,744 @@
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/build
+[ 25%] Building CXX object CMakeFiles/testfa.dir/Automaton.cc.o
+[ 50%] Building CXX object CMakeFiles/testfa.dir/testfa.cc.o
+[ 75%] Building CXX object CMakeFiles/testfa.dir/googletest/googletest/src/gtest-all.cc.o
+[100%] Linking CXX executable testfa
+[100%] Built target testfa
+==80964== Memcheck, a memory error detector
+==80964== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==80964== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==80964== Command: ./testfa
+==80964== 
+[==========] Running 178 tests from 30 test suites.
+[----------] Global test environment set-up.
+[----------] 6 tests from AutomatonIsValidTest
+[ RUN      ] AutomatonIsValidTest.Default
+[       OK ] AutomatonIsValidTest.Default (3 ms)
+[ RUN      ] AutomatonIsValidTest.NoState1
+[       OK ] AutomatonIsValidTest.NoState1 (1 ms)
+[ RUN      ] AutomatonIsValidTest.NoState2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:251: Failure
+Value of: s3
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:252: Failure
+Value of: fa.isValid()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsValidTest.NoState2 (15 ms)
+[ RUN      ] AutomatonIsValidTest.NoSymbol1
+[       OK ] AutomatonIsValidTest.NoSymbol1 (0 ms)
+[ RUN      ] AutomatonIsValidTest.NoSymbol2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:271: Failure
+Value of: s3
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonIsValidTest.NoSymbol2 (3 ms)
+[ RUN      ] AutomatonIsValidTest.Valid
+[       OK ] AutomatonIsValidTest.Valid (0 ms)
+[----------] 6 tests from AutomatonIsValidTest (28 ms total)
+
+[----------] 5 tests from AutomatonAddSymbolTest
+[ RUN      ] AutomatonAddSymbolTest.OneSymbol
+[       OK ] AutomatonAddSymbolTest.OneSymbol (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.TwoSymbols
+[       OK ] AutomatonAddSymbolTest.TwoSymbols (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.TwoIdenticalSymbols
+[       OK ] AutomatonAddSymbolTest.TwoIdenticalSymbols (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.Epsilon
+[       OK ] AutomatonAddSymbolTest.Epsilon (0 ms)
+[ RUN      ] AutomatonAddSymbolTest.IsGraph
+[       OK ] AutomatonAddSymbolTest.IsGraph (2 ms)
+[----------] 5 tests from AutomatonAddSymbolTest (7 ms total)
+
+[----------] 4 tests from AutomatonRemoveSymbolTest
+[ RUN      ] AutomatonRemoveSymbolTest.OneSymbol
+[       OK ] AutomatonRemoveSymbolTest.OneSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.NoSymbol
+[       OK ] AutomatonRemoveSymbolTest.NoSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.UnknownSymbol
+[       OK ] AutomatonRemoveSymbolTest.UnknownSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.SymbolInTransitionGendreau
+[       OK ] AutomatonRemoveSymbolTest.SymbolInTransitionGendreau (4 ms)
+[----------] 4 tests from AutomatonRemoveSymbolTest (8 ms total)
+
+[----------] 6 tests from AutomatonAddStateTest
+[ RUN      ] AutomatonAddStateTest.OneState
+[       OK ] AutomatonAddStateTest.OneState (1 ms)
+[ RUN      ] AutomatonAddStateTest.TwoStates
+[       OK ] AutomatonAddStateTest.TwoStates (1 ms)
+[ RUN      ] AutomatonAddStateTest.TwoIdenticalStates
+[       OK ] AutomatonAddStateTest.TwoIdenticalStates (1 ms)
+[ RUN      ] AutomatonAddStateTest.NegativeStateVillemin
+[       OK ] AutomatonAddStateTest.NegativeStateVillemin (0 ms)
+[ RUN      ] AutomatonAddStateTest.MaxState
+[       OK ] AutomatonAddStateTest.MaxState (0 ms)
+[ RUN      ] AutomatonAddStateTest.KeepState
+[       OK ] AutomatonAddStateTest.KeepState (2 ms)
+[----------] 6 tests from AutomatonAddStateTest (9 ms total)
+
+[----------] 4 tests from AutomatonSetStateInitialTest
+[ RUN      ] AutomatonSetStateInitialTest.OneInitialState
+[       OK ] AutomatonSetStateInitialTest.OneInitialState (1 ms)
+[ RUN      ] AutomatonSetStateInitialTest.TwoInitialStates
+[       OK ] AutomatonSetStateInitialTest.TwoInitialStates (1 ms)
+[ RUN      ] AutomatonSetStateInitialTest.UnknwonState
+[       OK ] AutomatonSetStateInitialTest.UnknwonState (1 ms)
+[ RUN      ] AutomatonSetStateInitialTest.ReadEmptyString
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:611: Failure
+Expected equality of these values:
+  expected
+    Which is: { 7, 13, 19 }
+  initials
+    Which is: {}
+[  FAILED  ] AutomatonSetStateInitialTest.ReadEmptyString (9 ms)
+[----------] 4 tests from AutomatonSetStateInitialTest (13 ms total)
+
+[----------] 3 tests from AutomatonSetStateFinalTest
+[ RUN      ] AutomatonSetStateFinalTest.OneFinalState
+[       OK ] AutomatonSetStateFinalTest.OneFinalState (1 ms)
+[ RUN      ] AutomatonSetStateFinalTest.TwoFinalStates
+[       OK ] AutomatonSetStateFinalTest.TwoFinalStates (1 ms)
+[ RUN      ] AutomatonSetStateFinalTest.UnknownState
+[       OK ] AutomatonSetStateFinalTest.UnknownState (1 ms)
+[----------] 3 tests from AutomatonSetStateFinalTest (3 ms total)
+
+[----------] 10 tests from AutomatonAddTransitionTest
+[ RUN      ] AutomatonAddTransitionTest.OneTransition
+[       OK ] AutomatonAddTransitionTest.OneTransition (2 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameOriginAndLetter
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:714: Failure
+Value of: t2
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:716: Failure
+Value of: fa.hasTransition(2_id, 'c', 4_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:717: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+[  FAILED  ] AutomatonAddTransitionTest.SameOriginAndLetter (8 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameOriginAndDestination
+[       OK ] AutomatonAddTransitionTest.SameOriginAndDestination (2 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameLetterAndDestination
+[       OK ] AutomatonAddTransitionTest.SameLetterAndDestination (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.TwoIdenticalTransitions
+[       OK ] AutomatonAddTransitionTest.TwoIdenticalTransitions (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownOrigin
+[       OK ] AutomatonAddTransitionTest.UnknownOrigin (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownTarget
+[       OK ] AutomatonAddTransitionTest.UnknownTarget (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownSymbol
+[       OK ] AutomatonAddTransitionTest.UnknownSymbol (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.EpsilonEcoffet
+[       OK ] AutomatonAddTransitionTest.EpsilonEcoffet (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.EpsilonLeonard
+[       OK ] AutomatonAddTransitionTest.EpsilonLeonard (1 ms)
+[----------] 10 tests from AutomatonAddTransitionTest (24 ms total)
+
+[----------] 6 tests from AutomatonRemoveStateTest
+[ RUN      ] AutomatonRemoveStateTest.OneState
+[       OK ] AutomatonRemoveStateTest.OneState (1 ms)
+[ RUN      ] AutomatonRemoveStateTest.UnknownState
+[       OK ] AutomatonRemoveStateTest.UnknownState (1 ms)
+[ RUN      ] AutomatonRemoveStateTest.AllStates
+[       OK ] AutomatonRemoveStateTest.AllStates (3 ms)
+[ RUN      ] AutomatonRemoveStateTest.OriginInTransition
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:949: Failure
+Value of: removed
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:950: Failure
+Value of: fa.hasState(2_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:952: Failure
+Value of: fa.hasTransition(2_id, 'c', 4_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:953: Failure
+Expected equality of these values:
+  fa.countStates()
+    Which is: 5
+  static_cast<std::size_t>(StateCount - 1)
+    Which is: 4
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:954: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 2
+  1u
+    Which is: 1
+[  FAILED  ] AutomatonRemoveStateTest.OriginInTransition (7 ms)
+[ RUN      ] AutomatonRemoveStateTest.DestinationInTransition
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:972: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:976: Failure
+Value of: removed
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:977: Failure
+Value of: fa.hasState(2_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:980: Failure
+Expected equality of these values:
+  fa.countStates()
+    Which is: 5
+  static_cast<std::size_t>(StateCount - 1)
+    Which is: 4
+[  FAILED  ] AutomatonRemoveStateTest.DestinationInTransition (5 ms)
+[ RUN      ] AutomatonRemoveStateTest.OriginAndDestinationInTransitionConstant
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1001: Failure
+Value of: fa.removeState(2_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1003: Failure
+Value of: fa.hasState(2_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1005: Failure
+Value of: fa.hasTransition(2_id, 'b', 1_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1006: Failure
+Value of: fa.hasTransition(2_id, 'a', 2_id)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1007: Failure
+Expected equality of these values:
+  fa.countStates()
+    Which is: 3
+  2u
+    Which is: 2
+[  FAILED  ] AutomatonRemoveStateTest.OriginAndDestinationInTransitionConstant (6 ms)
+[----------] 6 tests from AutomatonRemoveStateTest (26 ms total)
+
+[----------] 4 tests from AutomatonRemoveTransitionTest
+[ RUN      ] AutomatonRemoveTransitionTest.OneTransition
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1024: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1025: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1030: Failure
+Value of: removed
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1032: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1033: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 0
+  1u
+    Which is: 1
+[  FAILED  ] AutomatonRemoveTransitionTest.OneTransition (6 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownOrigin
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1049: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1050: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1057: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1058: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+[  FAILED  ] AutomatonRemoveTransitionTest.UnknownOrigin (5 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownTarget
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1074: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1075: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1082: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1083: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+[  FAILED  ] AutomatonRemoveTransitionTest.UnknownTarget (5 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownLetter
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1099: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1100: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1107: Failure
+Value of: fa.hasTransition(2_id, 'c', 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1108: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 1
+  2u
+    Which is: 2
+[  FAILED  ] AutomatonRemoveTransitionTest.UnknownLetter (5 ms)
+[----------] 4 tests from AutomatonRemoveTransitionTest (21 ms total)
+
+[----------] 1 test from AutomatonPrettyPrint
+[ RUN      ] AutomatonPrettyPrint.Tramaux
+Initial states:
+	0 1 
+Final states:
+	1 4 
+Transitions:
+	For state 0:
+		For letter a:
+	For state 1:
+		For letter b:
+	For state 2:
+		For letter a:
+		For letter b:
+	For state 3:
+		For letter a:
+		For letter b:
+	For state 4:
+		For letter a:
+[       OK ] AutomatonPrettyPrint.Tramaux (3 ms)
+[----------] 1 test from AutomatonPrettyPrint (3 ms total)
+
+[----------] 4 tests from AutomatonHasEpsilonTransitionTest
+[ RUN      ] AutomatonHasEpsilonTransitionTest.WithoutEpsilon
+[       OK ] AutomatonHasEpsilonTransitionTest.WithoutEpsilon (1 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.WithEpsilon
+[       OK ] AutomatonHasEpsilonTransitionTest.WithEpsilon (1 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.Twice
+[       OK ] AutomatonHasEpsilonTransitionTest.Twice (1 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.AddAndRemove
+[       OK ] AutomatonHasEpsilonTransitionTest.AddAndRemove (1 ms)
+[----------] 4 tests from AutomatonHasEpsilonTransitionTest (6 ms total)
+
+[----------] 11 tests from AutomatonIsDeterministicTest
+[ RUN      ] AutomatonIsDeterministicTest.Good
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1286: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1298: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.Good (4 ms)
+[ RUN      ] AutomatonIsDeterministicTest.GoodChahat
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1322: Failure
+Value of: fa.addTransition(2,'d',1)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonIsDeterministicTest.GoodChahat (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.GoodVillemin
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1368: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1380: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.GoodVillemin (3 ms)
+[ RUN      ] AutomatonIsDeterministicTest.TwoTransitions
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1404: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.TwoTransitions (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NotComplete
+[       OK ] AutomatonIsDeterministicTest.NotComplete (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.TwoInitialStates
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1448: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.TwoInitialStates (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.ZeroInitialState
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1469: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.ZeroInitialState (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NoFinalState
+[       OK ] AutomatonIsDeterministicTest.NoFinalState (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Demougin1
+[       OK ] AutomatonIsDeterministicTest.Demougin1 (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NoTransitionMaxel
+[       OK ] AutomatonIsDeterministicTest.NoTransitionMaxel (0 ms)
+[ RUN      ] AutomatonIsDeterministicTest.ThreeTransitionsGasca
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1562: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.ThreeTransitionsGasca (2 ms)
+[----------] 11 tests from AutomatonIsDeterministicTest (24 ms total)
+
+[----------] 6 tests from AutomatonIsCompleteTest
+[ RUN      ] AutomatonIsCompleteTest.Good
+[       OK ] AutomatonIsCompleteTest.Good (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.TwoTransitions
+[       OK ] AutomatonIsCompleteTest.TwoTransitions (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.ZeroTransition
+[       OK ] AutomatonIsCompleteTest.ZeroTransition (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.AddedRemovedTransition
+[       OK ] AutomatonIsCompleteTest.AddedRemovedTransition (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Villemin
+[       OK ] AutomatonIsCompleteTest.Villemin (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Demougin1
+[       OK ] AutomatonIsCompleteTest.Demougin1 (3 ms)
+[----------] 6 tests from AutomatonIsCompleteTest (11 ms total)
+
+[----------] 7 tests from AutomatonCreateCompleteTest
+[ RUN      ] AutomatonCreateCompleteTest.MissingState
+[       OK ] AutomatonCreateCompleteTest.MissingState (668 ms)
+[ RUN      ] AutomatonCreateCompleteTest.AlreadyComplete
+[       OK ] AutomatonCreateCompleteTest.AlreadyComplete (687 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Dillon1
+[       OK ] AutomatonCreateCompleteTest.Dillon1 (4 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Flecy
+[       OK ] AutomatonCreateCompleteTest.Flecy (348 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Max
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1888: Failure
+Value of: complete.isComplete()
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateCompleteTest.Max (394 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Garbage
+[       OK ] AutomatonCreateCompleteTest.Garbage (491 ms)
+[ RUN      ] AutomatonCreateCompleteTest.BadTrashNumber
+[       OK ] AutomatonCreateCompleteTest.BadTrashNumber (1069 ms)
+[----------] 7 tests from AutomatonCreateCompleteTest (3665 ms total)
+
+[----------] 9 tests from AutomatonCreateComplementTest
+[ RUN      ] AutomatonCreateComplementTest.Simple
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.Simple (11 ms)
+[ RUN      ] AutomatonCreateComplementTest.NonDeterministic
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2008: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:188: Failure
+Expected equality of these values:
+  refResult
+    Which is: true
+  sutResult
+    Which is: false
+Failure with: ''
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.NonDeterministic (5 ms)
+[ RUN      ] AutomatonCreateComplementTest.UselessState
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:188: Failure
+Expected equality of these values:
+  refResult
+    Which is: true
+  sutResult
+    Which is: false
+Failure with: ''
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.UselessState (3 ms)
+[ RUN      ] AutomatonCreateComplementTest.NonCompleteFlecy
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.NonCompleteFlecy (2 ms)
+[ RUN      ] AutomatonCreateComplementTest.NonDeterministicMomi
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2084: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.NonDeterministicMomi (3 ms)
+[ RUN      ] AutomatonCreateComplementTest.NonCompleteMomi
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.NonCompleteMomi (2 ms)
+[ RUN      ] AutomatonCreateComplementTest.EmptyLeonard
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:188: Failure
+Expected equality of these values:
+  refResult
+    Which is: true
+  sutResult
+    Which is: false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.EmptyLeonard (5 ms)
+[ RUN      ] AutomatonCreateComplementTest.EmptyGasca
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:188: Failure
+Expected equality of these values:
+  refResult
+    Which is: true
+  sutResult
+    Which is: false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.EmptyGasca (2 ms)
+[ RUN      ] AutomatonCreateComplementTest.Full
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:114: Failure
+Expected: (refResult) != (sutResult), actual: false vs false
+Failure with: ''
+[  FAILED  ] AutomatonCreateComplementTest.Full (184 ms)
+[----------] 9 tests from AutomatonCreateComplementTest (222 ms total)
+
+[----------] 4 tests from AutomatonMirror
+[ RUN      ] AutomatonMirror.Empty
+[       OK ] AutomatonMirror.Empty (14 ms)
+[ RUN      ] AutomatonMirror.UnitBerthod
+[       OK ] AutomatonMirror.UnitBerthod (20 ms)
+[ RUN      ] AutomatonMirror.Simple
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:140: Failure
+Expected equality of these values:
+  refResult
+    Which is: false
+  sutResult
+    Which is: true
+Failure with: 'aa'
+[  FAILED  ] AutomatonMirror.Simple (3 ms)
+[ RUN      ] AutomatonMirror.InitialFinalState
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:140: Failure
+Expected equality of these values:
+  refResult
+    Which is: false
+  sutResult
+    Which is: true
+Failure with: 'aa'
+[  FAILED  ] AutomatonMirror.InitialFinalState (3 ms)
+[----------] 4 tests from AutomatonMirror (41 ms total)
+
+[----------] 5 tests from AutomatonMakeTransitionTest
+[ RUN      ] AutomatonMakeTransitionTest.Simple
+[       OK ] AutomatonMakeTransitionTest.Simple (4 ms)
+[ RUN      ] AutomatonMakeTransitionTest.NonDeterministic
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2320: Failure
+Expected equality of these values:
+  fa.makeTransition({ 0_id }, 'a')
+    Which is: { 7 }
+  expected0
+    Which is: { 7, 10 }
+[  FAILED  ] AutomatonMakeTransitionTest.NonDeterministic (3 ms)
+[ RUN      ] AutomatonMakeTransitionTest.NoTransition
+[       OK ] AutomatonMakeTransitionTest.NoTransition (1 ms)
+[ RUN      ] AutomatonMakeTransitionTest.NoExistingStateFocheux
+[       OK ] AutomatonMakeTransitionTest.NoExistingStateFocheux (1 ms)
+[ RUN      ] AutomatonMakeTransitionTest.NoExistingLetter
+[       OK ] AutomatonMakeTransitionTest.NoExistingLetter (1 ms)
+[----------] 5 tests from AutomatonMakeTransitionTest (12 ms total)
+
+[----------] 5 tests from AutomatonReadStringTest
+[ RUN      ] AutomatonReadStringTest.Simple
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2390: Failure
+Expected equality of these values:
+  fa.readString("")
+    Which is: {}
+  expected0
+    Which is: { 7 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2393: Failure
+Expected equality of these values:
+  fa.readString("a")
+    Which is: { 7 }
+  expected1
+    Which is: { 7, 10 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2396: Failure
+Expected equality of these values:
+  fa.readString("aa")
+    Which is: { 7 }
+  expected2
+    Which is: { 7, 10, 13 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2399: Failure
+Expected equality of these values:
+  fa.readString("aaa")
+    Which is: { 7 }
+  expected3
+    Which is: { 7, 10, 13, 16 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2402: Failure
+Expected equality of these values:
+  fa.readString("aaaa")
+    Which is: { 7 }
+  expected4
+    Which is: { 7, 10, 13, 16, 19 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2405: Failure
+Expected equality of these values:
+  fa.readString("ab")
+    Which is: { 7 }
+  expected5
+    Which is: { 7, 13 }
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2408: Failure
+Expected equality of these values:
+  fa.readString("abb")
+    Which is: { 7 }
+  expected6
+    Which is: { 7, 16 }
+[  FAILED  ] AutomatonReadStringTest.Simple (13 ms)
+[ RUN      ] AutomatonReadStringTest.ManyInitialStates
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2430: Failure
+Expected equality of these values:
+  fa.readString("")
+    Which is: {}
+  expected0
+    Which is: { 7, 13 }
+[  FAILED  ] AutomatonReadStringTest.ManyInitialStates (4 ms)
+[ RUN      ] AutomatonReadStringTest.Demougin2
+[       OK ] AutomatonReadStringTest.Demougin2 (2 ms)
+[ RUN      ] AutomatonReadStringTest.UnknownSymbol
+[       OK ] AutomatonReadStringTest.UnknownSymbol (2 ms)
+[ RUN      ] AutomatonReadStringTest.InvalidStringMaxel
+[       OK ] AutomatonReadStringTest.InvalidStringMaxel (2 ms)
+[----------] 5 tests from AutomatonReadStringTest (26 ms total)
+
+[----------] 3 tests from AutomatonMatchTest
+[ RUN      ] AutomatonMatchTest.Simple
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2559: Failure
+Value of: fa.match("abbb")
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2560: Failure
+Value of: fa.match("ababaabb")
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2561: Failure
+Value of: fa.match("aaaaaaaa")
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonMatchTest.Simple (6 ms)
+[ RUN      ] AutomatonMatchTest.ManyInitialStates
+[       OK ] AutomatonMatchTest.ManyInitialStates (2 ms)
+[ RUN      ] AutomatonMatchTest.ExponentialGuillemot
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2620: Failure
+Value of: fa.match(word1)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonMatchTest.ExponentialGuillemot (4 ms)
+[----------] 3 tests from AutomatonMatchTest (14 ms total)
+
+[----------] 6 tests from AutomatonIsEmptyTest
+[ RUN      ] AutomatonIsEmptyTest.NotEmpty
+[       OK ] AutomatonIsEmptyTest.NotEmpty (1 ms)
+[ RUN      ] AutomatonIsEmptyTest.Empty
+[       OK ] AutomatonIsEmptyTest.Empty (1 ms)
+[ RUN      ] AutomatonIsEmptyTest.UnitLanguage
+[       OK ] AutomatonIsEmptyTest.UnitLanguage (1 ms)
+[ RUN      ] AutomatonIsEmptyTest.TwoPartsGuillemot
+[       OK ] AutomatonIsEmptyTest.TwoPartsGuillemot (1 ms)
+[ RUN      ] AutomatonIsEmptyTest.NoEarlyReturnNegar
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2734: Failure
+Value of: fa.isLanguageEmpty()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsEmptyTest.NoEarlyReturnNegar (2 ms)
+[ RUN      ] AutomatonIsEmptyTest.DeepGalland
+[       OK ] AutomatonIsEmptyTest.DeepGalland (161 ms)
+[----------] 6 tests from AutomatonIsEmptyTest (177 ms total)
+
+[----------] 6 tests from AutomatonRemoveNonAccessibleStatesTest
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.Present
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.Present (4 ms)
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.NotPresent
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.NotPresent (1 ms)
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.NoInitialState
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:2855: Failure
+Value of: fa.isValid()
+  Actual: false
+Expected: true
+testfa: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:459: bool fa::Automaton::match(const std::string&) const: Assertion `isValid()' failed.
+==80964== 
+==80964== Process terminating with default action of signal 6 (SIGABRT): dumping core
+==80964==    at 0x4C18EBC: __pthread_kill_implementation (pthread_kill.c:44)
+==80964==    by 0x4BC9FB1: raise (raise.c:26)
+==80964==    by 0x4BB4471: abort (abort.c:79)
+==80964==    by 0x4BB4394: __assert_fail_base.cold (assert.c:92)
+==80964==    by 0x4BC2EB1: __assert_fail (assert.c:101)
+==80964==    by 0x13A93E: fa::Automaton::match(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (Automaton.cc:459)
+==80964==    by 0x153790: void (anonymous namespace)::checkAutomatonWithFunction<(anonymous namespace)::checkEmpty(fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)#1}>((anonymous namespace)::checkEmpty(fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)::{lambda(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)#1}, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:187)
+==80964==    by 0x162CD2: checkEmpty (testfa.cc:204)
+==80964==    by 0x162CD2: AutomatonRemoveNonAccessibleStatesTest_NoInitialState_Test::TestBody() (testfa.cc:2857)
+==80964==    by 0x1B697E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==80964==    by 0x1B697E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==80964==    by 0x1A8BB5: Run (gtest.cc:2706)
+==80964==    by 0x1A8BB5: testing::Test::Run() (gtest.cc:2696)
+==80964==    by 0x1A8DB4: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==80964==    by 0x1A8F8A: Run (gtest.cc:2858)
+==80964==    by 0x1A8F8A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==80964== 
+==80964== HEAP SUMMARY:
+==80964==     in use at exit: 187,569 bytes in 1,177 blocks
+==80964==   total heap usage: 3,020,645 allocs, 3,019,468 frees, 203,596,374 bytes allocated
+==80964== 
+==80964== LEAK SUMMARY:
+==80964==    definitely lost: 0 bytes in 0 blocks
+==80964==    indirectly lost: 0 bytes in 0 blocks
+==80964==      possibly lost: 0 bytes in 0 blocks
+==80964==    still reachable: 187,569 bytes in 1,177 blocks
+==80964==         suppressed: 0 bytes in 0 blocks
+==80964== Rerun with --leak-check=full to see details of leaked memory
+==80964== 
+==80964== For lists of detected and suppressed errors, rerun with: -s
+==80964== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+timeout: la commande surveillée a renvoyé un core dump
+Aborted

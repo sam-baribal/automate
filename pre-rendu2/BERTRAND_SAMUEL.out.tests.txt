@@ -1,0 +1,1463 @@
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/build
+[ 25%] Building CXX object CMakeFiles/testfa.dir/Automaton.cc.o
+[ 50%] Building CXX object CMakeFiles/testfa.dir/testfa.cc.o
+[ 75%] Building CXX object CMakeFiles/testfa.dir/googletest/googletest/src/gtest-all.cc.o
+[100%] Linking CXX executable testfa
+[100%] Built target testfa
+==64576== Memcheck, a memory error detector
+==64576== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==64576== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==64576== Command: ./testfa
+==64576== 
+[==========] Running 138 tests from 29 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from AutomatonExampleTest
+[ RUN      ] AutomatonExampleTest.Default
+[       OK ] AutomatonExampleTest.Default (3 ms)
+[----------] 1 test from AutomatonExampleTest (5 ms total)
+
+[----------] 4 tests from AutomatonIsValidTest
+[ RUN      ] AutomatonIsValidTest.EmptyAutomaton
+[       OK ] AutomatonIsValidTest.EmptyAutomaton (0 ms)
+[ RUN      ] AutomatonIsValidTest.EmptyStates
+[       OK ] AutomatonIsValidTest.EmptyStates (1 ms)
+[ RUN      ] AutomatonIsValidTest.EmptyAlphabet
+[       OK ] AutomatonIsValidTest.EmptyAlphabet (1 ms)
+[ RUN      ] AutomatonIsValidTest.VaildAutomaton
+[       OK ] AutomatonIsValidTest.VaildAutomaton (0 ms)
+[----------] 4 tests from AutomatonIsValidTest (4 ms total)
+
+[----------] 4 tests from AutomatonAddSymbolTest
+[ RUN      ] AutomatonAddSymbolTest.Valid
+[       OK ] AutomatonAddSymbolTest.Valid (2 ms)
+[ RUN      ] AutomatonAddSymbolTest.Existing
+[       OK ] AutomatonAddSymbolTest.Existing (0 ms)
+[ RUN      ] AutomatonAddSymbolTest.Invalid
+[       OK ] AutomatonAddSymbolTest.Invalid (0 ms)
+[ RUN      ] AutomatonAddSymbolTest.Epsilon
+[       OK ] AutomatonAddSymbolTest.Epsilon (0 ms)
+[----------] 4 tests from AutomatonAddSymbolTest (4 ms total)
+
+[----------] 5 tests from AutomatonRemoveSymbolTest
+[ RUN      ] AutomatonRemoveSymbolTest.Present
+[       OK ] AutomatonRemoveSymbolTest.Present (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.Absent
+[       OK ] AutomatonRemoveSymbolTest.Absent (0 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.Invalid
+[       OK ] AutomatonRemoveSymbolTest.Invalid (0 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.AlreadyRemoved
+[       OK ] AutomatonRemoveSymbolTest.AlreadyRemoved (0 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.SymbolInTransition
+[       OK ] AutomatonRemoveSymbolTest.SymbolInTransition (11 ms)
+[----------] 5 tests from AutomatonRemoveSymbolTest (15 ms total)
+
+[----------] 4 tests from AutomatonHasSymbolTest
+[ RUN      ] AutomatonHasSymbolTest.EmptyAlphabet
+[       OK ] AutomatonHasSymbolTest.EmptyAlphabet (0 ms)
+[ RUN      ] AutomatonHasSymbolTest.Present
+[       OK ] AutomatonHasSymbolTest.Present (1 ms)
+[ RUN      ] AutomatonHasSymbolTest.Absent
+[       OK ] AutomatonHasSymbolTest.Absent (4 ms)
+[ RUN      ] AutomatonHasSymbolTest.Invalid
+[       OK ] AutomatonHasSymbolTest.Invalid (1 ms)
+[----------] 4 tests from AutomatonHasSymbolTest (8 ms total)
+
+[----------] 3 tests from AutomatonCountSymbolsTest
+[ RUN      ] AutomatonCountSymbolsTest.Empty
+[       OK ] AutomatonCountSymbolsTest.Empty (0 ms)
+[ RUN      ] AutomatonCountSymbolsTest.OneSymbol
+[       OK ] AutomatonCountSymbolsTest.OneSymbol (0 ms)
+[ RUN      ] AutomatonCountSymbolsTest.ManySymbols
+[       OK ] AutomatonCountSymbolsTest.ManySymbols (1 ms)
+[----------] 3 tests from AutomatonCountSymbolsTest (2 ms total)
+
+[----------] 5 tests from AutomatonAddStateTest
+[ RUN      ] AutomatonAddStateTest.New
+[       OK ] AutomatonAddStateTest.New (0 ms)
+[ RUN      ] AutomatonAddStateTest.Zero
+[       OK ] AutomatonAddStateTest.Zero (0 ms)
+[ RUN      ] AutomatonAddStateTest.Negative
+[       OK ] AutomatonAddStateTest.Negative (0 ms)
+[ RUN      ] AutomatonAddStateTest.Existing
+[       OK ] AutomatonAddStateTest.Existing (0 ms)
+[ RUN      ] AutomatonAddStateTest.Many
+[       OK ] AutomatonAddStateTest.Many (2 ms)
+[----------] 5 tests from AutomatonAddStateTest (5 ms total)
+
+[----------] 6 tests from AutomatonRemoveStateTest
+[ RUN      ] AutomatonRemoveStateTest.Existing
+[       OK ] AutomatonRemoveStateTest.Existing (0 ms)
+[ RUN      ] AutomatonRemoveStateTest.NonExisting
+[       OK ] AutomatonRemoveStateTest.NonExisting (0 ms)
+[ RUN      ] AutomatonRemoveStateTest.Invalid
+[       OK ] AutomatonRemoveStateTest.Invalid (0 ms)
+[ RUN      ] AutomatonRemoveStateTest.Many
+[       OK ] AutomatonRemoveStateTest.Many (20 ms)
+[ RUN      ] AutomatonRemoveStateTest.StateInTransitionFrom
+[       OK ] AutomatonRemoveStateTest.StateInTransitionFrom (3 ms)
+[ RUN      ] AutomatonRemoveStateTest.StateInTransitionTo
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:420: Failure
+Expected equality of these values:
+  5u
+    Which is: 5
+  fa.countTransitions()
+    Which is: 4
+[  FAILED  ] AutomatonRemoveStateTest.StateInTransitionTo (17 ms)
+[----------] 6 tests from AutomatonRemoveStateTest (43 ms total)
+
+[----------] 2 tests from AutomatonHasStateTest
+[ RUN      ] AutomatonHasStateTest.Existing
+[       OK ] AutomatonHasStateTest.Existing (0 ms)
+[ RUN      ] AutomatonHasStateTest.NonExisting
+[       OK ] AutomatonHasStateTest.NonExisting (0 ms)
+[----------] 2 tests from AutomatonHasStateTest (1 ms total)
+
+[----------] 3 tests from AutomatonCountStatesTest
+[ RUN      ] AutomatonCountStatesTest.Zero
+[       OK ] AutomatonCountStatesTest.Zero (0 ms)
+[ RUN      ] AutomatonCountStatesTest.One
+[       OK ] AutomatonCountStatesTest.One (0 ms)
+[ RUN      ] AutomatonCountStatesTest.Many
+[       OK ] AutomatonCountStatesTest.Many (2 ms)
+[----------] 3 tests from AutomatonCountStatesTest (3 ms total)
+
+[----------] 2 tests from AutomatonIsStateInitialTest
+[ RUN      ] AutomatonIsStateInitialTest.Initial
+[       OK ] AutomatonIsStateInitialTest.Initial (1 ms)
+[ RUN      ] AutomatonIsStateInitialTest.NonInitial
+[       OK ] AutomatonIsStateInitialTest.NonInitial (0 ms)
+[----------] 2 tests from AutomatonIsStateInitialTest (1 ms total)
+
+[----------] 2 tests from AutomatonIsStateFinalTest
+[ RUN      ] AutomatonIsStateFinalTest.Final
+[       OK ] AutomatonIsStateFinalTest.Final (1 ms)
+[ RUN      ] AutomatonIsStateFinalTest.NonFinal
+[       OK ] AutomatonIsStateFinalTest.NonFinal (0 ms)
+[----------] 2 tests from AutomatonIsStateFinalTest (1 ms total)
+
+[----------] 6 tests from AutomatonAddTransitionTest
+[ RUN      ] AutomatonAddTransitionTest.New
+[       OK ] AutomatonAddTransitionTest.New (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.Existing
+[       OK ] AutomatonAddTransitionTest.Existing (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.InvalidFrom
+[       OK ] AutomatonAddTransitionTest.InvalidFrom (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.InvalidTo
+[       OK ] AutomatonAddTransitionTest.InvalidTo (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.InvalidAlpha
+[       OK ] AutomatonAddTransitionTest.InvalidAlpha (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.Epsilon
+[       OK ] AutomatonAddTransitionTest.Epsilon (1 ms)
+[----------] 6 tests from AutomatonAddTransitionTest (8 ms total)
+
+[----------] 2 tests from AutomatonRemoveTransitionTest
+[ RUN      ] AutomatonRemoveTransitionTest.Existing
+[       OK ] AutomatonRemoveTransitionTest.Existing (2 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.NonExisting
+[       OK ] AutomatonRemoveTransitionTest.NonExisting (0 ms)
+[----------] 2 tests from AutomatonRemoveTransitionTest (3 ms total)
+
+[----------] 3 tests from AutomatonHasTransitionTest
+[ RUN      ] AutomatonHasTransitionTest.Existing
+[       OK ] AutomatonHasTransitionTest.Existing (1 ms)
+[ RUN      ] AutomatonHasTransitionTest.NonExisting
+[       OK ] AutomatonHasTransitionTest.NonExisting (0 ms)
+[ RUN      ] AutomatonHasTransitionTest.PointingToSelf
+[       OK ] AutomatonHasTransitionTest.PointingToSelf (1 ms)
+[----------] 3 tests from AutomatonHasTransitionTest (3 ms total)
+
+[----------] 2 tests from AutomatonCountTransitionsTest
+[ RUN      ] AutomatonCountTransitionsTest.Zero
+[       OK ] AutomatonCountTransitionsTest.Zero (0 ms)
+[ RUN      ] AutomatonCountTransitionsTest.One
+[       OK ] AutomatonCountTransitionsTest.One (1 ms)
+[----------] 2 tests from AutomatonCountTransitionsTest (2 ms total)
+
+[----------] 2 tests from AutomatonPrettyPrintTest
+[ RUN      ] AutomatonPrettyPrintTest.Empty
+Initial states:
+	
+Final states:
+	
+Transitions:
+[       OK ] AutomatonPrettyPrintTest.Empty (1 ms)
+[ RUN      ] AutomatonPrettyPrintTest.Stuffed
+Initial states:
+	0 1 
+Final states:
+	1 4 
+Transitions:
+	For state 0:
+		For letter a: 1 2 3 
+		For letter b: 
+	For state 1:
+		For letter a: 
+		For letter b: 3 
+	For state 2:
+		For letter a: 3 
+		For letter b: 4 
+	For state 3:
+		For letter a: 3 
+		For letter b: 4 
+	For state 4:
+		For letter a: 4 
+		For letter b: 
+[       OK ] AutomatonPrettyPrintTest.Stuffed (2 ms)
+[----------] 2 tests from AutomatonPrettyPrintTest (4 ms total)
+
+[----------] 2 tests from AutomatonHasEpsilonTransitionTest
+[ RUN      ] AutomatonHasEpsilonTransitionTest.Has
+[       OK ] AutomatonHasEpsilonTransitionTest.Has (1 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.HasNot
+[       OK ] AutomatonHasEpsilonTransitionTest.HasNot (1 ms)
+[----------] 2 tests from AutomatonHasEpsilonTransitionTest (3 ms total)
+
+[----------] 5 tests from AutomatonIsDeterministicTest
+[ RUN      ] AutomatonIsDeterministicTest.Deterministic
+[       OK ] AutomatonIsDeterministicTest.Deterministic (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Complete
+[       OK ] AutomatonIsDeterministicTest.Complete (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Both1
+[       OK ] AutomatonIsDeterministicTest.Both1 (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Both2
+[       OK ] AutomatonIsDeterministicTest.Both2 (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Neither
+[       OK ] AutomatonIsDeterministicTest.Neither (1 ms)
+[----------] 5 tests from AutomatonIsDeterministicTest (10 ms total)
+
+[----------] 5 tests from AutomatonIsCompleteTest
+[ RUN      ] AutomatonIsCompleteTest.Deterministic
+[       OK ] AutomatonIsCompleteTest.Deterministic (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Complete
+[       OK ] AutomatonIsCompleteTest.Complete (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Both1
+[       OK ] AutomatonIsCompleteTest.Both1 (0 ms)
+[ RUN      ] AutomatonIsCompleteTest.Both2
+[       OK ] AutomatonIsCompleteTest.Both2 (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Neither
+[       OK ] AutomatonIsCompleteTest.Neither (1 ms)
+[----------] 5 tests from AutomatonIsCompleteTest (6 ms total)
+
+[----------] 2 tests from AutomatonCreateCompleteTest
+[ RUN      ] AutomatonCreateCompleteTest.AlreadyComplete
+[       OK ] AutomatonCreateCompleteTest.AlreadyComplete (7 ms)
+[ RUN      ] AutomatonCreateCompleteTest.NotComplete
+[       OK ] AutomatonCreateCompleteTest.NotComplete (7 ms)
+[----------] 2 tests from AutomatonCreateCompleteTest (15 ms total)
+
+[----------] 5 tests from AutomatonCreateComplementTest
+[ RUN      ] AutomatonCreateComplementTest.Deterministic
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:739: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:740: Failure
+Value of: fa2.isStateFinal(1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:741: Failure
+Value of: fa2.isStateFinal(2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+[  FAILED  ] AutomatonCreateComplementTest.Deterministic (10 ms)
+[ RUN      ] AutomatonCreateComplementTest.Complete
+!!!  !!!  TO DO  !!!  !!!
+[       OK ] AutomatonCreateComplementTest.Complete (0 ms)
+[ RUN      ] AutomatonCreateComplementTest.Both1
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:759: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+[  FAILED  ] AutomatonCreateComplementTest.Both1 (3 ms)
+[ RUN      ] AutomatonCreateComplementTest.Both2
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:775: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:776: Failure
+Value of: fa2.isStateFinal(1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:777: Failure
+Value of: fa2.isStateFinal(2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:779: Failure
+Value of: fa2.isStateFinal(4)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateComplementTest.Both2 (6 ms)
+[ RUN      ] AutomatonCreateComplementTest.Neither
+!!!  !!!  TO DO  !!!  !!!
+[       OK ] AutomatonCreateComplementTest.Neither (0 ms)
+[----------] 5 tests from AutomatonCreateComplementTest (20 ms total)
+
+[----------] 5 tests from AutomatonCreateMirrorTest
+[ RUN      ] AutomatonCreateMirrorTest.Deterministic
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:802: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:803: Failure
+Value of: fa2.isStateInitial(3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:804: Failure
+Value of: fa2.hasTransition(1, 'b', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:805: Failure
+Value of: fa2.hasTransition(2, 'a', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:806: Failure
+Value of: fa2.hasTransition(2, 'a', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:807: Failure
+Value of: fa2.hasTransition(3, 'b', 2)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateMirrorTest.Deterministic (10 ms)
+[ RUN      ] AutomatonCreateMirrorTest.Complete
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:827: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:828: Failure
+Value of: fa2.isStateInitial(3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:829: Failure
+Value of: fa2.hasTransition(0, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:830: Failure
+Value of: fa2.hasTransition(2, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:831: Failure
+Value of: fa2.hasTransition(0, 'b', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:832: Failure
+Value of: fa2.hasTransition(1, 'b', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:833: Failure
+Value of: fa2.hasTransition(3, 'b', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:834: Failure
+Value of: fa2.hasTransition(3, 'a', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:835: Failure
+Value of: fa2.hasTransition(3, 'a', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:836: Failure
+Value of: fa2.hasTransition(3, 'b', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:837: Failure
+Value of: fa2.hasTransition(2, 'a', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:838: Failure
+Value of: fa2.hasTransition(3, 'b', 2)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateMirrorTest.Complete (14 ms)
+[ RUN      ] AutomatonCreateMirrorTest.Both1
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:852: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:853: Failure
+Value of: fa2.isStateInitial(1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:854: Failure
+Value of: fa2.hasTransition(0, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:855: Failure
+Value of: fa2.hasTransition(1, 'b', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:856: Failure
+Value of: fa2.hasTransition(1, 'a', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:857: Failure
+Value of: fa2.hasTransition(0, 'b', 1)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateMirrorTest.Both1 (7 ms)
+[ RUN      ] AutomatonCreateMirrorTest.Both2
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:877: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:878: Failure
+Value of: fa2.isStateInitial(3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:879: Failure
+Value of: fa2.hasTransition(4, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:880: Failure
+Value of: fa2.hasTransition(1, 'b', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:881: Failure
+Value of: fa2.hasTransition(2, 'a', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:882: Failure
+Value of: fa2.hasTransition(4, 'b', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:883: Failure
+Value of: fa2.hasTransition(2, 'a', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:884: Failure
+Value of: fa2.hasTransition(3, 'b', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:885: Failure
+Value of: fa2.hasTransition(4, 'a', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:886: Failure
+Value of: fa2.hasTransition(4, 'b', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:887: Failure
+Value of: fa2.hasTransition(4, 'a', 4)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:888: Failure
+Value of: fa2.hasTransition(4, 'b', 4)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateMirrorTest.Both2 (12 ms)
+[ RUN      ] AutomatonCreateMirrorTest.Neither
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:910: Failure
+Value of: fa2.isStateFinal(0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateFinal                                              |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:911: Failure
+Value of: fa2.isStateFinal(1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:912: Failure
+Value of: fa2.isStateInitial(1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   isStateInitial                                            |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:913: Failure
+Value of: fa2.isStateInitial(4)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:914: Failure
+Value of: fa2.hasTransition(1, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:915: Failure
+Value of: fa2.hasTransition(2, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:916: Failure
+Value of: fa2.hasTransition(3, 'a', 0)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:917: Failure
+Value of: fa2.hasTransition(3, 'b', 1)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:918: Failure
+Value of: fa2.hasTransition(3, 'a', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:919: Failure
+Value of: fa2.hasTransition(4, 'b', 2)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:920: Failure
+Value of: fa2.hasTransition(3, 'a', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:921: Failure
+Value of: fa2.hasTransition(4, 'b', 3)
+  Actual: false
+Expected: true
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasTransition                                             |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
++-------------------------------------------------------------+
+| ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! ATTENTION ! |
+| Votre test utilise une fonction non-sûre ! C'est interdit ! |
+| La fonction non-sûre que vous appelez est:                  |
+|   hasState                                                  |
+| Ce gentil message sera remplacé par un méchant assert.      |
+| Corrigez votre test sous peine d'avoir zéro.                |
++-------------------------------------------------------------+
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:922: Failure
+Value of: fa2.hasTransition(4, 'a', 4)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonCreateMirrorTest.Neither (13 ms)
+[----------] 5 tests from AutomatonCreateMirrorTest (57 ms total)
+
+[----------] 5 tests from AutomatonMakeTransitionTest
+[ RUN      ] AutomatonMakeTransitionTest.Deterministic
+[       OK ] AutomatonMakeTransitionTest.Deterministic (6 ms)
+[ RUN      ] AutomatonMakeTransitionTest.Complete
+[       OK ] AutomatonMakeTransitionTest.Complete (9 ms)
+[ RUN      ] AutomatonMakeTransitionTest.Both1
+[       OK ] AutomatonMakeTransitionTest.Both1 (3 ms)
+[ RUN      ] AutomatonMakeTransitionTest.Both2
+[       OK ] AutomatonMakeTransitionTest.Both2 (8 ms)
+[ RUN      ] AutomatonMakeTransitionTest.Neither
+[       OK ] AutomatonMakeTransitionTest.Neither (9 ms)
+[----------] 5 tests from AutomatonMakeTransitionTest (38 ms total)
+
+[----------] 20 tests from AutomatonReadStringTest
+[ RUN      ] AutomatonReadStringTest.DeterministicWORD1
+[       OK ] AutomatonReadStringTest.DeterministicWORD1 (2 ms)
+[ RUN      ] AutomatonReadStringTest.DeterministicWORD2
+[       OK ] AutomatonReadStringTest.DeterministicWORD2 (1 ms)
+[ RUN      ] AutomatonReadStringTest.DeterministicWORD3
+[       OK ] AutomatonReadStringTest.DeterministicWORD3 (1 ms)
+[ RUN      ] AutomatonReadStringTest.DeterministicWORD4
+[       OK ] AutomatonReadStringTest.DeterministicWORD4 (1 ms)
+[ RUN      ] AutomatonReadStringTest.CompleteWORD1
+[       OK ] AutomatonReadStringTest.CompleteWORD1 (2 ms)
+[ RUN      ] AutomatonReadStringTest.CompleteWORD2
+[       OK ] AutomatonReadStringTest.CompleteWORD2 (1 ms)
+[ RUN      ] AutomatonReadStringTest.CompleteWORD3
+[       OK ] AutomatonReadStringTest.CompleteWORD3 (2 ms)
+[ RUN      ] AutomatonReadStringTest.CompleteWORD4
+[       OK ] AutomatonReadStringTest.CompleteWORD4 (2 ms)
+[ RUN      ] AutomatonReadStringTest.Both1WORD1
+[       OK ] AutomatonReadStringTest.Both1WORD1 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both1WORD2
+[       OK ] AutomatonReadStringTest.Both1WORD2 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both1WORD3
+[       OK ] AutomatonReadStringTest.Both1WORD3 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both1WORD4
+[       OK ] AutomatonReadStringTest.Both1WORD4 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both2WORD1
+[       OK ] AutomatonReadStringTest.Both2WORD1 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both2WORD2
+[       OK ] AutomatonReadStringTest.Both2WORD2 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both2WORD3
+[       OK ] AutomatonReadStringTest.Both2WORD3 (1 ms)
+[ RUN      ] AutomatonReadStringTest.Both2WORD4
+[       OK ] AutomatonReadStringTest.Both2WORD4 (1 ms)
+[ RUN      ] AutomatonReadStringTest.NeitherWORD1
+[       OK ] AutomatonReadStringTest.NeitherWORD1 (1 ms)
+[ RUN      ] AutomatonReadStringTest.NeitherWORD2
+[       OK ] AutomatonReadStringTest.NeitherWORD2 (1 ms)
+[ RUN      ] AutomatonReadStringTest.NeitherWORD3
+[       OK ] AutomatonReadStringTest.NeitherWORD3 (1 ms)
+[ RUN      ] AutomatonReadStringTest.NeitherWORD4
+[       OK ] AutomatonReadStringTest.NeitherWORD4 (1 ms)
+[----------] 20 tests from AutomatonReadStringTest (34 ms total)
+
+[----------] 20 tests from AutomatonMatchTest
+[ RUN      ] AutomatonMatchTest.DeterministicWORD1
+[       OK ] AutomatonMatchTest.DeterministicWORD1 (1 ms)
+[ RUN      ] AutomatonMatchTest.DeterministicWORD2
+[       OK ] AutomatonMatchTest.DeterministicWORD2 (1 ms)
+[ RUN      ] AutomatonMatchTest.DeterministicWORD3
+[       OK ] AutomatonMatchTest.DeterministicWORD3 (1 ms)
+[ RUN      ] AutomatonMatchTest.DeterministicWORD4
+[       OK ] AutomatonMatchTest.DeterministicWORD4 (1 ms)
+[ RUN      ] AutomatonMatchTest.CompleteWORD1
+[       OK ] AutomatonMatchTest.CompleteWORD1 (1 ms)
+[ RUN      ] AutomatonMatchTest.CompleteWORD2
+[       OK ] AutomatonMatchTest.CompleteWORD2 (1 ms)
+[ RUN      ] AutomatonMatchTest.CompleteWORD3
+[       OK ] AutomatonMatchTest.CompleteWORD3 (1 ms)
+[ RUN      ] AutomatonMatchTest.CompleteWORD4
+[       OK ] AutomatonMatchTest.CompleteWORD4 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both1WORD1
+[       OK ] AutomatonMatchTest.Both1WORD1 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both1WORD2
+[       OK ] AutomatonMatchTest.Both1WORD2 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both1WORD3
+[       OK ] AutomatonMatchTest.Both1WORD3 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both1WORD4
+[       OK ] AutomatonMatchTest.Both1WORD4 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both2WORD1
+[       OK ] AutomatonMatchTest.Both2WORD1 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both2WORD2
+[       OK ] AutomatonMatchTest.Both2WORD2 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both2WORD3
+[       OK ] AutomatonMatchTest.Both2WORD3 (1 ms)
+[ RUN      ] AutomatonMatchTest.Both2WORD4
+[       OK ] AutomatonMatchTest.Both2WORD4 (1 ms)
+[ RUN      ] AutomatonMatchTest.NeitherWORD1
+[       OK ] AutomatonMatchTest.NeitherWORD1 (1 ms)
+[ RUN      ] AutomatonMatchTest.NeitherWORD2
+[       OK ] AutomatonMatchTest.NeitherWORD2 (1 ms)
+[ RUN      ] AutomatonMatchTest.NeitherWORD3
+[       OK ] AutomatonMatchTest.NeitherWORD3 (1 ms)
+[ RUN      ] AutomatonMatchTest.NeitherWORD4
+[       OK ] AutomatonMatchTest.NeitherWORD4 (1 ms)
+[----------] 20 tests from AutomatonMatchTest (25 ms total)
+
+[----------] 5 tests from AutomatonIsLanguageEmptyTest
+[ RUN      ] AutomatonIsLanguageEmptyTest.NoInitialStates
+[       OK ] AutomatonIsLanguageEmptyTest.NoInitialStates (1 ms)
+[ RUN      ] AutomatonIsLanguageEmptyTest.NoFinalStates
+[       OK ] AutomatonIsLanguageEmptyTest.NoFinalStates (1 ms)
+[ RUN      ] AutomatonIsLanguageEmptyTest.NoTransition
+[       OK ] AutomatonIsLanguageEmptyTest.NoTransition (2 ms)
+[ RUN      ] AutomatonIsLanguageEmptyTest.DeterministicAndComplete
+[       OK ] AutomatonIsLanguageEmptyTest.DeterministicAndComplete (2 ms)
+[ RUN      ] AutomatonIsLanguageEmptyTest.Neither
+[       OK ] AutomatonIsLanguageEmptyTest.Neither (1 ms)
+[----------] 5 tests from AutomatonIsLanguageEmptyTest (8 ms total)
+
+[----------] 4 tests from AutomatonRemoveNonAccessibleStatesTest
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.DeterministicAndComplete
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.DeterministicAndComplete (3 ms)
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.Neither
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.Neither (1 ms)
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.OneRemoval
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.OneRemoval (1 ms)
+[ RUN      ] AutomatonRemoveNonAccessibleStatesTest.SeveralRemovals
+[       OK ] AutomatonRemoveNonAccessibleStatesTest.SeveralRemovals (3 ms)
+[----------] 4 tests from AutomatonRemoveNonAccessibleStatesTest (10 ms total)
+
+[----------] 4 tests from AutomatonRemoveNonCoAccessibleStatesTest
+[ RUN      ] AutomatonRemoveNonCoAccessibleStatesTest.DeterministicAndComplete
+[       OK ] AutomatonRemoveNonCoAccessibleStatesTest.DeterministicAndComplete (2 ms)
+[ RUN      ] AutomatonRemoveNonCoAccessibleStatesTest.Neither
+[       OK ] AutomatonRemoveNonCoAccessibleStatesTest.Neither (1 ms)
+[ RUN      ] AutomatonRemoveNonCoAccessibleStatesTest.OneRemoval
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:1495: Failure
+Value of: fa.hasState(5)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:1496: Failure
+Value of: fa.hasTransition(1, 'b', 5)
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonRemoveNonCoAccessibleStatesTest.OneRemoval (4 ms)
+[ RUN      ] AutomatonRemoveNonCoAccessibleStatesTest.SeveralRemovals
+[       OK ] AutomatonRemoveNonCoAccessibleStatesTest.SeveralRemovals (4 ms)
+[----------] 4 tests from AutomatonRemoveNonCoAccessibleStatesTest (13 ms total)
+
+[----------] Global test environment tear-down
+[==========] 138 tests from 29 test suites ran. (388 ms total)
+[  PASSED  ] 128 tests.
+[  FAILED  ] 10 tests, listed below:
+[  FAILED  ] AutomatonRemoveStateTest.StateInTransitionTo
+[  FAILED  ] AutomatonCreateComplementTest.Deterministic
+[  FAILED  ] AutomatonCreateComplementTest.Both1
+[  FAILED  ] AutomatonCreateComplementTest.Both2
+[  FAILED  ] AutomatonCreateMirrorTest.Deterministic
+[  FAILED  ] AutomatonCreateMirrorTest.Complete
+[  FAILED  ] AutomatonCreateMirrorTest.Both1
+[  FAILED  ] AutomatonCreateMirrorTest.Both2
+[  FAILED  ] AutomatonCreateMirrorTest.Neither
+[  FAILED  ] AutomatonRemoveNonCoAccessibleStatesTest.OneRemoval
+
+10 FAILED TESTS
+==64576== 
+==64576== HEAP SUMMARY:
+==64576==     in use at exit: 0 bytes in 0 blocks
+==64576==   total heap usage: 11,181 allocs, 11,181 frees, 1,198,089 bytes allocated
+==64576== 
+==64576== All heap blocks were freed -- no leaks are possible
+==64576== 
+==64576== For lists of detected and suppressed errors, rerun with: -s
+==64576== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

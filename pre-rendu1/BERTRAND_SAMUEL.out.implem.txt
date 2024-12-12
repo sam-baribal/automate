@@ -1,0 +1,1185 @@
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/build
+[ 25%] Building CXX object CMakeFiles/testfa.dir/Automaton.cc.o
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In member function ‘bool fa::Automaton::hasEmptyIntersectionWith(const fa::Automaton&) const’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:461:61: warning: unused parameter ‘other’ [-Wunused-parameter]
+  461 |   bool Automaton::hasEmptyIntersectionWith(const Automaton& other) const {
+      |                                            ~~~~~~~~~~~~~~~~~^~~~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In member function ‘bool fa::Automaton::isIncludedIn(const fa::Automaton&) const’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:465:49: warning: unused parameter ‘other’ [-Wunused-parameter]
+  465 |   bool Automaton::isIncludedIn(const Automaton& other) const {
+      |                                ~~~~~~~~~~~~~~~~~^~~~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In static member function ‘static fa::Automaton fa::Automaton::createIntersection(const fa::Automaton&, const fa::Automaton&)’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:469:60: warning: unused parameter ‘lhs’ [-Wunused-parameter]
+  469 |   Automaton Automaton::createIntersection(const Automaton& lhs, const Automaton& rhs){
+      |                                           ~~~~~~~~~~~~~~~~~^~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:469:82: warning: unused parameter ‘rhs’ [-Wunused-parameter]
+  469 |   Automaton Automaton::createIntersection(const Automaton& lhs, const Automaton& rhs){
+      |                                                                 ~~~~~~~~~~~~~~~~~^~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In static member function ‘static fa::Automaton fa::Automaton::createDeterministic(const fa::Automaton&)’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:476:61: warning: unused parameter ‘other’ [-Wunused-parameter]
+  476 |   Automaton Automaton::createDeterministic(const Automaton& other){
+      |                                            ~~~~~~~~~~~~~~~~~^~~~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In static member function ‘static fa::Automaton fa::Automaton::createMinimalMoore(const fa::Automaton&)’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:483:60: warning: unused parameter ‘other’ [-Wunused-parameter]
+  483 |   Automaton Automaton::createMinimalMoore(const Automaton& other){
+      |                                           ~~~~~~~~~~~~~~~~~^~~~~
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc: In static member function ‘static fa::Automaton fa::Automaton::createMinimalBrzozowski(const fa::Automaton&)’:
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/Automaton.cc:490:65: warning: unused parameter ‘other’ [-Wunused-parameter]
+  490 |   Automaton Automaton::createMinimalBrzozowski(const Automaton& other){
+      |                                                ~~~~~~~~~~~~~~~~~^~~~~
+[ 50%] Building CXX object CMakeFiles/testfa.dir/testfa.cc.o
+[ 75%] Building CXX object CMakeFiles/testfa.dir/googletest/googletest/src/gtest-all.cc.o
+[100%] Linking CXX executable testfa
+[100%] Built target testfa
+==371165== Memcheck, a memory error detector
+==371165== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==371165== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==371165== Command: ./testfa
+==371165== 
+[==========] Running 180 tests from 30 test suites.
+[----------] Global test environment set-up.
+[----------] 6 tests from AutomatonIsValidTest
+[ RUN      ] AutomatonIsValidTest.Default
+[       OK ] AutomatonIsValidTest.Default (3 ms)
+[ RUN      ] AutomatonIsValidTest.NoState1
+[       OK ] AutomatonIsValidTest.NoState1 (1 ms)
+[ RUN      ] AutomatonIsValidTest.NoState2
+[       OK ] AutomatonIsValidTest.NoState2 (2 ms)
+[ RUN      ] AutomatonIsValidTest.NoSymbol1
+[       OK ] AutomatonIsValidTest.NoSymbol1 (0 ms)
+[ RUN      ] AutomatonIsValidTest.NoSymbol2
+[       OK ] AutomatonIsValidTest.NoSymbol2 (1 ms)
+[ RUN      ] AutomatonIsValidTest.Valid
+[       OK ] AutomatonIsValidTest.Valid (0 ms)
+[----------] 6 tests from AutomatonIsValidTest (12 ms total)
+
+[----------] 5 tests from AutomatonAddSymbolTest
+[ RUN      ] AutomatonAddSymbolTest.OneSymbol
+[       OK ] AutomatonAddSymbolTest.OneSymbol (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.TwoSymbols
+[       OK ] AutomatonAddSymbolTest.TwoSymbols (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.TwoIdenticalSymbols
+[       OK ] AutomatonAddSymbolTest.TwoIdenticalSymbols (1 ms)
+[ RUN      ] AutomatonAddSymbolTest.Epsilon
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:336: Failure
+Value of: s1
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:337: Failure
+Value of: fa.hasSymbol(fa::Epsilon)
+  Actual: true
+Expected: false
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:338: Failure
+Expected equality of these values:
+  fa.countSymbols()
+    Which is: 1
+  0u
+    Which is: 0
+[  FAILED  ] AutomatonAddSymbolTest.Epsilon (17 ms)
+[ RUN      ] AutomatonAddSymbolTest.IsGraph
+[       OK ] AutomatonAddSymbolTest.IsGraph (2 ms)
+[----------] 5 tests from AutomatonAddSymbolTest (25 ms total)
+
+[----------] 4 tests from AutomatonRemoveSymbolTest
+[ RUN      ] AutomatonRemoveSymbolTest.OneSymbol
+[       OK ] AutomatonRemoveSymbolTest.OneSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.NoSymbol
+[       OK ] AutomatonRemoveSymbolTest.NoSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.UnknownSymbol
+[       OK ] AutomatonRemoveSymbolTest.UnknownSymbol (1 ms)
+[ RUN      ] AutomatonRemoveSymbolTest.SymbolInTransitionGendreau
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:418: Failure
+Value of: fa.hasTransition(0_id, 'a', 0_id)
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonRemoveSymbolTest.SymbolInTransitionGendreau (3 ms)
+[----------] 4 tests from AutomatonRemoveSymbolTest (7 ms total)
+
+[----------] 6 tests from AutomatonAddStateTest
+[ RUN      ] AutomatonAddStateTest.OneState
+[       OK ] AutomatonAddStateTest.OneState (1 ms)
+[ RUN      ] AutomatonAddStateTest.TwoStates
+[       OK ] AutomatonAddStateTest.TwoStates (1 ms)
+[ RUN      ] AutomatonAddStateTest.TwoIdenticalStates
+[       OK ] AutomatonAddStateTest.TwoIdenticalStates (1 ms)
+[ RUN      ] AutomatonAddStateTest.NegativeStateVillemin
+[       OK ] AutomatonAddStateTest.NegativeStateVillemin (0 ms)
+[ RUN      ] AutomatonAddStateTest.MaxState
+[       OK ] AutomatonAddStateTest.MaxState (1 ms)
+[ RUN      ] AutomatonAddStateTest.KeepState
+[       OK ] AutomatonAddStateTest.KeepState (2 ms)
+[----------] 6 tests from AutomatonAddStateTest (9 ms total)
+
+[----------] 4 tests from AutomatonSetStateInitialTest
+[ RUN      ] AutomatonSetStateInitialTest.OneInitialState
+[       OK ] AutomatonSetStateInitialTest.OneInitialState (1 ms)
+[ RUN      ] AutomatonSetStateInitialTest.TwoInitialStates
+[       OK ] AutomatonSetStateInitialTest.TwoInitialStates (1 ms)
+[ RUN      ] AutomatonSetStateInitialTest.UnknwonState
+[       OK ] AutomatonSetStateInitialTest.UnknwonState (0 ms)
+[ RUN      ] AutomatonSetStateInitialTest.ReadEmptyString
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:611: Failure
+Expected equality of these values:
+  expected
+    Which is: { 7, 13, 19 }
+  initials
+    Which is: {}
+[  FAILED  ] AutomatonSetStateInitialTest.ReadEmptyString (7 ms)
+[----------] 4 tests from AutomatonSetStateInitialTest (10 ms total)
+
+[----------] 3 tests from AutomatonSetStateFinalTest
+[ RUN      ] AutomatonSetStateFinalTest.OneFinalState
+[       OK ] AutomatonSetStateFinalTest.OneFinalState (1 ms)
+[ RUN      ] AutomatonSetStateFinalTest.TwoFinalStates
+[       OK ] AutomatonSetStateFinalTest.TwoFinalStates (1 ms)
+[ RUN      ] AutomatonSetStateFinalTest.UnknownState
+[       OK ] AutomatonSetStateFinalTest.UnknownState (0 ms)
+[----------] 3 tests from AutomatonSetStateFinalTest (3 ms total)
+
+[----------] 10 tests from AutomatonAddTransitionTest
+[ RUN      ] AutomatonAddTransitionTest.OneTransition
+[       OK ] AutomatonAddTransitionTest.OneTransition (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameOriginAndLetter
+[       OK ] AutomatonAddTransitionTest.SameOriginAndLetter (2 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameOriginAndDestination
+[       OK ] AutomatonAddTransitionTest.SameOriginAndDestination (2 ms)
+[ RUN      ] AutomatonAddTransitionTest.SameLetterAndDestination
+[       OK ] AutomatonAddTransitionTest.SameLetterAndDestination (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.TwoIdenticalTransitions
+[       OK ] AutomatonAddTransitionTest.TwoIdenticalTransitions (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownOrigin
+[       OK ] AutomatonAddTransitionTest.UnknownOrigin (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownTarget
+[       OK ] AutomatonAddTransitionTest.UnknownTarget (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.UnknownSymbol
+[       OK ] AutomatonAddTransitionTest.UnknownSymbol (1 ms)
+[ RUN      ] AutomatonAddTransitionTest.EpsilonEcoffet
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:844: Failure
+Value of: fa.addTransition(2_id, fa::Epsilon, 3_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:846: Failure
+Value of: fa.hasTransition(2_id, fa::Epsilon, 3_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:847: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 0
+  1u
+    Which is: 1
+[  FAILED  ] AutomatonAddTransitionTest.EpsilonEcoffet (3 ms)
+[ RUN      ] AutomatonAddTransitionTest.EpsilonLeonard
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:862: Failure
+Value of: fa.addTransition(2_id, fa::Epsilon, 2_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:864: Failure
+Value of: fa.hasTransition(2_id, fa::Epsilon, 2_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:865: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 0
+  1u
+    Which is: 1
+[  FAILED  ] AutomatonAddTransitionTest.EpsilonLeonard (3 ms)
+[----------] 10 tests from AutomatonAddTransitionTest (21 ms total)
+
+[----------] 6 tests from AutomatonRemoveStateTest
+[ RUN      ] AutomatonRemoveStateTest.OneState
+[       OK ] AutomatonRemoveStateTest.OneState (1 ms)
+[ RUN      ] AutomatonRemoveStateTest.UnknownState
+[       OK ] AutomatonRemoveStateTest.UnknownState (0 ms)
+[ RUN      ] AutomatonRemoveStateTest.AllStates
+[       OK ] AutomatonRemoveStateTest.AllStates (2 ms)
+[ RUN      ] AutomatonRemoveStateTest.OriginInTransition
+[       OK ] AutomatonRemoveStateTest.OriginInTransition (2 ms)
+[ RUN      ] AutomatonRemoveStateTest.DestinationInTransition
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:981: Failure
+Expected equality of these values:
+  fa.countTransitions()
+    Which is: 2
+  1u
+    Which is: 1
+[  FAILED  ] AutomatonRemoveStateTest.DestinationInTransition (2 ms)
+[ RUN      ] AutomatonRemoveStateTest.OriginAndDestinationInTransitionConstant
+[       OK ] AutomatonRemoveStateTest.OriginAndDestinationInTransitionConstant (1 ms)
+[----------] 6 tests from AutomatonRemoveStateTest (11 ms total)
+
+[----------] 4 tests from AutomatonRemoveTransitionTest
+[ RUN      ] AutomatonRemoveTransitionTest.OneTransition
+[       OK ] AutomatonRemoveTransitionTest.OneTransition (3 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownOrigin
+[       OK ] AutomatonRemoveTransitionTest.UnknownOrigin (2 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownTarget
+[       OK ] AutomatonRemoveTransitionTest.UnknownTarget (1 ms)
+[ RUN      ] AutomatonRemoveTransitionTest.UnknownLetter
+[       OK ] AutomatonRemoveTransitionTest.UnknownLetter (1 ms)
+[----------] 4 tests from AutomatonRemoveTransitionTest (9 ms total)
+
+[----------] 1 test from AutomatonPrettyPrint
+[ RUN      ] AutomatonPrettyPrint.Tramaux
+Initial states:
+	0 1 
+Final states:
+	1 4 
+Transitions:
+	For state 0:
+		For letter a: 1 2 3
+	For state 1:
+		For letter b: 3
+	For state 2:
+		For letter a: 3
+		For letter b: 4
+	For state 3:
+		For letter a: 3
+		For letter b: 4
+	For state 4:
+		For letter a: 4
+[       OK ] AutomatonPrettyPrint.Tramaux (3 ms)
+[----------] 1 test from AutomatonPrettyPrint (3 ms total)
+
+[----------] 4 tests from AutomatonHasEpsilonTransitionTest
+[ RUN      ] AutomatonHasEpsilonTransitionTest.WithoutEpsilon
+[       OK ] AutomatonHasEpsilonTransitionTest.WithoutEpsilon (1 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.WithEpsilon
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1180: Failure
+Value of: fa.addTransition(0_id, fa::Epsilon, 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1181: Failure
+Value of: fa.hasEpsilonTransition()
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonHasEpsilonTransitionTest.WithEpsilon (2 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.Twice
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1198: Failure
+Value of: fa.addTransition(0_id, fa::Epsilon, 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1199: Failure
+Value of: fa.hasEpsilonTransition()
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1202: Failure
+Value of: fa.hasEpsilonTransition()
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonHasEpsilonTransitionTest.Twice (3 ms)
+[ RUN      ] AutomatonHasEpsilonTransitionTest.AddAndRemove
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1219: Failure
+Value of: fa.addTransition(0_id, fa::Epsilon, 1_id)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1220: Failure
+Value of: fa.hasEpsilonTransition()
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1221: Failure
+Value of: fa.removeTransition(0_id, fa::Epsilon, 1_id)
+  Actual: false
+Expected: true
+[  FAILED  ] AutomatonHasEpsilonTransitionTest.AddAndRemove (3 ms)
+[----------] 4 tests from AutomatonHasEpsilonTransitionTest (11 ms total)
+
+[----------] 11 tests from AutomatonIsDeterministicTest
+[ RUN      ] AutomatonIsDeterministicTest.Good
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1298: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.Good (3 ms)
+[ RUN      ] AutomatonIsDeterministicTest.GoodChahat
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1340: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.GoodChahat (4 ms)
+[ RUN      ] AutomatonIsDeterministicTest.GoodVillemin
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1380: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.GoodVillemin (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.TwoTransitions
+[       OK ] AutomatonIsDeterministicTest.TwoTransitions (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NotComplete
+[       OK ] AutomatonIsDeterministicTest.NotComplete (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.TwoInitialStates
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1448: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.TwoInitialStates (2 ms)
+[ RUN      ] AutomatonIsDeterministicTest.ZeroInitialState
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1469: Failure
+Value of: fa.isDeterministic()
+  Actual: true
+Expected: false
+[  FAILED  ] AutomatonIsDeterministicTest.ZeroInitialState (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NoFinalState
+[       OK ] AutomatonIsDeterministicTest.NoFinalState (1 ms)
+[ RUN      ] AutomatonIsDeterministicTest.Demougin1
+[       OK ] AutomatonIsDeterministicTest.Demougin1 (0 ms)
+[ RUN      ] AutomatonIsDeterministicTest.NoTransitionMaxel
+[       OK ] AutomatonIsDeterministicTest.NoTransitionMaxel (0 ms)
+[ RUN      ] AutomatonIsDeterministicTest.ThreeTransitionsGasca
+[       OK ] AutomatonIsDeterministicTest.ThreeTransitionsGasca (1 ms)
+[----------] 11 tests from AutomatonIsDeterministicTest (22 ms total)
+
+[----------] 6 tests from AutomatonIsCompleteTest
+[ RUN      ] AutomatonIsCompleteTest.Good
+[       OK ] AutomatonIsCompleteTest.Good (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.TwoTransitions
+[       OK ] AutomatonIsCompleteTest.TwoTransitions (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.ZeroTransition
+[       OK ] AutomatonIsCompleteTest.ZeroTransition (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.AddedRemovedTransition
+[       OK ] AutomatonIsCompleteTest.AddedRemovedTransition (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Villemin
+[       OK ] AutomatonIsCompleteTest.Villemin (1 ms)
+[ RUN      ] AutomatonIsCompleteTest.Demougin1
+[       OK ] AutomatonIsCompleteTest.Demougin1 (3 ms)
+[----------] 6 tests from AutomatonIsCompleteTest (10 ms total)
+
+[----------] 7 tests from AutomatonCreateCompleteTest
+[ RUN      ] AutomatonCreateCompleteTest.MissingState
+[       OK ] AutomatonCreateCompleteTest.MissingState (377 ms)
+[ RUN      ] AutomatonCreateCompleteTest.AlreadyComplete
+[       OK ] AutomatonCreateCompleteTest.AlreadyComplete (371 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Dillon1
+[       OK ] AutomatonCreateCompleteTest.Dillon1 (3 ms)
+[ RUN      ] AutomatonCreateCompleteTest.Flecy
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox/testfa.cc:1859: Failure
+Value of: fa.isComplete()
+  Actual: true
+Expected: false
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x13BA05: fa::Automaton::match(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (Automaton.cc:390)
+==371165==    by 0x156D59: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:90)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165==    by 0x13004E: RUN_ALL_TESTS (gtest.h:2492)
+==371165==    by 0x13004E: main (testfa.cc:5180)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x187EA7: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1548)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165==    by 0x13004E: RUN_ALL_TESTS (gtest.h:2492)
+==371165==    by 0x13004E: main (testfa.cc:5180)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49A576F: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B35D5: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Use of uninitialised value of size 8
+==371165==    at 0x49B3644: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B366B: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B3608: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2B3: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2C5: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2D2: is_overlap (vg_replace_strmem.c:139)
+==371165==    by 0x484A2D2: is_overlap (vg_replace_strmem.c:126)
+==371165==    by 0x484A2D2: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2DF: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2F6: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Use of uninitialised value of size 8
+==371165==    at 0x484A430: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Use of uninitialised value of size 8
+==371165==    at 0x484A433: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A43D: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B367D: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x49A588C: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49A589A: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187CC5: operator<< <std::char_traits<char> > (ostream:620)
+==371165==    by 0x187CC5: PrintTo (gtest-printers.h:458)
+==371165==    by 0x187CC5: Print (gtest-printers.h:689)
+==371165==    by 0x187CC5: UniversalPrint<bool> (gtest-printers.h:978)
+==371165==    by 0x187CC5: Print (gtest-printers.h:863)
+==371165==    by 0x187CC5: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1016)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x187CE4: _M_high_mark (sstream:432)
+==371165==    by 0x187CE4: str (sstream:245)
+==371165==    by 0x187CE4: str (sstream:1137)
+==371165==    by 0x187CE4: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165==    by 0x13004E: RUN_ALL_TESTS (gtest.h:2492)
+==371165==    by 0x13004E: main (testfa.cc:5180)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x187CFB: _M_high_mark (sstream:435)
+==371165==    by 0x187CFB: str (sstream:245)
+==371165==    by 0x187CFB: str (sstream:1137)
+==371165==    by 0x187CFB: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165==    by 0x13004E: RUN_ALL_TESTS (gtest.h:2492)
+==371165==    by 0x13004E: main (testfa.cc:5180)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B5BEC: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B5C19: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B5C6B: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x49B5C71: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A9081: testing::UnitTest::Run() (gtest.cc:5464)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2B3: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A2DF: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A32B: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A394: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A3D5: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A3E6: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A40F: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==371165==    by 0x1ABB6C: Run (gtest.cc:3018)
+==371165==    by 0x1ABB6C: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==371165==    by 0x1B6CAE: HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool> (gtest.cc:2631)
+==371165==    by 0x1B6CAE: bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) (gtest.cc:2667)
+==371165== 
+==371165== Conditional jump or move depends on uninitialised value(s)
+==371165==    at 0x484A422: memmove (vg_replace_strmem.c:1382)
+==371165==    by 0x49B5C84: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==371165==    by 0x187D14: replace (basic_string.h:2171)
+==371165==    by 0x187D14: replace (basic_string.h:2368)
+==371165==    by 0x187D14: assign<char*> (basic_string.h:1682)
+==371165==    by 0x187D14: str (sstream:246)
+==371165==    by 0x187D14: str (sstream:1137)
+==371165==    by 0x187D14: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > testing::PrintToString<bool>(bool const&) (gtest-printers.h:1017)
+==371165==    by 0x187EC8: Format (gtest-printers.h:332)
+==371165==    by 0x187EC8: FormatForComparisonFailureMessage<bool, bool> (gtest-printers.h:413)
+==371165==    by 0x187EC8: CmpHelperEQFailure<bool, bool> (gtest.h:1532)
+==371165==    by 0x187EC8: testing::AssertionResult testing::internal::CmpHelperEQ<bool, bool>(char const*, char const*, bool const&, bool const&) (gtest.h:1552)
+==371165==    by 0x156D81: Compare<bool, bool> (gtest.h:1567)
+==371165==    by 0x156D81: (anonymous namespace)::checkEquivalentAutomaton(fa::Automaton const&, fa::Automaton const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [clone .constprop.0] (testfa.cc:91)
+==371165==    by 0x15A376: AutomatonCreateCompleteTest_Flecy_Test::TestBody() (testfa.cc:1866)
+==371165==    by 0x1B682E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==371165==    by 0x1B682E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==371165==    by 0x1A8A65: Run (gtest.cc:2706)
+==371165==    by 0x1A8A65: testing::Test::Run() (gtest.cc:2696)
+==371165==    by 0x1A8C64: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==371165==    by 0x1A8E3A: Run (gtest.cc:2858)
+==371165==    by 0x1A8E3A: testing::TestSuite::Run() [clone .part.0

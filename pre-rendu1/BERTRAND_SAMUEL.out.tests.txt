@@ -1,0 +1,278 @@
+-- The CXX compiler identification is GNU 12.2.0
+-- The C compiler identification is GNU 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/build
+[ 25%] Building CXX object CMakeFiles/testfa.dir/Automaton.cc.o
+[ 50%] Building CXX object CMakeFiles/testfa.dir/testfa.cc.o
+[ 75%] Building CXX object CMakeFiles/testfa.dir/googletest/googletest/src/gtest-all.cc.o
+[100%] Linking CXX executable testfa
+[100%] Built target testfa
+==364911== Memcheck, a memory error detector
+==364911== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==364911== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==364911== Command: ./testfa
+==364911== 
+[==========] Running 142 tests from 29 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from AutomatonExampleTest
+[ RUN      ] AutomatonExampleTest.Default
+[       OK ] AutomatonExampleTest.Default (3 ms)
+[----------] 1 test from AutomatonExampleTest (6 ms total)
+
+[----------] 4 tests from AutomatonIsValidTest
+[ RUN      ] AutomatonIsValidTest.EmptyAutomaton
+[       OK ] AutomatonIsValidTest.EmptyAutomaton (0 ms)
+[ RUN      ] AutomatonIsValidTest.EmptyStates
+[       OK ] AutomatonIsValidTest.EmptyStates (1 ms)
+[ RUN      ] AutomatonIsValidTest.EmptyAlphabet
+[       OK ] AutomatonIsValidTest.EmptyAlphabet (1 ms)
+[ RUN      ] AutomatonIsValidTest.VaildAutomaton
+[       OK ] AutomatonIsValidTest.VaildAutomaton (1 ms)
+[----------] 4 tests from AutomatonIsValidTest (5 ms total)
+
+[----------] 3 tests from AddSymbolTest
+[ RUN      ] AddSymbolTest.Valid
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:171: Failure
+Value of: fa.addSymbol(c)
+  Actual: false
+Expected: true
+[  FAILED  ] AddSymbolTest.Valid (12 ms)
+[ RUN      ] AddSymbolTest.Existing
+[       OK ] AddSymbolTest.Existing (0 ms)
+[ RUN      ] AddSymbolTest.Invalid
+[       OK ] AddSymbolTest.Invalid (0 ms)
+[----------] 3 tests from AddSymbolTest (15 ms total)
+
+[----------] 4 tests from RemoveSymbolTest
+[ RUN      ] RemoveSymbolTest.Present
+[       OK ] RemoveSymbolTest.Present (1 ms)
+[ RUN      ] RemoveSymbolTest.Absent
+[       OK ] RemoveSymbolTest.Absent (0 ms)
+[ RUN      ] RemoveSymbolTest.Invalid
+[       OK ] RemoveSymbolTest.Invalid (1 ms)
+[ RUN      ] RemoveSymbolTest.AlreadyRemoved
+[       OK ] RemoveSymbolTest.AlreadyRemoved (0 ms)
+[----------] 4 tests from RemoveSymbolTest (4 ms total)
+
+[----------] 4 tests from HasSymbolTest
+[ RUN      ] HasSymbolTest.EmptyAlphabet
+[       OK ] HasSymbolTest.EmptyAlphabet (0 ms)
+[ RUN      ] HasSymbolTest.Present
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:240: Failure
+Value of: fa.addSymbol(c)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:246: Failure
+Value of: fa.hasSymbol(c)
+  Actual: false
+Expected: true
+[  FAILED  ] HasSymbolTest.Present (4 ms)
+[ RUN      ] HasSymbolTest.Absent
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:259: Failure
+Value of: fa.addSymbol(c)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:265: Failure
+Value of: fa.removeSymbol(c)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:267: Failure
+Value of: fa.addSymbol(c)
+  Actual: false
+Expected: true
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:268: Failure
+Value of: fa.hasSymbol(c)
+  Actual: false
+Expected: true
+[  FAILED  ] HasSymbolTest.Absent (8 ms)
+[ RUN      ] HasSymbolTest.Invalid
+[       OK ] HasSymbolTest.Invalid (1 ms)
+[----------] 4 tests from HasSymbolTest (15 ms total)
+
+[----------] 3 tests from CountSymbolsTest
+[ RUN      ] CountSymbolsTest.Empty
+[       OK ] CountSymbolsTest.Empty (0 ms)
+[ RUN      ] CountSymbolsTest.OneSymbol
+[       OK ] CountSymbolsTest.OneSymbol (0 ms)
+[ RUN      ] CountSymbolsTest.ManySymbols
+[       OK ] CountSymbolsTest.ManySymbols (1 ms)
+[----------] 3 tests from CountSymbolsTest (3 ms total)
+
+[----------] 5 tests from AddStateTest
+[ RUN      ] AddStateTest.New
+[       OK ] AddStateTest.New (0 ms)
+[ RUN      ] AddStateTest.Zero
+[       OK ] AddStateTest.Zero (0 ms)
+[ RUN      ] AddStateTest.Negative
+[       OK ] AddStateTest.Negative (0 ms)
+[ RUN      ] AddStateTest.Existing
+[       OK ] AddStateTest.Existing (0 ms)
+[ RUN      ] AddStateTest.Many
+[       OK ] AddStateTest.Many (3 ms)
+[----------] 5 tests from AddStateTest (6 ms total)
+
+[----------] 4 tests from RemoveStateTest
+[ RUN      ] RemoveStateTest.Existing
+[       OK ] RemoveStateTest.Existing (1 ms)
+[ RUN      ] RemoveStateTest.NonExisting
+[       OK ] RemoveStateTest.NonExisting (0 ms)
+[ RUN      ] RemoveStateTest.Invalid
+[       OK ] RemoveStateTest.Invalid (0 ms)
+[ RUN      ] RemoveStateTest.Many
+[       OK ] RemoveStateTest.Many (23 ms)
+[----------] 4 tests from RemoveStateTest (25 ms total)
+
+[----------] 2 tests from HasStateTest
+[ RUN      ] HasStateTest.Existing
+[       OK ] HasStateTest.Existing (1 ms)
+[ RUN      ] HasStateTest.NonExisting
+[       OK ] HasStateTest.NonExisting (0 ms)
+[----------] 2 tests from HasStateTest (1 ms total)
+
+[----------] 3 tests from CountStatesTest
+[ RUN      ] CountStatesTest.Zero
+[       OK ] CountStatesTest.Zero (0 ms)
+[ RUN      ] CountStatesTest.One
+[       OK ] CountStatesTest.One (0 ms)
+[ RUN      ] CountStatesTest.Many
+[       OK ] CountStatesTest.Many (2 ms)
+[----------] 3 tests from CountStatesTest (4 ms total)
+
+[----------] 2 tests from IsStateInitialTest
+[ RUN      ] IsStateInitialTest.Initial
+[       OK ] IsStateInitialTest.Initial (1 ms)
+[ RUN      ] IsStateInitialTest.NonInitial
+[       OK ] IsStateInitialTest.NonInitial (0 ms)
+[----------] 2 tests from IsStateInitialTest (2 ms total)
+
+[----------] 2 tests from IsStateFinalTest
+[ RUN      ] IsStateFinalTest.Final
+[       OK ] IsStateFinalTest.Final (1 ms)
+[ RUN      ] IsStateFinalTest.NonFinal
+[       OK ] IsStateFinalTest.NonFinal (0 ms)
+[----------] 2 tests from IsStateFinalTest (2 ms total)
+
+[----------] 5 tests from AddTransitionTest
+[ RUN      ] AddTransitionTest.New
+[       OK ] AddTransitionTest.New (4 ms)
+[ RUN      ] AddTransitionTest.Existing
+[       OK ] AddTransitionTest.Existing (2 ms)
+[ RUN      ] AddTransitionTest.InvalidFrom
+[       OK ] AddTransitionTest.InvalidFrom (1 ms)
+[ RUN      ] AddTransitionTest.InvalidTo
+[       OK ] AddTransitionTest.InvalidTo (1 ms)
+[ RUN      ] AddTransitionTest.InvalidAlpha
+[       OK ] AddTransitionTest.InvalidAlpha (1 ms)
+[----------] 5 tests from AddTransitionTest (10 ms total)
+
+[----------] 2 tests from RemoveTransitionTest
+[ RUN      ] RemoveTransitionTest.Existing
+[       OK ] RemoveTransitionTest.Existing (3 ms)
+[ RUN      ] RemoveTransitionTest.NonExisting
+[       OK ] RemoveTransitionTest.NonExisting (0 ms)
+[----------] 2 tests from RemoveTransitionTest (4 ms total)
+
+[----------] 3 tests from HasTransitionTest
+[ RUN      ] HasTransitionTest.Existing
+[       OK ] HasTransitionTest.Existing (1 ms)
+[ RUN      ] HasTransitionTest.NonExisting
+[       OK ] HasTransitionTest.NonExisting (0 ms)
+[ RUN      ] HasTransitionTest.PointingToSelf
+[       OK ] HasTransitionTest.PointingToSelf (1 ms)
+[----------] 3 tests from HasTransitionTest (3 ms total)
+
+[----------] 2 tests from CountTransitionsTest
+[ RUN      ] CountTransitionsTest.Zero
+[       OK ] CountTransitionsTest.Zero (0 ms)
+[ RUN      ] CountTransitionsTest.One
+[       OK ] CountTransitionsTest.One (2 ms)
+[----------] 2 tests from CountTransitionsTest (2 ms total)
+
+[----------] 2 tests from PrettyPrintTest
+[ RUN      ] PrettyPrintTest.Empty
+Initial states:
+	
+Final states:
+	
+Transitions:
+[       OK ] PrettyPrintTest.Empty (1 ms)
+[ RUN      ] PrettyPrintTest.Stuffed
+Initial states:
+	0 1 
+Final states:
+	1 4 
+Transitions:
+	For state 0:
+		For letter a: 1 2 3 
+		For letter b: 
+	For state 1:
+		For letter a: 
+		For letter b: 3 
+	For state 2:
+		For letter a: 3 
+		For letter b: 4 
+	For state 3:
+		For letter a: 3 
+		For letter b: 4 
+	For state 4:
+		For letter a: 4 
+		For letter b: 
+[       OK ] PrettyPrintTest.Stuffed (5 ms)
+[----------] 2 tests from PrettyPrintTest (7 ms total)
+
+[----------] 2 tests from HasEpsilonTransitionTest
+[ RUN      ] HasEpsilonTransitionTest.Has
+/home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/testfa.cc:583: Failure
+Value of: fa.addSymbol(fa::Epsilon)
+  Actual: false
+Expected: true
+testfa: /home/jube/Univ/theorie_des_langages/projet/corr/2024/sandbox-tests/Automaton.cc:427: bool fa::Automaton::hasEpsilonTransition() const: Assertion `isValid()' failed.
+==364911== 
+==364911== Process terminating with default action of signal 6 (SIGABRT): dumping core
+==364911==    at 0x4C18EBC: __pthread_kill_implementation (pthread_kill.c:44)
+==364911==    by 0x4BC9FB1: raise (raise.c:26)
+==364911==    by 0x4BB4471: abort (abort.c:79)
+==364911==    by 0x4BB4394: __assert_fail_base.cold (assert.c:92)
+==364911==    by 0x4BC2EB1: __assert_fail (assert.c:101)
+==364911==    by 0x1329FE: fa::Automaton::hasEpsilonTransition() const (Automaton.cc:427)
+==364911==    by 0x146FA1: HasEpsilonTransitionTest_Has_Test::TestBody() (testfa.cc:586)
+==364911==    by 0x1A057E: HandleSehExceptionsInMethodIfSupported<testing::Test, void> (gtest.cc:2631)
+==364911==    by 0x1A057E: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (gtest.cc:2667)
+==364911==    by 0x1927B5: Run (gtest.cc:2706)
+==364911==    by 0x1927B5: testing::Test::Run() (gtest.cc:2696)
+==364911==    by 0x1929B4: testing::TestInfo::Run() [clone .part.0] (gtest.cc:2885)
+==364911==    by 0x192B8A: Run (gtest.cc:2858)
+==364911==    by 0x192B8A: testing::TestSuite::Run() [clone .part.0] (gtest.cc:3039)
+==364911==    by 0x1958BC: Run (gtest.cc:3018)
+==364911==    by 0x1958BC: testing::internal::UnitTestImpl::RunAllTests() (gtest.cc:5897)
+==364911== 
+==364911== HEAP SUMMARY:
+==364911==     in use at exit: 143,812 bytes in 660 blocks
+==364911==   total heap usage: 5,997 allocs, 5,337 frees, 638,329 bytes allocated
+==364911== 
+==364911== LEAK SUMMARY:
+==364911==    definitely lost: 0 bytes in 0 blocks
+==364911==    indirectly lost: 0 bytes in 0 blocks
+==364911==      possibly lost: 0 bytes in 0 blocks
+==364911==    still reachable: 143,812 bytes in 660 blocks
+==364911==         suppressed: 0 bytes in 0 blocks
+==364911== Rerun with --leak-check=full to see details of leaked memory
+==364911== 
+==364911== For lists of detected and suppressed errors, rerun with: -s
+==364911== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+timeout: la commande surveillée a renvoyé un core dump
+Aborted

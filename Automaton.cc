@@ -7,25 +7,29 @@ namespace fa {
 
   bool State::addTransition(char alpha, int to) {
     if (transitions.count(alpha) == 0){
-      return transitions[alpha].insert(to).second;
+      std::set<int> destinations;
+      transitions.insert({alpha, destinations});
     }
-    std::set<int> res;
-    return res.insert(to).second && transitions.insert({alpha, res}).second;
+    return transitions[alpha].insert(to).second;
   }
 
   bool State::removeTransition(char alpha, int to) {
     std::map<char, std::set<int>>::iterator it = transitions.begin();
     while (it != transitions.end()){
       if (it->first == alpha && it->second.count(to) == 1){
-        return (transitions.erase(it) != transitions.end());
+        return (it->second.erase(to) > 0);
       }
       it++;
     }
-    return false;
+    return true;
   }
 
   bool State::removeTransitions(char alpha) {
-    return (transitions.erase(alpha) > 0);
+    std::map<char, std::set<int>>::iterator it = transitions.find(alpha);
+    if (it != transitions.end()){
+      transitions.erase(it);
+    }
+    return true;
   }
 
   bool State::removeTransitions(int to) {
@@ -37,7 +41,7 @@ namespace fa {
       }
     }
     for (std::set<char>::iterator it = alphaSet.begin(); it != alphaSet.end(); it++){
-      res = res && (removeTransition(*it, to));
+      res = res || (removeTransition(*it, to));
     }
     return res;
   }
@@ -47,12 +51,10 @@ namespace fa {
   }
 
   bool State::hasTransition(char alpha, int to) const {
-    std::map<char, std::set<int>>::const_iterator it = transitions.begin();
-    while (it != transitions.end()){
+    for (std::map<char, std::set<int>>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
       if (it->first == alpha && it->second.count(to) == 1){
         return true;
       }
-      it++;
     }
     return false;
   }
@@ -74,13 +76,19 @@ namespace fa {
 
   void State::setFinal(bool terminal) {this->terminal = terminal;}
 
-  std::size_t State::countTransitions() const {return transitions.size();}
+  std::size_t State::countTransitions() const {
+    size_t res = 0;
+    for (std::map<char, std::set<int>>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
+      res = res + it->second.size();
+    }
+    return res;
+  }
 
   std::size_t State::countTransitions(char alpha) const {
     size_t res = 0;
     for (std::map<char, std::set<int>>::const_iterator it = transitions.begin(); it != transitions.end(); it++){
       if (it->first == alpha){
-        res++;
+        res = res + it->second.size();
       }
     }
     return res;
@@ -137,18 +145,18 @@ namespace fa {
   }
 
   bool Automaton::removeSymbol(char symbol) {
-    bool res = alphabet.erase(symbol);
-    if (!getStates().empty()){
+    bool res = true;
+    if (!(hasSymbol(symbol) && getStates().empty())){
       std::set<int> temp;
       std::map<int, State> tempStates = getStates();
       for (std::map<int,State>::iterator it = tempStates.begin(); it != tempStates.end(); it++){
         temp.insert(it->first);
       }
       for (std::set<int>::iterator it = temp.begin(); it != temp.end(); it++){
-        res = res && (removeTransitions(*it, symbol));
+        res = (removeTransitions(*it, symbol)) && res;
       }
     }
-    return res;
+    return alphabet.erase(symbol) && res;
   }
 
   bool Automaton::hasSymbol(char symbol) const {
@@ -167,11 +175,11 @@ namespace fa {
   }
 
   bool Automaton::removeState(int state) {
-    bool res = true;
     if (hasState(state)){
-      res = res && removeTransitions(state);
+      bool res = removeTransitions(state);
+      return states.erase(state) && res;
     }
-    return res && states.erase(state);
+    return false;
   }
 
   bool Automaton::hasState(int state) const {
@@ -212,11 +220,11 @@ namespace fa {
   }
 
   bool Automaton::removeTransition(int from, char alpha, int to) {
-    return (hasState(from) && states.find(from)->second.removeTransition(alpha, to));
+    return (hasState(from) && hasSymbol(alpha) && hasState(to) && (states.find(from)->second.removeTransition(alpha, to)));
   }
 
   bool Automaton::removeTransitions(int from, char alpha) {
-    return (hasState(from) && states.find(from)->second.removeTransitions(alpha));
+    return (!(hasSymbol(alpha) && hasState(from)) || states.find(from)->second.removeTransitions(alpha));
   }
 
   bool Automaton::removeTransitions(int to) {
@@ -224,11 +232,13 @@ namespace fa {
     std::set<int> temp;
     std::map<int, State> tempStates = getStates();
     for (std::map<int, State>::iterator it = tempStates.begin(); it != tempStates.end(); it++){
-      temp.insert(it->first);      
+      temp.insert(it->first);
     }
     for (std::set<int>::iterator it = temp.begin(); it != temp.end(); it++){
       for (std::set<char>::iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++) {
-        res = res && removeTransition(*it, *it2, to);
+        if (hasTransition(*it, *it2, to)){
+          res = removeTransition(*it, *it2, to) && res;
+        }
       }
     }
     return res;
