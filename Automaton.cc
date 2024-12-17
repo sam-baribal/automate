@@ -104,7 +104,9 @@ namespace fa {
         currSymbol = newSymbol;
         os << "\n\t\tFor letter " << currSymbol << ":";
       }
-      //os << " " << it->second;
+      for (std::set<int>::const_iterator it2 = it->second.begin(); it2 != it->second.end(); it2++){
+        os << " " << *it2;
+      }
     }
     os << "\n";
   }
@@ -197,7 +199,10 @@ namespace fa {
   }
 
   bool Automaton::isStateInitial(int state) const {
-    return states.find(state)->second.isInitial();
+    if (hasState(state)){
+      return states.find(state)->second.isInitial();
+    }
+    return false;
   }
 
   void Automaton::setStateFinal(int state) {
@@ -207,7 +212,10 @@ namespace fa {
   }
 
   bool Automaton::isStateFinal(int state) const {
-    return states.find(state)->second.isFinal();
+    if (hasState(state)){
+      return states.find(state)->second.isFinal();
+    }
+    return false;
   }
 
   bool Automaton::addTransition(int from, char alpha, int to) {
@@ -458,6 +466,13 @@ namespace fa {
     assert(isValid());
     std::set<int> from, to;
     from = getInitialStates();
+    if (word.size() == 0){
+      for (std::set<int>::const_iterator it = from.begin(); it != from.end(); it++){
+        if (isStateFinal(*it)){
+          to.insert(*it);
+        }
+      }
+    }
     for (std::string::const_iterator it = word.begin(); it != word.end(); it++){
       to = makeTransition(from, *it);
       from = to;
@@ -478,6 +493,10 @@ namespace fa {
 
   void Automaton::removeNonAccessibleStates () {
     assert(isValid());
+    if (getInitialStates().size() == 0){
+      addState(0);
+      setStateInitial(0);
+    }
     std::set<int> accessibleStates;
     std::set<int> init = getInitialStates();
     std::map<int, State> statesTemp = states;
@@ -486,7 +505,7 @@ namespace fa {
     }
     for (std::map<int, State>::iterator it = statesTemp.begin(); it != statesTemp.end(); it++){
       if (accessibleStates.count(it->first) < 1 && hasState(it->first)){
-        states.erase(it->first);
+        removeState(it->first);
       }
     }
   }
@@ -504,13 +523,48 @@ namespace fa {
     }
   }
 
-  void Automaton::removeNonCoAccessibleStates() {
-    assert(isValid());
-
+  std::set<int> Automaton::getPreviousStates(int state) const {
+    std::set<int> res;
+    for (std::map<int, State>::const_iterator it1 = states.begin(); it1 != states.end(); it1++){
+      for (std::set<char>::const_iterator it2 = alphabet.begin(); it2 != alphabet.end(); it2++){
+        if (hasTransition(it1->first, *it2, state)){
+          res.insert(it1->first);
+        }
+      }
+    }
+    return res;
   }
 
-  void Automaton::removeNonCoAccessibleStatesRec() {
+  void Automaton::removeNonCoAccessibleStates() {
+    assert(isValid());
+    if (getFinalStates().size() == 0){
+      addState(0);
+      setStateFinal(0);
+    }
+    std::set<int> coAccessibleStates;
+    std::set<int> fin = getFinalStates();
+    std::map<int, State> statesTemp = states;
+    for (std::set<int>::iterator it = fin.begin(); it != fin.end(); it++){
+      removeNonCoAccessibleStatesRec(*it, coAccessibleStates);
+    }
+    for (std::map<int, State>::iterator it = statesTemp.begin(); it != statesTemp.end(); it++){
+      if (coAccessibleStates.count(it->first) < 1 && hasState(it->first)){
+        removeState(it->first);
+      }
+    }
+  }
 
+  void Automaton::removeNonCoAccessibleStatesRec(int state, std::set<int>& coAccessibleStates) {
+    coAccessibleStates.insert(state);
+    if (isStateInitial(state)){
+      return;
+    }
+    std::set<int> prev = getPreviousStates(state);
+    for (std::set<int>::iterator it = prev.begin(); it != prev.end(); it++){
+      if (coAccessibleStates.count(*it) < 1){
+        removeNonCoAccessibleStatesRec(*it, coAccessibleStates);
+      }
+    }
   }
 
   bool Automaton::isLanguageEmpty() const {

@@ -303,6 +303,11 @@ namespace fa {
       void removeNonAccessibleStatesRec(int state, std::set<int>& accessibleStates);
 
       /**
+       * Returns a set containing the states which can directly attain this state, regardless of the symbol read
+       */
+      std::set<int> getPreviousStates(int state) const;
+
+      /**
       * Remove non-co-accessible states
       */
       void removeNonCoAccessibleStates();
@@ -310,7 +315,7 @@ namespace fa {
       /**
       * Recursive function used in the removal of non co accessible states
       */
-      void removeNonCoAccessibleStatesRec();
+      void removeNonCoAccessibleStatesRec(int state, std::set<int>& coAccessibleStates);
 
       /**
       * Check if the language of the automaton is empty
